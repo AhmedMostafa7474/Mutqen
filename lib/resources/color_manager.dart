@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  static Color primary = const Color(0xFF06003a);
+  static const Color primary = const Color(0xFF13675E);
   static Color darkPrimary = const Color(0xff1B6685);
   static Color lightPrimary = const Color(0xffE3F4F5); // color with 80% opacity
 

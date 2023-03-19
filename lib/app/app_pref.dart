@@ -23,10 +23,9 @@ class AppPreferences {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString("userid",id);
   }
-  saveTokenAndUserIdToSharedPrefrences(String localToken, String id) async{
+  saveTokenAndUserIdToSharedPrefrences(String localToken) async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString("token",localToken);
-    sharedPreferences.setString("userid",id);
   }
 
   Future<String> getAppLanguage() async {
@@ -36,7 +35,7 @@ class AppPreferences {
       return language;
     } else {
       // return default lang
-      return LanguageType.ENGLISH.getValue();
+      return LanguageType.ARABIC.getValue();
     }
   }
 

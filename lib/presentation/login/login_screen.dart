@@ -1,12 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/app/app_pref.dart';
+import 'package:mutqen/presentation/register/register_screen.dart';
+import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:mutqen/resources/assets_manager.dart';
 
 import '../../resources/style_manager.dart';
+import 'Widgets/login_widget.dart';
 import 'Widgets/text_field_widget.dart';
-import 'Widgets/text_field_widget2.dart';
 
 class login_page extends StatefulWidget {
   const login_page({Key? key}) : super(key: key);
@@ -16,50 +20,45 @@ class login_page extends StatefulWidget {
 }
 
 class _login_pageState extends State<login_page> {
+  final formKey = GlobalKey<FormState>();
 
   var usernamecontroller = TextEditingController();
+  var passwordcontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image.asset(ImageAssets.smallLogo,height: 300, width: 300,),
-          userNameTextFormField(usernamecontroller),
-          SizedBox(height: 12,),
-          Container(
-            width: 350,
-            child: CustomShadowFormTextField(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Form(
+            key: formKey ,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(ImageAssets.smallLogo,height: 200.h, width: 200.w),
+                Text_Field_Widget(usernamecontroller,AppStrings.userName.tr(),Icons.person,AppStrings.pleaseEnterYourUserName.tr(),false),
+                SizedBox(height: 8.h,),
+                Text_Field_Widget(passwordcontroller,AppStrings.password.tr(),Icons.password,AppStrings.pleaseEnterYourpassword.tr(),true),
+                SizedBox(height: 15.h,),
+                LoginButton(formKey,usernamecontroller,passwordcontroller,context),
+                SizedBox(height: 15.h,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(AppStrings.DontHave.tr()),
+                    InkWell(
+                      onTap: () async {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> register_page()));
+                      },
+                        child: Text(" "+AppStrings.register.tr() ,style: getRegularStyle(color: ColorManager.primary),))
 
-              textEditingController: usernamecontroller,
-              showStickyLabel: true,
-              labelText: AppStrings.userName,
-              stickyLabelStyle: getRegularStyle(color: Colors.grey),
-              isMandatory: true,
-              maxLines: 1,
-              isEditable: true,
-              worksAsPopup: false,
-              obscureText: false,
-              hintText: AppStrings.pleaseEnterYourUserName,
-              validator: (String? value) {
-                if (value == null || value.trim().isEmpty) {
-                  return AppStrings.pleaseEnterYourUserName;
-                } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
-                    .hasMatch(value)) {
-                  return "${AppStrings.pleaseEnterYourUserName}  'Voithy@gmail.com'";
-                }
-                return null;
-              },
-              onValueChanged: (value) {
-
-              },
-              onSaved: (String? value) {
-
-              },
+                  ],
+                )
+              ],
             ),
-          )
-        ],
+          ),
+        ),
       ),
     );
   }
