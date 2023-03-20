@@ -12,4 +12,7 @@ class AppStrings {
   static String YouHave= "You_have";
   static String register= "register";
   static String home="Home";
+  static String task="Tasks";
+  static String settings="Settings";
+  static String Logout= "LogOut";
 }

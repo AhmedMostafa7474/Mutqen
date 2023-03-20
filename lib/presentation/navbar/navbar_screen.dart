@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/register/register_screen.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../data/model/user.dart';
 import '../../resources/color_manager.dart';
@@ -54,7 +54,6 @@ class _nav_screenState extends State<nav_screen> {
           duration: Duration(milliseconds: 200),
         ),
         navBarStyle: NavBarStyle.simple,
-        onWillPop:(bool)=> onWillPop(context),
         onItemSelected: (int)
         {
 
@@ -78,14 +77,14 @@ class _nav_screenState extends State<nav_screen> {
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.collections),
-        title: (AppStrings.home.tr()),
+        icon: Icon(CupertinoIcons.list_bullet),
+        title: (AppStrings.task.tr()),
         activeColorPrimary: ColorManager.primary,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.settings),
-        title: (AppStrings.home.tr()),
+        title: (AppStrings.settings.tr()),
         activeColorPrimary: ColorManager.primary,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       )

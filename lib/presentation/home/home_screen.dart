@@ -26,7 +26,18 @@ class _home_pageState extends State<home_page> {
       child: Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon(AppStrings.home.tr(), context),
         drawer: MainDrawer(),
-        body: Center(child: Text("Hello "+ "Lional"),),
+        body: ListView.separated(
+          itemCount: 4,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return SizedBox(
+              height: 15,
+            );
+          },) ,
       ),
     );
   }

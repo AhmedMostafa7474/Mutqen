@@ -49,6 +49,9 @@ class _MyAppState extends State<MyAppp> {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            fontFamily: 'Monadi'
+          ),
           home: nav_screen(),
         );
       },
