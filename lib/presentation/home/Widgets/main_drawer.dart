@@ -1,6 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mutqen/resources/color_manager.dart';
+import 'package:mutqen/resources/strings_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -18,10 +22,10 @@ class _MainDrawerState extends State<MainDrawer> {
         title: Text(
           title,
           style: TextStyle(
-            fontFamily: 'RobotoCondensed',
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontFamily: 'Monadi',
+            fontSize: 17,
             color: ColorManager.white,
+            fontWeight: FontWeight.w200
           ),
         ),);
   }
@@ -38,7 +42,7 @@ class _MainDrawerState extends State<MainDrawer> {
       title: Text(
         title,
         style: TextStyle(
-          fontFamily: 'RobotoCondensed',
+          fontFamily: 'Monadi',
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: ColorManager.primary,
@@ -94,37 +98,25 @@ class _MainDrawerState extends State<MainDrawer> {
             height: 20,
           ),
           buildListTile(
-            'Home',
-            Icons.home,
+            AppStrings.home.tr(),
+            CupertinoIcons.home,
                 () {
             },
           ),
           buildListTile(
-            'Subscription',
-            Icons.subscriptions_rounded,
+            AppStrings.task.tr(),
+                FontAwesomeIcons.listCheck,
                 () {
             },
           ),
           buildListTile(
-            'Metro Map',
-            Icons.map,
-                () {
-            },
-          ),
-          buildListTile(
-            'Contact Us',
-            Icons.support_agent_rounded,
-                () {
-            },
-          ),
-          buildListTile(
-            'Settings',
+            AppStrings.settings.tr(),
             Icons.settings,
                 () {
             },
           ),
           buildListTile(
-            'Log Out',
+            AppStrings.Logout.tr(),
             Icons.logout,
                 () async {
             },
