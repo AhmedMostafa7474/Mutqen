@@ -2,6 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/data/model/user.dart';
+import 'package:mutqen/presentation/home/home_screen.dart';
+import 'package:mutqen/presentation/navbar/navbar_screen.dart';
 
 import '../presentation/login/login_screen.dart';
 import '../presentation/splash/splash_screen.dart';
@@ -46,7 +49,7 @@ class _MyAppState extends State<MyAppp> {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           debugShowCheckedModeBanner: false,
-          home: SplashView(),
+          home: nav_screen(),
         );
       },
     );

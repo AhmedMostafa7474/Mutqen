@@ -11,4 +11,5 @@ class AppStrings {
   static String DontHave= "Dont_have";
   static String YouHave= "You_have";
   static String register= "register";
+  static String home="Home";
 }

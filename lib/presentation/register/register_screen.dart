@@ -47,7 +47,6 @@ class _register_pageState extends State<register_page> {
                 SizedBox(height: 8.h,),
                 Text_Field_Widget(passwordcontroller,AppStrings.password.tr(),Icons.password,AppStrings.pleaseEnterYourpassword.tr(),true),
                 SizedBox(height: 15.h,),
-
                 RegisterButton(formKey,usernamecontroller,emailcontroller,agecontroller,passwordcontroller,context),
                 SizedBox(height: 15.h,),
                 Row(
