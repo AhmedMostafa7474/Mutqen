@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 
 import '../../data/model/user.dart';
@@ -23,10 +24,7 @@ class _home_pageState extends State<home_page> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorManager.primary,
-          title: Text(AppStrings.home.tr()),
-        ),
+        appBar: getAppBarWidgetWithNotificationIcon(AppStrings.home.tr(), context),
         drawer: MainDrawer(),
         body: ListView.separated(
           itemCount: 4,
