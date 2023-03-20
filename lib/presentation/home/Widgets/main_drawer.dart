@@ -5,8 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:mutqen/resources/style_manager.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../Contact_us/Contact_us_screen.dart';
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -29,7 +32,8 @@ class _MainDrawerState extends State<MainDrawer> {
             color: ColorManager.white,
             fontWeight: FontWeight.w200
           ),
-        ),);
+        ),
+    onTap: ()=> location(),);
   }
   String _username= " ";
   Widget buildIcon(
@@ -89,7 +93,7 @@ class _MainDrawerState extends State<MainDrawer> {
                   width: 15.w,
                 ),
                 Text(
-                  "Omar Ahmed",
+                  "عمر احمد",
                   style: getRegularStyle(
                       font: FontWeight.w500,
                       fontSize: 18.sp,
@@ -118,6 +122,15 @@ class _MainDrawerState extends State<MainDrawer> {
             Icons.settings,
                 () {
             },
+          ),
+          buildListTile(
+            AppStrings.Support.tr(),
+            Icons.contact_support_outlined,
+                () {
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: contact_page());
+                  //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const contact_page()));
+
+                },
           ),
           buildListTile(
             AppStrings.Logout.tr(),
