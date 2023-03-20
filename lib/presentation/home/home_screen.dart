@@ -1,7 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mutqen/resources/strings_manager.dart';
 
 import '../../data/model/user.dart';
+import '../../resources/color_manager.dart';
+import 'Widgets/main_drawer.dart';
 
 class home_page extends StatefulWidget {
   User user;
@@ -17,8 +21,15 @@ class _home_pageState extends State<home_page> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text("Hello "+ user.name!),),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: ColorManager.primary,
+          title: Text(AppStrings.home.tr()),
+        ),
+        drawer: MainDrawer(),
+        body: Center(child: Text("Hello "+ "Lional"),),
+      ),
     );
   }
 }
