@@ -15,7 +15,7 @@ Widget defaultButton(
       required double height,
       double radius =18.0,
       required double fontSize,
-      Color borderColor =Colors.greenAccent,
+      Color borderColor =Colors.grey,
       TextStyle? txtStyle}) =>
     Container(
       width: width,

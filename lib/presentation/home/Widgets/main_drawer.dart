@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,14 +17,14 @@ class _MainDrawerState extends State<MainDrawer> {
     return ListTile(
         leading: Icon(
           icon,
-          size: 24,
+          size: 24.sp,
           color: ColorManager.white,
         ),
         title: Text(
           title,
           style: TextStyle(
             fontFamily: 'Monadi',
-            fontSize: 17,
+            fontSize: 17.sp,
             color: ColorManager.white,
             fontWeight: FontWeight.w200
           ),
@@ -59,11 +60,12 @@ class _MainDrawerState extends State<MainDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: 250.w,
       backgroundColor: Colors.black.withOpacity(0.3),
       child: Column(
         children: <Widget>[
           Container(
-            height: 70,
+            height: 70.h,
             width: double.infinity,
             padding: EdgeInsets.all(20),
             alignment: Alignment.centerRight,
@@ -78,7 +80,7 @@ class _MainDrawerState extends State<MainDrawer> {
                   child: Icon(
                     Icons.person,
                     color: Colors.white,
-                    size: 35,
+                    size: 35.sp,
                   ),
                 ),
                 SizedBox(
@@ -95,7 +97,7 @@ class _MainDrawerState extends State<MainDrawer> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 20.h,
           ),
           buildListTile(
             AppStrings.home.tr(),
@@ -103,17 +105,26 @@ class _MainDrawerState extends State<MainDrawer> {
                 () {
             },
           ),
+          SizedBox(
+            height: 15.h,
+          ),
           buildListTile(
             AppStrings.task.tr(),
                 FontAwesomeIcons.listCheck,
                 () {
             },
           ),
+          SizedBox(
+            height: 15.h,
+          ),
           buildListTile(
             AppStrings.settings.tr(),
             Icons.settings,
                 () {
             },
+          ),
+          SizedBox(
+            height: 15.h,
           ),
           buildListTile(
             AppStrings.Logout.tr(),
