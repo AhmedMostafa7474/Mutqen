@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/presentation/home/homecard_screen.dart';
 import 'package:mutqen/resources/assets_manager.dart';
+import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -27,10 +28,7 @@ class _home_pageState extends State<home_page> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorManager.primary,
-          title: Text(AppStrings.home.tr()),
-        ),
+        appBar: getAppBarWidgetWithNotificationIcon(AppStrings.home.tr(), context),
         drawer: MainDrawer(),
         body: Container(
           padding: EdgeInsets.only(top: 20),

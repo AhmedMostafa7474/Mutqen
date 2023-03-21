@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
+import 'package:mutqen/resources/style_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -72,6 +73,8 @@ class _MainDrawerState extends State<MainDrawer> {
             color: ColorManager.primary,
             // #A80F14 red
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 InkWell(
                   onTap: (){
@@ -84,13 +87,13 @@ class _MainDrawerState extends State<MainDrawer> {
                   ),
                 ),
                 SizedBox(
-                  width: 5,
+                  width: 15.w,
                 ),
                 Text(
-                  _username,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 25,
+                  "Omar Ahmed",
+                  style: getRegularStyle(
+                      font: FontWeight.w500,
+                      fontSize: 18.sp,
                       color: Color(0xFFFFFFFF)),
                 ),
               ],
