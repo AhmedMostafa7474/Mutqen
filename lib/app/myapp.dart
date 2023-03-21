@@ -8,6 +8,7 @@ import 'package:mutqen/presentation/navbar/navbar_screen.dart';
 
 import '../presentation/login/login_screen.dart';
 import '../presentation/splash/splash_screen.dart';
+import '../resources/color_manager.dart';
 import 'app_pref.dart';
 
 
@@ -50,7 +51,10 @@ class _MyAppState extends State<MyAppp> {
           locale: context.locale,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            fontFamily: 'Monadi'
+            fontFamily: 'Monadi',
+            appBarTheme: AppBarTheme(
+              backgroundColor: ColorManager.primary,
+            )
           ),
           home: nav_screen(),
         );

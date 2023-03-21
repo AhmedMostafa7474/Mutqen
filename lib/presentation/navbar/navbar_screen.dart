@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/register/register_screen.dart';
@@ -77,7 +78,7 @@ class _nav_screenState extends State<nav_screen> {
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.list_bullet),
+        icon: Icon(FontAwesomeIcons.listCheck),
         title: (AppStrings.task.tr()),
         activeColorPrimary: ColorManager.primary,
         inactiveColorPrimary: CupertinoColors.systemGrey,
