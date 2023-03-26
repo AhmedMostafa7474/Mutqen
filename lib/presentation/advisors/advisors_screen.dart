@@ -75,15 +75,15 @@ class _advisors_pageState extends State<advisors_page> {
                           padding: EdgeInsets.all(9.0),
                           height: 100.h,
                           width: 340.w,
-                          decoration: BoxDecoration(boxShadow: [
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                              boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: Offset(0, 3), // changes position of shadow
-                            ),
+                              color: Colors.black.withOpacity(0.2),
+                              blurRadius: 5,
+                              offset: const Offset(0, 5),
+                            )
                           ],
-                              color: Colors.white70,
                               borderRadius: BorderRadius.circular(15)),
                           child:
                           Row(
