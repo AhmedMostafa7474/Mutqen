@@ -2,9 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/presentation/advisors/advisors_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:mutqen/resources/style_manager.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -29,7 +31,8 @@ class _MainDrawerState extends State<MainDrawer> {
             color: ColorManager.white,
             fontWeight: FontWeight.w200
           ),
-        ),);
+        ),
+    onTap: ()=> location() );
   }
   String _username= " ";
   Widget buildIcon(
@@ -112,9 +115,10 @@ class _MainDrawerState extends State<MainDrawer> {
             height: 15.h,
           ),
           buildListTile(
-            AppStrings.task.tr(),
+            AppStrings.advisors.tr(),
                 FontAwesomeIcons.listCheck,
                 () {
+                    PersistentNavBarNavigator.pushNewScreen(context, screen: advisors_page());
             },
           ),
           SizedBox(
