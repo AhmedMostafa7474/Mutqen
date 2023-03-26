@@ -6,6 +6,8 @@ import 'package:mutqen/resources/color_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../resources/assets_manager.dart';
+import '../../resources/common_widgets/app_bar.dart';
+import '../result/result_screen.dart';
 
 class exam_page extends StatefulWidget {
   const exam_page({Key? key}) : super(key: key);
@@ -25,7 +27,7 @@ class _exam_pageState extends State<exam_page> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-        appBar: AppBar(),
+         appBar: getAppBarWidgetWithNotificationIcon("المقياس", context),
           body: PageView.builder(
             itemCount: (list.length / 2).ceil(),
             controller: controller,
@@ -86,6 +88,7 @@ class _exam_pageState extends State<exam_page> {
                                 itemBuilder: (BuildContext context, int index) {
                                   return InkWell(
                                     onTap: () {
+                                      PersistentNavBarNavigator.pushNewScreen(context, screen: result_page());
                                       setState(() {
                                         rate[index2 + (index1 *2)] = index+1;
                                       });
