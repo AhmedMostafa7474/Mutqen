@@ -3,7 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/presentation/advisors/Widgets/advisor_data.dart';
+import 'package:mutqen/presentation/advisors/advisordetails_screen.dart';
 import 'package:mutqen/resources/assets_manager.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../resources/common_widgets/app_bar.dart';
 import '../../resources/strings_manager.dart';
@@ -18,7 +21,26 @@ class advisors_page extends StatefulWidget {
 class _advisors_pageState extends State<advisors_page> {
   var searchcontroller = TextEditingController();
   List<advisor>searchlist=[];
+  List<advisor>shownlist=[];
 
+  var isloading = true;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    shownlist =advisors;
+   load();
+  }
+
+  load()
+  async {
+    await Future.delayed(Duration(seconds: 2),() {
+      isloading = false;
+    },);
+    setState(() {
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -50,7 +72,7 @@ class _advisors_pageState extends State<advisors_page> {
                   });
                 }
                 setState(() {
-
+                  searchlist.isEmpty? shownlist=advisors :shownlist=searchlist;
                 });
               },
             ),
@@ -61,19 +83,19 @@ class _advisors_pageState extends State<advisors_page> {
         ListView.separated(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount:searchlist.isEmpty? advisors.length :searchlist.length,
+              itemCount: shownlist.length,
               separatorBuilder: (BuildContext context, int index) { return SizedBox(
                 height: 25,
               ) ; },
               itemBuilder: (BuildContext context, int index) {
                     return InkWell(
                       onTap: (){
-
+                        PersistentNavBarNavigator.pushNewScreen(context, screen: advisordetails_page(index,shownlist[index]));
                       },
                       child: UnconstrainedBox(
                         child: Container(
                           padding: EdgeInsets.all(9.0),
-                          height: 100.h,
+                          height: 110.h,
                           width: 340.w,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -93,36 +115,71 @@ class _advisors_pageState extends State<advisors_page> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(searchlist.isEmpty?
-                                  advisors[index].name:searchlist[index].name,style: TextStyle(
-                                    fontSize: 16
+                                  isloading? Shimmer.fromColors(
+                                    highlightColor: Colors.grey[100]! ,
+                                    baseColor: Colors.grey[300]!,
+                                    child: Container(
+                                      width: 100.w,
+                                      height: 20.h,
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey[300]!,
+                                      ),
+                                    ),
+                                  ):
+                                  Text(shownlist[index].name,style: TextStyle(
+                                    fontSize: 16.sp
                                   ),),
                                   SizedBox(height: 10,),
+                                  isloading? Shimmer.fromColors(
+                                    highlightColor: Colors.grey[100]! ,
+                                    baseColor: Colors.grey[300]!,
+                                    child: Container(
+                                      width: 200.w,
+                                      height: 20.h,
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey[300]!,
+                                      ),
+                                    ),
+                                  ):
                                   Container(
-                                    width: 200,
-                                    child: Text(searchlist.isEmpty?
-                                    advisors[index].desc :searchlist[index].desc ,
+                                    width: 200.w,
+                                    child: Text(shownlist[index].desc ,
                                       style: TextStyle(color: Colors.black45
-                                      ,fontSize: 12),),
+                                      ,fontSize: 12.sp),),
                                   ),
                                 ],
                               ),
-                             Container(
-                               height: 100,
-                               width: 100,
-                               decoration: BoxDecoration(
-                                   boxShadow: [
-                                     BoxShadow(
-                                       color: Colors.black.withOpacity(0.2),
-                                       spreadRadius: 5,
-                                       blurRadius: 7,
-                                       offset: Offset(0, 3), // changes position of shadow
-                                     ),
-                                   ],
-                                 borderRadius: BorderRadius.circular(100),
-                                 image: DecorationImage(image: AssetImage(ImageAssets.profileimage))
+                            isloading? Shimmer.fromColors(
+                               highlightColor: Colors.grey[100]! ,
+                               baseColor: Colors.grey[300]!,
+                               child: Container(
+                                 height: 90.h,
+                                 width: 90.w,
+                                 decoration: BoxDecoration(
+                                   color: Colors.grey[300]!,
+                                   borderRadius: BorderRadius.circular(100),
+                                 ),
                                ),
-                             )
+                             ):
+                            Hero(
+                              tag: "Hero"+index.toString(),
+                           child: Container(
+                              height: 90,
+                              width: 90,
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.2),
+                                      spreadRadius: 5,
+                                      blurRadius: 7,
+                                      offset: Offset(0, 3), // changes position of shadow
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.circular(100),
+                                  image: DecorationImage(image: AssetImage(ImageAssets.profileimage))
+                              ),
+                            )
+                            )
                             ],
                           ),
                         ),

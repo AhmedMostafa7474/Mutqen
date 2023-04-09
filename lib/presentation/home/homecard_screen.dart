@@ -32,7 +32,9 @@ class _homecard_pageState extends State<homecard_page> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text("مقياس وازن"),
+                Text("مقياس وازن",style: TextStyle(
+                  fontSize: 15.sp
+                ),),
                 SizedBox(width: 10,),
                 Hero(
                     tag: "Hero"+index.toString(),

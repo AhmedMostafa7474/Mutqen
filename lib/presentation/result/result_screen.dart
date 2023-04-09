@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/presentation/result/Widgets/result_data.dart';
+import 'package:mutqen/presentation/result/resultdetails_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../resources/assets_manager.dart';
 import '../../resources/common_widgets/app_bar.dart';
@@ -31,6 +33,7 @@ class _result_pageState extends State<result_page> {
               return UnconstrainedBox(
                 child: InkWell(
                   onTap: (){
+                    PersistentNavBarNavigator.pushNewScreen(context, screen: resultdetails_page(results[index]));
                   },
                   child: Container(
                     padding: EdgeInsets.all(9.0),

@@ -43,6 +43,8 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   font_awesome_flutter:
   percent_indicator: ^4.2.3
+  shimmer: ^2.0.0
+  flutter_svg:
 
 dev_dependencies:
   flutter_test:
