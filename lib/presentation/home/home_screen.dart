@@ -79,7 +79,9 @@ class _home_pageState extends State<home_page> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text("18 سؤال"),
+                            Text("18 سؤال",style: TextStyle(
+                                fontSize: 15.sp
+                            )),
                             SizedBox(width: 10,),
                             Hero(
                               tag: "Hero"+index.toString(),
@@ -90,7 +92,8 @@ class _home_pageState extends State<home_page> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text("يساعدك علي التوازن في حياتك والتأكد من التجدد والتجسن المستمر",style: TextStyle(
-                            color: Colors.black45
+                            color: Colors.black45,
+                              fontSize: 12.sp
                           ),),
                         )
                       ],
