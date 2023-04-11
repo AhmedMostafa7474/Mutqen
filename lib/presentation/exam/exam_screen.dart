@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/data/model/exam.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -10,7 +11,8 @@ import '../../resources/common_widgets/app_bar.dart';
 import '../result/result_screen.dart';
 
 class exam_page extends StatefulWidget {
-  const exam_page({Key? key}) : super(key: key);
+  exam examm;
+  exam_page(this.examm, {Key? key}) : super(key: key);
 
   @override
   State<exam_page> createState() => _exam_pageState();
@@ -88,7 +90,7 @@ class _exam_pageState extends State<exam_page> {
                                 itemBuilder: (BuildContext context, int index) {
                                   return InkWell(
                                     onTap: () {
-                                      PersistentNavBarNavigator.pushNewScreen(context, screen: result_page());
+                                    //  PersistentNavBarNavigator.pushNewScreen(context, screen: result_page());
                                       setState(() {
                                         rate[index2 + (index1 *2)] = index+1;
                                       });
