@@ -2,15 +2,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/data/model/exam.dart';
 import 'package:mutqen/presentation/exam/exam_screen.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../../data/model/exam.dart';
 import '../../resources/assets_manager.dart';
+import '../exam/exam2_screen.dart';
 
 class homecard_page extends StatefulWidget {
   int index;
-   homecard_page(this.index, {Key? key}) : super(key: key);
+  exam examm;
+
+   homecard_page(this.index, this.examm, {Key? key}) : super(key: key);
 
   @override
   State<homecard_page> createState() => _homecard_pageState(index);
@@ -32,7 +37,7 @@ class _homecard_pageState extends State<homecard_page> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text("مقياس وازن",style: TextStyle(
+                Text(widget.examm.title,style: TextStyle(
                   fontSize: 15.sp
                 ),),
                 SizedBox(width: 10,),
@@ -69,8 +74,12 @@ class _homecard_pageState extends State<homecard_page> {
             ,
             SizedBox(height: 15,)
             ,
-            defaultButton(width: 140, function: (){
-              PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page());
+            defaultButton(width: 140.w, function: (){
+              if(widget.examm.title == exams[1].title || widget.examm.title == exams[2].title)
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page2(widget.examm));
+              else
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page(widget.examm));
+
             }, text: "اجراء المقياس", txtColor: Colors.white, height: 40, fontSize: 16)
           ],
         ),

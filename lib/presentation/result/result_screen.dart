@@ -23,7 +23,7 @@ class _result_pageState extends State<result_page> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: getAppBarWidgetWithNotificationIcon("نتيجه وازن", context),
+        appBar: getAppBarWidgetWithNotificationIcon("نتيجه فرق", context),
         body: Container(
           padding: EdgeInsets.only(top: 20),
           child: ListView.separated(

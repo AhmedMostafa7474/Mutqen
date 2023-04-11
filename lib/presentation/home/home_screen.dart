@@ -8,6 +8,7 @@ import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../../data/model/exam.dart';
 import '../../data/model/user.dart';
 import '../../resources/color_manager.dart';
 import 'Widgets/main_drawer.dart';
@@ -34,12 +35,12 @@ class _home_pageState extends State<home_page> {
           padding: EdgeInsets.only(top: 20),
           child: ListView.separated(
             padding:  EdgeInsets.only(bottom: 20),
-            itemCount: 4,
+            itemCount: exams.length,
             itemBuilder: (BuildContext context, int index) {
               return UnconstrainedBox(
                 child: InkWell(
                   onTap: (){
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: homecard_page(index));
+                    PersistentNavBarNavigator.pushNewScreen(context, screen: homecard_page(index,exams[index]));
                   },
                   child: Container(
                     padding: EdgeInsets.all(9.0),
@@ -59,7 +60,7 @@ class _home_pageState extends State<home_page> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          height: 25.h,
+                          height: 35.h,
                           width: 150.w,
                           decoration: BoxDecoration(boxShadow: [
                             BoxShadow(
@@ -71,15 +72,16 @@ class _home_pageState extends State<home_page> {
                           ],
                               color: Colors.white70,
                               borderRadius: BorderRadius.circular(8)),
-                          child: Center(child: Text("مقياس وازن",style: TextStyle(
-                            fontSize: 15.sp
-                          ),),),
+                          child: Center(child: Text(exams[index].title,style: TextStyle(
+                            fontSize: 15.sp,
+                          ),
+                          textAlign: TextAlign.center),),
                         ),
                         SizedBox(height: 8,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text("18 سؤال",style: TextStyle(
+                            Text(exams[index].count.toString()+" سؤال" ,style: TextStyle(
                                 fontSize: 15.sp
                             )),
                             SizedBox(width: 10,),
@@ -91,7 +93,7 @@ class _home_pageState extends State<home_page> {
                         SizedBox(height: 8,),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text("يساعدك علي التوازن في حياتك والتأكد من التجدد والتجسن المستمر",style: TextStyle(
+                          child: Text(exams[index].description,style: TextStyle(
                             color: Colors.black45,
                               fontSize: 12.sp
                           ),),
