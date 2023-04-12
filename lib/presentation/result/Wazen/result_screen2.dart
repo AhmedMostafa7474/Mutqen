@@ -44,7 +44,7 @@ class _result_page2State extends State<result_page2> {
                        Padding(
                          padding: const EdgeInsets.all(12.0),
                          child: Center(child: Text(" وسائل لتنمية "+wazenresults[index].title,style: TextStyle(
-                           fontSize: 20.sp,
+                           fontSize: 18.sp,
                            color: wazenresults[index].color
                          ),),),
                        ),
@@ -58,8 +58,12 @@ class _result_page2State extends State<result_page2> {
                            },
                            itemCount: list.length, itemBuilder: (BuildContext context, int index) {
                          return ListTile(
-                           leading: Text((index+1).toString()),
-                           title: Text(list[index]),
+                           leading: Text((index+1).toString(),style: TextStyle(
+                               fontSize: 17.sp
+                           )),
+                           title: Text(list[index],style: TextStyle(
+                             fontSize: 17.sp
+                           ),),
                          );
                        },),
                        SizedBox(height: 50,)
@@ -88,14 +92,17 @@ class _result_page2State extends State<result_page2> {
                       children: [
                         SizedBox(height: 8,),
                             Text(wazenresults[index].title,style: TextStyle(
-                                    color: wazenresults[index].color
+                                    color: wazenresults[index].color,
+                                    fontSize: 15.sp
                                 ),),
                             SizedBox(height: 40,),
                             Container(
-                              child: LinearPercentIndicator(
+
+                              child:
+                              LinearPercentIndicator(
                                 width: 280.w,
                                 animation: true,
-                                lineHeight: 30.0,
+                                lineHeight: 23.h,
                                 animationDuration: 2500,
                                 percent: wazenresults[index].res/100,
                                 center: Text(wazenresults[index].res.toString()+"%"),
