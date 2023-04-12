@@ -9,7 +9,8 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../resources/assets_manager.dart';
 import '../../resources/common_widgets/app_bar.dart';
-import '../result/result_screen.dart';
+import '../result/Fare2/Widgets/result_data.dart';
+import '../result/Fare2/result_screen.dart';
 
 class exam_page2 extends StatefulWidget {
   exam examm;
@@ -83,7 +84,7 @@ class _exam_page2State extends State<exam_page2> {
                               Text(list[index2 + (index1 *2)], style: TextStyle(fontSize: 18),),
                               SizedBox(height: 70,),
                               Container(
-                                height: 40,
+                                height: 40.h,
                                 width: double.infinity,
                                 alignment: Alignment.center,
                                 child: Center(
@@ -97,7 +98,7 @@ class _exam_page2State extends State<exam_page2> {
                                           if(widget.examm.title == exams[1].title)
                                             PersistentNavBarNavigator.pushNewScreen(context, screen: result_page2());
                                           else
-                                            PersistentNavBarNavigator.pushNewScreen(context, screen: result_page());
+                                            PersistentNavBarNavigator.pushNewScreen(context, screen: result_page(results));
                                           //  PersistentNavBarNavigator.pushNewScreen(context, screen: result_page());
                                           setState(() {
                                             rate[index2 + (index1 *2)] = index+1;

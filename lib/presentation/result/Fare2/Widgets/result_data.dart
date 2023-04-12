@@ -3,30 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mutqen/resources/color_manager.dart';
 
-class result
-{
-  String title;
-  String description;
-  String subtitle = "يرغب أصحاب هذه الشخصية بفهم واستكشاف الأشياء المحيطة بهم ، ويدفعهم حب العمل والتعلم.";
-  double res;
-  Color color;
-  result(this.title, this.description,this.res,this.color);
-}
-List<result> results=[result("الشخصيه المحققه", "المفكر - المستقصي",30,ColorManager.primary),
-  result("الشخصيه الاجتماعيه", "المساعد",15,Colors.red),
-  result("الشخصيه المبادره", "المقنع",20,Colors.orange),
-  result("الشخصيه الواقعيه", "الواقعي",25,Colors.purple),
-  result("الشخصيه الفنيه", "الفنان",10,Colors.blue)
-];
+import '../../../../data/model/result.dart';
 
-class resultdesc
-{
-  String title;
-  String description;
-  String descrption2;
-  IconData icon;
-  resultdesc(this.title, this.description,this.descrption2,this.icon);
-}
 List<resultdesc> resultdes= [
   resultdesc("صفاته المميزة",
       "يتميز هؤلاء الأفراد بالصفات التالية : التحليل ، الذحر ، الدقة ، النقد ، الفضول العلمي ، الاستقلالية في التفكير ، الذاتية (التفكير على مشاعره وأفكاره الذاتية) ، المنهجية ، العقلانية ، التحفظ.",
@@ -40,11 +18,9 @@ List<resultdesc> resultdes= [
       "",Icons.workspaces),
 
 ];
-List<result> wazenresults=[
-  result("التوازن الروحاني والعبادي", "",30,ColorManager.primary),
-  result("التوازن الجسدي والصحي", "",15,Colors.red),
-  result("التوازن الاجتماعي والعاطفي", "",20,Colors.orange),
-  result("التوازن الفكري والثقافي", "",25,Colors.purple),
-  result("التوازن المهاري والمالي", "",10,Colors.blue)
+List<result> results=[result("الشخصيه المحققه", "المفكر - المستقصي",30,ColorManager.primary,resultdes),
+  result("الشخصيه الاجتماعيه", "المساعد",15,Colors.red,resultdes),
+  result("الشخصيه المبادره", "المقنع",20,Colors.orange,resultdes),
+  result("الشخصيه الواقعيه", "الواقعي",25,Colors.purple,resultdes),
+  result("الشخصيه الفنيه", "الفنان",10,Colors.blue,resultdes)
 ];
-List<String> list=["التمرين والرياضة اليومية" ,"الاحتياجات الغذائية" ,".الراحة والاسترخاء","متابعة علاج الأمراض أولا بأول"];

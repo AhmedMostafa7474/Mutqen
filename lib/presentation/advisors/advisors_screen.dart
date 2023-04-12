@@ -78,14 +78,14 @@ class _advisors_pageState extends State<advisors_page> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 20.h,
           ),
         ListView.separated(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: shownlist.length,
               separatorBuilder: (BuildContext context, int index) { return SizedBox(
-                height: 25,
+                height: 25.h,
               ) ; },
               itemBuilder: (BuildContext context, int index) {
                     return InkWell(

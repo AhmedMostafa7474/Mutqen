@@ -2,13 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mutqen/presentation/result/Widgets/result_data.dart';
-import 'package:mutqen/presentation/result/resultdetails_screen.dart';
+import 'package:mutqen/presentation/result/Fare2/resultdetails_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../resources/common_widgets/app_bar.dart';
+import '../Fare2/Widgets/result_data.dart';
+import 'Widgets/Wazen_data.dart';
 
 class result_page2 extends StatefulWidget {
   const result_page2({Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class _result_page2State extends State<result_page2> {
                        Padding(
                          padding: const EdgeInsets.all(12.0),
                          child: Center(child: Text(" وسائل لتنمية "+wazenresults[index].title,style: TextStyle(
-                           fontSize: 20,
+                           fontSize: 20.sp,
                            color: wazenresults[index].color
                          ),),),
                        ),
@@ -92,7 +93,7 @@ class _result_page2State extends State<result_page2> {
                             SizedBox(height: 40,),
                             Container(
                               child: LinearPercentIndicator(
-                                width: 320,
+                                width: 280.w,
                                 animation: true,
                                 lineHeight: 30.0,
                                 animationDuration: 2500,
