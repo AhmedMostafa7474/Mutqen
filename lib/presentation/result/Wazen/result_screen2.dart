@@ -8,6 +8,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../resources/common_widgets/app_bar.dart';
+import '../../../resources/common_widgets/bottom_sheet.dart';
 import '../Fare2/Widgets/result_data.dart';
 import 'Widgets/Wazen_data.dart';
 
@@ -34,40 +35,7 @@ class _result_page2State extends State<result_page2> {
                 child: InkWell(
                   onTap: (){
              //       PersistentNavBarNavigator.pushNewScreen(context, screen: resultdetails_page(results[index]));
-             showModalBottomSheet(
-             context: context,
-             builder: (context)
-             {
-               return SingleChildScrollView(
-                 child: Column(
-                     children: [
-                       Padding(
-                         padding: const EdgeInsets.all(12.0),
-                         child: Center(child: Text(" وسائل لتنمية "+wazenresults[index].title,style: TextStyle(
-                           fontSize: 20.sp,
-                           color: wazenresults[index].color
-                         ),),),
-                       ),
-                       ListView.separated(
-                         physics: NeverScrollableScrollPhysics(),
-                           shrinkWrap: true,
-                           separatorBuilder: (BuildContext context, int index) {
-                             return SizedBox(
-                               height: 8,
-                             );
-                           },
-                           itemCount: list.length, itemBuilder: (BuildContext context, int index) {
-                         return ListTile(
-                           leading: Text((index+1).toString()),
-                           title: Text(list[index]),
-                         );
-                       },),
-                       SizedBox(height: 50,)
-                     ]
-                 ),
-               );
-             }
-             );
+                    defaultBottomSheet(context, index);
                   },
                   child: Container(
                     padding: EdgeInsets.all(9.0),
