@@ -3,12 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/data/model/exam.dart';
+import 'package:mutqen/presentation/result/DISC/disc_result_screen.dart';
 import 'package:mutqen/presentation/result/Multiple/preresult_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../resources/assets_manager.dart';
 import '../../resources/common_widgets/app_bar.dart';
+import '../result/DISC/Widgets/disc_result_data.dart';
+import '../result/Fare2/Widgets/result_data.dart';
 import '../result/Fare2/result_screen.dart';
 
 class exam_page extends StatefulWidget {
@@ -93,6 +96,7 @@ class _exam_pageState extends State<exam_page> {
                                     onTap: () {
                                       if(widget.examm.title == exams[3].title)
                                         PersistentNavBarNavigator.pushNewScreen(context, screen: preresult_page());
+                                      else(PersistentNavBarNavigator.pushNewScreen(context, screen: disc_result_page(disc_results)));
                                     //  PersistentNavBarNavigator.pushNewScreen(context, screen: result_page());
                                       setState(() {
                                         rate[index2 + (index1 *2)] = index+1;
