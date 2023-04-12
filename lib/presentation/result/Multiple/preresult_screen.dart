@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mutqen/presentation/result/Multiple/Widgets/preresult_data.dart';
 import 'package:mutqen/presentation/result/Fare2/result_screen.dart';
+import 'package:mutqen/presentation/result/Multiple/result_screen3.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -36,7 +37,10 @@ class _preresult_pageState extends State<preresult_page> {
             SizedBox(height: 8.0,),
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Text("دلائل مجموع الدرجات لكل ذكاء علي حده :"),
+              child: Text("دلائل مجموع الدرجات لكل ذكاء علي حده :",
+              style: TextStyle(
+                fontSize: 13.sp
+              ),),
             ),
             SizedBox(height: 12.0),
             ListView.builder(
@@ -52,7 +56,8 @@ class _preresult_pageState extends State<preresult_page> {
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Text(data[index].description,style: TextStyle(
-                        color: Colors.black54
+                        color: Colors.black54,
+                        fontSize: 12.sp
                       ),),
                     )
                   ],
@@ -61,10 +66,11 @@ class _preresult_pageState extends State<preresult_page> {
             SizedBox(height: 8,),
             Center(
               child: defaultButton(width: 200, function: (){
-                PersistentNavBarNavigator.pushNewScreen(context, screen: result_page(multiple_results));
+                PersistentNavBarNavigator.pushNewScreen(context, screen: result_page3(multiple_results));
               }, text: "عرض النتيجة",
                   txtColor: Colors.white, height: 30, fontSize: 14),
-            )
+            ),
+            SizedBox(height: 30)
           ],
         ),
       ),

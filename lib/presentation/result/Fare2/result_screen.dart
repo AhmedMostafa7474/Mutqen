@@ -38,7 +38,7 @@ class _result_pageState extends State<result_page> {
                     PersistentNavBarNavigator.pushNewScreen(context, screen: resultdetails_page(widget.results[index]));
                   },
                   child: Container(
-                    padding: EdgeInsets.all(9.0),
+                    padding: EdgeInsets.all(9.0.sp),
                     height: 110.h,
                     width: 300.w,
                     decoration: BoxDecoration(boxShadow: [
@@ -54,7 +54,7 @@ class _result_pageState extends State<result_page> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(height: 8,),
+                        SizedBox(height: 8.h,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -62,23 +62,24 @@ class _result_pageState extends State<result_page> {
                               children: [
                                 Text(widget.results[index].title,style: TextStyle(
                                   color: widget.results[index].color
+                                      ,fontSize: 15.sp
                                 ),),
                                 SizedBox(height: 10,),
-                                Text(widget.results[index].description ,style: TextStyle(color: Colors.black45),),
+                                Text(widget.results[index].description ,style: TextStyle(color: Colors.black45
+                                ,fontSize: 14.sp),),
                               ],
                             ),
                             SizedBox(width: 10,),
                             Container(
                               child: CircularPercentIndicator(
-                                radius: 40.0,
-                                lineWidth: 10.0,
+                                radius: 40.0.sp,
+                                lineWidth: 10.0.sp,
                                 animation: true,
                                 animationDuration: 2000,
                                 percent: widget.results[index].res/100,
                                 center: new Text(
                                   widget.results[index].res.toString()+"%",
-                                  style:
-                                  new TextStyle(fontWeight: FontWeight.bold, fontSize: 13.0),
+                                  style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 13.0),
                                 ),
                                 linearGradient: LinearGradient(colors:
                                 [widget.results[index].color.withOpacity(0.1),widget.results[index].color.withOpacity(0.5),widget.results[index].color]),

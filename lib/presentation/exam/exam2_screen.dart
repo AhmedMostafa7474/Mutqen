@@ -81,7 +81,7 @@ class _exam_page2State extends State<exam_page2> {
                                   ),),),
                               ),
                               SizedBox(height: 50,),
-                              Text(list[index2 + (index1 *2)], style: TextStyle(fontSize: 18),),
+                              Text(list[index2 + (index1 *2)], style: TextStyle(fontSize: 18.sp),),
                               SizedBox(height: 70,),
                               Container(
                                 height: 40.h,
