@@ -12,6 +12,7 @@ List<resultdesc> disc_result_des= [
        Icons.accessibility_new_sharp),
 
 
+
 ];
 List<result> disc_results=[
   result("D", "مسيطر و مباشر و حازم",30,ColorManager.D,disc_result_des),
