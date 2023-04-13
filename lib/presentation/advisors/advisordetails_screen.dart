@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/presentation/advisors/Widgets/advisor_data.dart';
+import 'package:mutqen/presentation/advisors/advisortable.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -86,7 +87,11 @@ class _advisordetails_pageState extends State<advisordetails_page> {
               body: TabBarView(
                 children: [
                   Container(color: Colors.white,
-                      child: Center( child: Text(widget.advisorr.desc))),
+                      child: InkWell(
+                        onTap: (){
+                          PersistentNavBarNavigator.pushNewScreen(context, screen: advisortable_page());
+                        },
+                          child: Center( child: Text(widget.advisorr.desc)))),
                   Container(
                     color: Colors.white,
                       child: Center( child: Text(widget.advisorr.desc))),

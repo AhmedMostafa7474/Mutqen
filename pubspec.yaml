@@ -46,9 +46,8 @@ dependencies:
   shimmer: ^2.0.0
   flutter_svg:
   pie_chart: ^5.3.2
-
-
-
+  table_calendar:
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

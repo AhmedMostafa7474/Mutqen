@@ -95,6 +95,7 @@ class _exam_page2State extends State<exam_page2> {
                                     itemBuilder: (BuildContext context, int index) {
                                       return InkWell(
                                         onTap: () {
+                                          Navigator.popUntil(context, (route) => route.isFirst);
                                           if(widget.examm.title == exams[1].title)
                                             PersistentNavBarNavigator.pushNewScreen(context, screen: result_page2());
                                           else
