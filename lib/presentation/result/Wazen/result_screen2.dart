@@ -8,6 +8,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../resources/common_widgets/app_bar.dart';
+import '../../../resources/common_widgets/bottom_sheet.dart';
 import '../Fare2/Widgets/result_data.dart';
 import 'Widgets/Wazen_data.dart';
 

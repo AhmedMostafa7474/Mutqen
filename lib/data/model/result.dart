@@ -7,12 +7,18 @@ class result
 {
   String title;
   String description;
-  String subtitle = "يرغب أصحاب هذه الشخصية بفهم واستكشاف الأشياء المحيطة بهم ، ويدفعهم حب العمل والتعلم.";
+  String subtitle ;
   double res;
   Color color;
   String image = "";
   List<resultdesc> resultdescription;
-  result(this.title, this.description,this.res,this.color,this.resultdescription);
+  result(
+  this.title,
+  this.description,
+  this.res,
+  this.color,
+  this.resultdescription, {this.subtitle = "يرغب أصحاب هذه الشخصية بفهم واستكشاف الأشياء المحيطة بهم ، ويدفعهم حب العمل والتعلم."}
+      );
 }
 
 class resultdesc
