@@ -33,12 +33,13 @@ class _resultdetails_pageState extends State<resultdetails_page> {
             (
             children: [
               SizedBox(height: 30.h,),
-              SvgPicture.asset(
+              widget.resultt.image.isEmpty? SvgPicture.asset(
                 ImageAssets.personimage,
                 color: widget.resultt.color,
                 height: 70.h,
                 width: 70.w,
-              ),
+              ) : Image.asset(widget.resultt.image)
+              ,
               Center(
                 child: Text(widget.resultt.title,style: TextStyle(
                   fontSize: 18.sp

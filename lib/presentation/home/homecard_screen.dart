@@ -48,7 +48,7 @@ class _homecard_pageState extends State<homecard_page> {
             ),
             SizedBox(height: 20,),
             Text("سيساعدك هذا المقياس علي:",style: TextStyle(
-              fontSize: 21.sp,
+              fontSize: 19.sp,
               fontWeight: FontWeight.w500
             )),
             SizedBox(height: 10,),
@@ -59,12 +59,21 @@ class _homecard_pageState extends State<homecard_page> {
               separatorBuilder: (BuildContext context, int index) { return SizedBox(height:5.0); },
               itemBuilder: (BuildContext context, int index) {
                 return UnconstrainedBox(
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.center,
                   child: Container(
+                   // height:75,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                        boxShadow: [BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 5,
+                          offset: const Offset(0, 5),
+                        )
+                        ],
+                        borderRadius: BorderRadius.circular(15)),
                     width: 335.w,
-                    padding: EdgeInsets.only(right:25,top: 12),
-                      child:
-                      Text("• "+"سيساعدك هذا المقياس علي ههههيحنبخحني حخبنحخيبنحخينبحخبنيح:",style: TextStyle(
+                    padding: EdgeInsets.all(18),
+                      child: Text(list[index],style: TextStyle(
                         fontSize: 15.sp,
                         color: Colors.black
                         ,fontWeight: FontWeight.normal
@@ -72,7 +81,7 @@ class _homecard_pageState extends State<homecard_page> {
                 );
               },)
             ,
-            SizedBox(height: 15,)
+            SizedBox(height: 25,)
             ,
             defaultButton(width: 140.w, function: (){
               if(widget.examm.title == exams[1].title || widget.examm.title == exams[2].title)
@@ -80,10 +89,30 @@ class _homecard_pageState extends State<homecard_page> {
               else
                   PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page(widget.examm));
 
-            }, text: "اجراء المقياس", txtColor: Colors.white, height: 40, fontSize: 16)
+            }, text: "اجراء المقياس", txtColor: Colors.white, height: 33.h, fontSize: 16.sp),
+            SizedBox(height: 15,),
+            Text("الماده المعرفيه",style: TextStyle(
+                fontSize: 19.sp,
+                fontWeight: FontWeight.w500
+            )),
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Text("يمكنك الاستفاده من من هذا الملف في حاله حضورك ورشه عمل وازن ",
+              style: TextStyle(
+                fontSize: 16
+              ),),
+            ),
+            defaultButton(
+                width: 140.w,
+                function: (){},
+                text: "تحميل الملف", txtColor: Colors.white,
+                height: 33.h, fontSize: 16.sp)
           ],
         ),
       ),
     );
   }
+  List<String>list=["معرفه ضروره التوازن بين جوانب الحياه المختلفه","تقييم مستوي التوازن لديك من خلال المقياس",
+    "التخطيط الواقعي والعملي والمبني علي الاولويات التي تختلف من شخص لاخر"];
 }

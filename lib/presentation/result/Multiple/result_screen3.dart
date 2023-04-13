@@ -55,10 +55,12 @@ class _result_page3State extends State<result_page3> {
                   itemBuilder: (BuildContext context, int index) {
                     return  InkWell(
                         onTap: (){
+                          widget.results[index].image = ImageAssets.resultimage;
                           PersistentNavBarNavigator.pushNewScreen(context, screen: resultdetails_page(widget.results[index]));
                         },
                         child:
                         ListTile(
+                          leading: Image.asset(ImageAssets.resultimage),
                           title:Text(widget.results[index].title,style: TextStyle(
                               color: widget.results[index].color
                           ),),

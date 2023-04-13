@@ -124,8 +124,10 @@ class _exam_pageState extends State<exam_page> {
                                   itemBuilder: (BuildContext context, int index) {
                                     return InkWell(
                                       onTap: () {
-                                        if(widget.examm.title == exams[3].title)
+                                        if(widget.examm.title == exams[3].title) {
+                                          Navigator.popUntil(context, (route) => route.isFirst);
                                           PersistentNavBarNavigator.pushNewScreen(context, screen: preresult_page());
+                                        }
                                       //  PersistentNavBarNavigator.pushNewScreen(context, screen: result_page());
                                         setState(() {
                                           rate[index2 + (index1 *2)] = index+1;

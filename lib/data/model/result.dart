@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
+import 'package:mutqen/resources/assets_manager.dart';
 
 class result
 {
@@ -9,6 +10,7 @@ class result
   String subtitle = "يرغب أصحاب هذه الشخصية بفهم واستكشاف الأشياء المحيطة بهم ، ويدفعهم حب العمل والتعلم.";
   double res;
   Color color;
+  String image = "";
   List<resultdesc> resultdescription;
   result(this.title, this.description,this.res,this.color,this.resultdescription);
 }
