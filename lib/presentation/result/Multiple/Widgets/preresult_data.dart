@@ -18,12 +18,12 @@ List<preresult_data> data = [preresult_data("7 - 15",
 ,preresult_data("27 - 35","أنت تفضل استخدام هذا النوع من الذكاء , وتشعر براحة ومتعة وسرور عند تطبيقه واستخدامه , بل حتى الآخرين يعرفون مدى تفوقك وتميزك فيه وللوصول إلى إتقان هذا الذكاء وصقله وتطويره يحتاج منك لجهد قليل وبسيط .. لذا ننصحك بتنمية هذا الذكاء والتركيز نحو إتقانه من خلال اختيارك لتخصصك العلمي الصحيح وأيضاً من خلال العمل الوظيفي المستقبلي الذي يرتبط بهذا النوع من الذكاء .. وتوكل على الله.")
 ];
 
-List<result> multiple_results=[result(" الذكاء اللغوي", "",30,ColorManager.primary,multiple_des),
+List<result> multiple_results=[result("الذكاء اللغوي", "",30,ColorManager.primary,multiple_des),
   result("الذكاء الحسابي", "الرياضي / المنطقي",15,Colors.red,multiple_des),
-  result("الذكاء البيئي", "الذاتي",20,Colors.orange,multiple_des),
-  result("الذكاء الوجداني", "المكاني",25,Colors.purple,multiple_des),
-  result("الذكاء البصري", "الفنان",10,Colors.blue,multiple_des),
-  result("الذكاء الاجتماعي", "المساعد",15,Colors.pink,multiple_des),
+  result("الذكاء البيئي", "",20,Colors.orange,multiple_des),
+  result("الذكاء الوجداني", "الذاتي",25,Colors.purple,multiple_des),
+  result("الذكاء البصري", "المكاني",10,Colors.blue,multiple_des),
+  result("الذكاء الاجتماعي", "",15,Colors.pink,multiple_des),
   result("الذكاء السمعي", "الفني / الإيقاعي",20,Colors.cyan,multiple_des),
   result("الذكاء الحركي", "الجسدي",25,Colors.redAccent,multiple_des),
 ];
@@ -39,5 +39,19 @@ List<resultdesc> multiple_des= [
   resultdesc("المستقبل المهني", "يحب العمل في مهن تستلزم العمل مع الآخرين ويستمتعون بأنشطة مثل البيع والإقناع والقيادة وإدارة الأداء","", Icons.work),
   resultdesc("التطور المهني", " علوم الحيوان - علوم الأحياء البحرية - العلوم النفسية - الفيزياء - الكيمياء - الجيولوجيا- الطب / الجراحة - الاقتصاد الاستهلاكي- المختبرات",
       "",Icons.workspaces),
+];
 
+final dataMap2 = <String, double>{
+  "الذكاء اللغوي": 24,
+  "الذكاء الحسابي": 14,
+  "الذكاء البيئي": 18,
+};
+
+
+final colorList = <Color>[
+  ColorManager.primary,
+  Colors.red,
+  Colors.orange,
+  const Color(0xffe17055),
+  const Color(0xff6c5ce7),
 ];

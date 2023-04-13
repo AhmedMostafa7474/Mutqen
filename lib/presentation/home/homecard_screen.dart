@@ -9,6 +9,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../data/model/exam.dart';
 import '../../resources/assets_manager.dart';
+import '../../resources/common_widgets/app_bar.dart';
 import '../exam/exam2_screen.dart';
 
 class homecard_page extends StatefulWidget {
@@ -29,8 +30,7 @@ class _homecard_pageState extends State<homecard_page> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-        ),
+        appBar:getAppBarWidgetWithNotificationIcon(widget.examm.title, context),
         body: Column(
           children: [
             SizedBox(height: 10,),
