@@ -38,7 +38,7 @@ class _disc_result_page extends State<disc_result_page> {
               return
                 InkWell(
                   onTap: (){
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: resultdetails_page(widget.results[index]));
+                    PersistentNavBarNavigator.pushNewScreen(context, screen: DISC_details(widget.results[index]));
                   },
 
                   child: Card(

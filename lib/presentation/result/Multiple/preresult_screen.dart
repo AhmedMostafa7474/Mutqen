@@ -26,23 +26,23 @@ class _preresult_pageState extends State<preresult_page> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-              SizedBox(height: 30,) ,
+              SizedBox(height: 30.h,) ,
               Center(
                 child: SvgPicture.asset(
                   ImageAssets.quesionimage,
-                  height: 40.h,
-                  width: 40.w,
+                  height: 45.h,
+                  width: 45.w,
                 ),
               ),
-            SizedBox(height: 8.0,),
+            SizedBox(height: 8.0.h,),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text("دلائل مجموع الدرجات لكل ذكاء علي حده :",
               style: TextStyle(
-                fontSize: 13.sp
+                fontSize: 16.sp
               ),),
             ),
-            SizedBox(height: 12.0),
+            SizedBox(height: 12.0.h),
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -51,26 +51,30 @@ class _preresult_pageState extends State<preresult_page> {
                 return Column(
                   children: [
                     Center(
-                      child: Text(data[index].title),
+                      child: Text(data[index].title,style: TextStyle(
+
+                    fontSize: 15.sp
+                ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Text(data[index].description,style: TextStyle(
                         color: Colors.black54,
-                        fontSize: 12.sp
+                        fontSize: 14.sp
                       ),),
                     )
                   ],
                 );
               },),
-            SizedBox(height: 8,),
+            SizedBox(height: 8.h,),
             Center(
-              child: defaultButton(width: 200, function: (){
+              child: defaultButton(width: 200.w, function: (){
                 PersistentNavBarNavigator.pushNewScreen(context, screen: result_page3(multiple_results));
               }, text: "عرض النتيجة",
-                  txtColor: Colors.white, height: 30, fontSize: 14),
+                  txtColor: Colors.white, height: 35.h, fontSize: 14.sp),
             ),
-            SizedBox(height: 30)
+            SizedBox(height: 30.h)
           ],
         ),
       ),

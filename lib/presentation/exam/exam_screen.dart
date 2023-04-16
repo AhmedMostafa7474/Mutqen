@@ -47,14 +47,14 @@ class _exam_pageState extends State<exam_page> {
                 ),
                 actionsAlignment: MainAxisAlignment.center,
                 actions: <Widget>[
-                  defaultButton(width: 80, function:  () {
+                  defaultButton(width: 80.w, function:  () {
                 Navigator.of(context1).pop(false);
-              }, text: 'لا', txtColor: Colors.white, height: 30, fontSize: 13)
+              }, text: 'لا', txtColor: Colors.white, height: 30.h, fontSize: 13.sp)
                   ,
-                  defaultButton(width: 80, function:  () {
+                  defaultButton(width: 80.w, function:  () {
                     Navigator.of(context1).pop(true);
                     Navigator.of(context).pop();
-                    }, text: 'نعم', txtColor: Colors.white, height: 35, fontSize: 13)
+                    }, text: 'نعم', txtColor: Colors.white, height: 35.h, fontSize: 13.sp)
                   ,
                 ],
               );
@@ -76,8 +76,8 @@ class _exam_pageState extends State<exam_page> {
                     itemBuilder: (BuildContext context, int index2) {
                       return UnconstrainedBox(
                         child: Container(
-                          padding: EdgeInsets.all(9.0),
-                          height: 220.h,
+                          padding: EdgeInsets.all(8.0),
+                          height: 240.h,
                           width: 300.w,
                           decoration: BoxDecoration(boxShadow: [
                             BoxShadow(
@@ -112,9 +112,9 @@ class _exam_pageState extends State<exam_page> {
                                       fontSize: 15.sp
                                   ),),),
                               ),
-                              SizedBox(height: 50,),
+                              SizedBox(height: 50.h,),
                               Text(list[index2 + (index1 *2)], style: TextStyle(fontSize: 18.sp),),
-                              SizedBox(height: 70,),
+                              SizedBox(height: 70.h,),
                               Container(
                                 height: 40.h,
                                 width: double.infinity,
@@ -130,7 +130,11 @@ class _exam_pageState extends State<exam_page> {
                                           Navigator.popUntil(context, (route) => route.isFirst);
                                           PersistentNavBarNavigator.pushNewScreen(context, screen: preresult_page());
                                         }
-                                      //  PersistentNavBarNavigator.pushNewScreen(context, screen: result_page());
+                                        else{
+                                          PersistentNavBarNavigator.pushNewScreen(context, screen: disc_result_page(disc_results));
+
+                                        }
+                                        //PersistentNavBarNavigator.pushNewScreen(context, screen: result_page());
                                         setState(() {
                                           rate[index2 + (index1 *2)] = index+1;
                                         });
@@ -172,7 +176,7 @@ class _exam_pageState extends State<exam_page> {
                     },
                     separatorBuilder: (BuildContext context, int index) {
                       return SizedBox(
-                        height: 18,
+                        height: 18.h,
                       );
                     },),
                 );
