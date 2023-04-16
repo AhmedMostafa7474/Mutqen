@@ -32,7 +32,7 @@ class _disc_result_page extends State<disc_result_page> {
               crossAxisCount: 2, // Number of columns in the grid
               childAspectRatio: 0.7, // Ratio of child item's height to width
             ),
-            padding:  const EdgeInsets.only(bottom: 20),
+            padding:   EdgeInsets.only(bottom: 20.h),
             itemCount: 4,
             itemBuilder: (BuildContext context, int index) {
               return
@@ -74,11 +74,12 @@ class _disc_result_page extends State<disc_result_page> {
                           height: 70.h,
                           child: Padding(
                             padding: const EdgeInsets.all(12),
-                            child: Text(widget.results[index].description ,style: TextStyle(color: Colors.black54,fontSize: 15.sp),),
+                            child: Text(widget.results[index].description ,
+                              style: TextStyle(color: Colors.black54,fontSize: 15.sp),),
                           ),
                         ),
                         Container(
-                          height: 50.h,
+                          height: 30.h,
                             alignment: Alignment.bottomLeft,
                           child: Padding(
                             padding: const EdgeInsets.all(10),
