@@ -94,7 +94,11 @@ class _advisordetails_pageState extends State<advisordetails_page> {
                           child: Center( child: Text(widget.advisorr.desc)))),
                   Container(
                     color: Colors.white,
-                      child: Center( child: Text(widget.advisorr.desc))),
+                      child: InkWell(
+                          onTap: (){
+                            PersistentNavBarNavigator.pushNewScreen(context, screen: advisortable_page());
+                          },
+                          child: Center( child: Text(widget.advisorr.desc)))),
                 ],
               ),
             ),

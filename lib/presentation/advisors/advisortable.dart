@@ -53,7 +53,7 @@ class _advisortable_pageState extends State<advisortable_page> {
                shrinkWrap: true,
                physics: NeverScrollableScrollPhysics(),
                padding:  EdgeInsets.only(bottom: 20),
-               itemCount: 3,
+               itemCount: _selectedDay.day == DateTime.now().day?3 :_selectedDay.day == DateTime.now().day + 1?2:0,
                itemBuilder: (BuildContext context, int index) {
                return UnconstrainedBox(
                child: InkWell(
