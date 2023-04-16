@@ -3,6 +3,12 @@ class AppStrings {
   static String userName = "User_Name";
   static String email = "email";
   static String age = "age";
+  static String country = "country";
+  static String college = "college";
+  static String university = "university";
+  static String studentyear = "studentyear";
+  static String gender = "gender";
+  static String birthday = "birthday";
   static String password = "Password";
   static String pleaseEnterYourUserName = "Please_Enter";
   static String pleaseEnterYourpassword= "Please_Enterpass";

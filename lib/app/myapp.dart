@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/data/model/user.dart';
 import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/navbar/navbar_screen.dart';
+import 'package:mutqen/presentation/register/register_screen.dart';
 
 import '../presentation/login/login_screen.dart';
 import '../presentation/splash/splash_screen.dart';

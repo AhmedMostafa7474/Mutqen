@@ -38,46 +38,6 @@ class LoginButton extends StatelessWidget {
         }
       }
     }, text: AppStrings.login.tr(), txtColor: Colors.white, height: 50.h, fontSize: 18.sp);
-      /*Container(
-      height: 50.h,
-      width: 300.w,
-      margin: const EdgeInsets.only(
-        left: 20,
-        right: 20,
-      ),
-      //  color: ColorManager.lightGrey,
-      child: TextButton(
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(ColorManager.white),
-          backgroundColor:
-              MaterialStateProperty.all<Color>(Colors.green),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.greenAccent)
-                )
-            )
-        ),
-        onPressed: () async {
-          if (formKey.currentState!.validate()) {
-            AuthServices authServices = AuthServices();
-            var response = await SignInRepo(authServices).signIn(emailController.text, passwordController.text);
-            if(response is String)
-              {
-                  showSnackBar(context: context, msg: response);
-              }
-            else
-              {
-                  showSnackBar(context: context, msg: "Login Success");
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> home_page(response)));
-              }
-          }
-        },
-        child: Text(AppStrings.login.tr()),
-      ),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30)
-      ),
-    );*/
+
   }
 }

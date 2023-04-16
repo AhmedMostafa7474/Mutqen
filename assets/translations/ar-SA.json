@@ -1,7 +1,7 @@
 {
     "Login": "تسجيل دخول",
     "User_Name": "اسم المستخدم",
-    "Please_Enter": "من فضلك اضف اسم المستخدم",
+    "Please_Enter": "من فضلك اضف ",
     "Password": "كلمه المرور",
     "Please_Enterpass": "من فضلك اضف كلمه المرور",
     "Dont_have": "ليس لديك حساب ؟",
@@ -16,5 +16,11 @@
     "Settings": "الاعدادات",
     "LogOut": "تسجيل الخروج",
     "advisors": "المستشارون",
-    "advisor": "المستشار"
+    "advisor": "المستشار",
+    "country" : "الدوله",
+    "college": "الكليه",
+    "university": "الجامعه",
+    "studentyear": "السنه الدراسيه",
+    "gender": "الجنس",
+    "birthday": "تاريخ الميلاد"
 }
