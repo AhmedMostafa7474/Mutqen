@@ -203,6 +203,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  onboarding_animation:
+    dependency: "direct main"
+    description:
+      name: onboarding_animation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   page_transition:
     dependency: transitive
     description:
@@ -369,6 +376,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smooth_page_indicator:
+    dependency: transitive
+    description:
+      name: smooth_page_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   source_span:
     dependency: transitive
     description:
@@ -396,7 +410,7 @@ packages:
       name: string_scanner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.1.1"
   table_calendar:
     dependency: "direct main"
     description:
