@@ -5,12 +5,12 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../color_manager.dart';
 
-void showSnackBar({required BuildContext context, required String msg}) {
+void showSnackBar({required BuildContext context, required String msg ,bool value = false}) {
   showTopSnackBar(
     Overlay.of(context)!,
     CustomSnackBar.info(
       message: msg,
-      backgroundColor: ColorManager.primary,
+      backgroundColor: value ? Color(0xFF4FB84A) : Colors.red,
       messagePadding: const EdgeInsets.all(5),
       icon: const Icon(
         Icons.info,

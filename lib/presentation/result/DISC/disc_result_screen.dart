@@ -32,7 +32,7 @@ class _disc_result_page extends State<disc_result_page> {
               crossAxisCount: 2, // Number of columns in the grid
               childAspectRatio: 0.7, // Ratio of child item's height to width
             ),
-            padding:   EdgeInsets.only(bottom: 20.h),
+            padding: EdgeInsets.only(bottom: 20.h),
             itemCount: 4,
             itemBuilder: (BuildContext context, int index) {
               return
@@ -79,7 +79,7 @@ class _disc_result_page extends State<disc_result_page> {
                           ),
                         ),
                         Container(
-                          height: 30.h,
+                          height: 40.h,
                             alignment: Alignment.bottomLeft,
                           child: Padding(
                             padding: const EdgeInsets.all(10),

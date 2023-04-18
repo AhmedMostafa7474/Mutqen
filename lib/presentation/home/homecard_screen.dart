@@ -87,7 +87,7 @@ class _homecard_pageState extends State<homecard_page> {
               if(widget.examm.title == exams[1].title || widget.examm.title == exams[2].title)
                   PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page2(widget.examm));
               else
-                  PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page(widget.examm));
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page2(widget.examm));
 
             }, text: "اجراء المقياس", txtColor: Colors.white, height: 33.h, fontSize: 16.sp),
             SizedBox(height: 15,),
