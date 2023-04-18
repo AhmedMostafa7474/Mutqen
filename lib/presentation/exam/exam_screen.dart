@@ -26,7 +26,8 @@ class exam_page extends StatefulWidget {
 }
 
 class _exam_pageState extends State<exam_page> {
-  int itemindex= -1 ;
+  int selected= 0 ;
+
   final controller = PageController(
     initialPage: 0,
     keepPage: false
@@ -65,14 +66,14 @@ class _exam_pageState extends State<exam_page> {
           child: Scaffold(
            appBar: getAppBarWidgetWithNotificationIcon("المقياس", context),
             body: PageView.builder(
-              itemCount: (list.length / 2).ceil(),
+              itemCount: (widget.examm.questions.length / 2).ceil(),
               controller: controller,
               itemBuilder: (BuildContext context, int index1) {
                 return Container(
                   padding: EdgeInsets.only(top: 20),
                   child: ListView.separated(
                     padding: EdgeInsets.only(bottom: 20),
-                    itemCount: (list.length.isOdd && (index1 + 1) == (list.length / 2).ceil())? 1: 2,
+                    itemCount: 2,
                     itemBuilder: (BuildContext context, int index2) {
                       return UnconstrainedBox(
                         child: Container(
@@ -100,8 +101,7 @@ class _exam_pageState extends State<exam_page> {
                                     color: Colors.grey.withOpacity(0.2),
                                     spreadRadius: 5,
                                     blurRadius: 7,
-                                    offset: Offset(
-                                        0, 3), // changes position of shadow
+                                    offset: Offset(0, 3), // changes position of shadow
                                   ),
                                 ],
                                     color: Colors.white70,
@@ -113,18 +113,19 @@ class _exam_pageState extends State<exam_page> {
                                   ),),),
                               ),
                               SizedBox(height: 50.h,),
-                              Text(list[index2 + (index1 *2)], style: TextStyle(fontSize: 18.sp),),
+                              Text(widget.examm.questions[index2 + (index1 *2)].Question, style: TextStyle(fontSize: 18.sp),),
                               SizedBox(height: 70.h,),
                               Container(
                                 height: 40.h,
                                 width: double.infinity,
                                 alignment: Alignment.center,
                                 child: ListView.separated(
-                                  itemCount: 5,
+                                  itemCount: widget.examm.questions[0].answers.length,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
                                   itemBuilder: (BuildContext context, int index) {
                                     return InkWell(
+
                                       onTap: () {
                                         if(widget.examm.title == exams[3].title) {
                                           Navigator.popUntil(context, (route) => route.isFirst);
@@ -136,7 +137,16 @@ class _exam_pageState extends State<exam_page> {
                                         }
                                         //PersistentNavBarNavigator.pushNewScreen(context, screen: result_page());
                                         setState(() {
-                                          rate[index2 + (index1 *2)] = index+1;
+                                          widget.examm.questions[index2 + (index1 *2)].answers.forEach((element) {
+                                            element.selected =false;
+                                          });
+                                          widget.examm.questions[index2 + (index1 *2)].answers[index].selected = true;
+                                          selected++;
+                                          if(selected == 2)
+                                            {
+                                              controller.nextPage(duration: Duration(seconds: 1),
+                                                  curve: Curves.bounceIn);
+                                            }
                                         });
                                       },
                                       child: Container(
@@ -144,7 +154,8 @@ class _exam_pageState extends State<exam_page> {
                                         width: 40.w,
                                         decoration: BoxDecoration(boxShadow: [
                                           BoxShadow(
-                                            color: rate[index2 + (index1 *2)] == index+1 ? ColorManager.primary: Colors.grey.withOpacity(0.2),
+                                            color: widget.examm.questions[index2 + (index1 *2)].answers[index].selected?
+                                            ColorManager.primary: Colors.grey.withOpacity(0.2),
                                             spreadRadius: 5,
                                             blurRadius: 7,
                                             offset: Offset(0,
@@ -187,6 +198,6 @@ class _exam_pageState extends State<exam_page> {
     );
   }
 
-  List<String> list=["قيادي حريص علي النتائج العمليه","يستمتع بمخالطه الاخرين","يعمل ضمن روتين محدد وواضح","سووو","بوووو","بوووو"];
-  List<int> rate=[-1,-1,-1,-1,-1,-1];
+ // List<String> list=["قيادي حريص علي النتائج العمليه","يستمتع بمخالطه الاخرين","يعمل ضمن روتين محدد وواضح","سووو","بوووو","بوووو"];
+  //List<int> rate=[-1,-1,-1,-1,-1,-1];
 }

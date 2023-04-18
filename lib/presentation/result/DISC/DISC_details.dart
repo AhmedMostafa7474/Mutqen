@@ -95,7 +95,6 @@ class _GetCardsContent extends StatelessWidget {
                 child: Text(
                   title,
                   style: TextStyle(
-                      fontFamily: 'Monadi',
                       fontSize: 18.sp,
                       color: ColorManager.black,
                       fontWeight: FontWeight.w200
@@ -108,7 +107,6 @@ class _GetCardsContent extends StatelessWidget {
               child: Text(
                 cardContent,
                 style: TextStyle(
-                    fontFamily: 'Monadi',
                     fontSize: 15.sp,
                     color: ColorManager.black,
                     fontWeight: FontWeight.w100

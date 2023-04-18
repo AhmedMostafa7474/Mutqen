@@ -52,7 +52,7 @@ class _MyAppState extends State<MyAppp> {
           locale: context.locale,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            fontFamily: 'Monadi',
+            fontFamily: 'DIN',
             appBarTheme: AppBarTheme(
               backgroundColor: ColorManager.primary,
             )
