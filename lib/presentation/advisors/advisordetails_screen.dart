@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/presentation/advisors/Widgets/advisor_data.dart';
+import 'package:mutqen/presentation/advisors/Widgets/filter_drawer.dart';
 import 'package:mutqen/presentation/advisors/advisortable.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -87,18 +88,10 @@ class _advisordetails_pageState extends State<advisordetails_page> {
               body: TabBarView(
                 children: [
                   Container(color: Colors.white,
-                      child: InkWell(
-                        onTap: (){
-                          PersistentNavBarNavigator.pushNewScreen(context, screen: advisortable_page());
-                        },
-                          child: Center( child: Text(widget.advisorr.desc)))),
+                      child:  Center( child: Text(widget.advisorr.desc))),
                   Container(
                     color: Colors.white,
-                      child: InkWell(
-                          onTap: (){
-                            PersistentNavBarNavigator.pushNewScreen(context, screen: advisortable_page());
-                          },
-                          child: Center( child: Text(widget.advisorr.desc)))),
+                      child: Center( child: Text(widget.advisorr.desc))),
                 ],
               ),
             ),
@@ -106,6 +99,16 @@ class _advisordetails_pageState extends State<advisordetails_page> {
         )
       ],
     )
+            ,
+            floatingActionButton: FloatingActionButton.extended(onPressed: (){
+              PersistentNavBarNavigator.pushNewScreen(context, screen: advisortable_page());
+
+            },
+              icon:  Icon(Icons.question_answer),
+              label:Text("استشاره"),
+              backgroundColor: ColorManager.primary,
+
+    ),
     )
     );
   }

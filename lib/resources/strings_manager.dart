@@ -23,5 +23,6 @@ class AppStrings {
   static String advisor="advisor";
   static String settings="Settings";
   static String Logout= "LogOut";
+  static String advices = "advices";
   static String aboutUs= "about_us";
 }

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart' as localized;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/presentation/advisors/Widgets/submit_dialog.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../resources/common_widgets/app_bar.dart';
@@ -17,6 +18,7 @@ class advisortable_page extends StatefulWidget {
 class _advisortable_pageState extends State<advisortable_page> {
  DateTime _selectedDay = DateTime.now();
  DateTime _focusedDay = DateTime.now();
+ var textcontroller = TextEditingController();
 
  @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class _advisortable_pageState extends State<advisortable_page> {
               locale: "ar",
               firstDay: DateTime.now(),
               lastDay: DateTime.now().add(Duration(days: 6)),
+              daysOfWeekHeight: 40,
               focusedDay: _focusedDay,
               onFormatChanged: (C){
 
@@ -57,7 +60,8 @@ class _advisortable_pageState extends State<advisortable_page> {
                itemBuilder: (BuildContext context, int index) {
                return UnconstrainedBox(
                child: InkWell(
-               onTap: (){
+               onTap: () async {
+                 await showAlertDialog(context,textcontroller);
                },
                child:  Container(
                   alignment: Alignment.center,
