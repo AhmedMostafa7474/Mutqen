@@ -9,8 +9,10 @@ class Text_Field_Widget extends StatefulWidget {
   final IconData iconData ;
   final String validate;
   bool obscure;
-  bool login ;
-   Text_Field_Widget(this.userNameController,this.title , this.iconData ,this.validate, this.obscure, {Key? key,this.login =false}) : super(key: key);
+  bool multi ;
+
+   Text_Field_Widget(this.userNameController,this.title ,
+       this.iconData ,this.validate, this.obscure, {Key? key,this.multi =false}) : super(key: key);
 
   @override
   State<Text_Field_Widget> createState() => _Text_Field_WidgetState();
@@ -32,6 +34,7 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
       ],
           borderRadius: BorderRadius.circular(15)),
       child: TextFormField(
+        maxLines:widget.multi? 5: 1,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return widget.validate + widget.title;

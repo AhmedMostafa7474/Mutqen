@@ -38,10 +38,9 @@ class _login_pageState extends State<login_page> {
               children: [
                 Image.asset(ImageAssets.smallLogo,height: 200.h, width: 200.w),
                 Text_Field_Widget(usernamecontroller,AppStrings.userName.tr(),Icons.person,AppStrings.pleaseEnterYourUserName.tr(),
-                    false,login: true,),
+                    false),
                 SizedBox(height: 8.h,),
-                Text_Field_Widget(passwordcontroller,AppStrings.password.tr(),Icons.password,AppStrings.pleaseEnterYourUserName.tr(),true
-                ,login: true),
+                Text_Field_Widget(passwordcontroller,AppStrings.password.tr(),Icons.password,AppStrings.pleaseEnterYourUserName.tr(),true),
                 SizedBox(height: 15.h,),
                 LoginButton(formKey,usernamecontroller,passwordcontroller,context),
                 SizedBox(height: 15.h,),

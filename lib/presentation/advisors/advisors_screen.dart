@@ -10,6 +10,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../resources/common_widgets/app_bar.dart';
 import '../../resources/strings_manager.dart';
+import 'Widgets/filter_drawer.dart';
 
 class advisors_page extends StatefulWidget {
   const advisors_page({Key? key}) : super(key: key);
@@ -23,28 +24,33 @@ class _advisors_pageState extends State<advisors_page> {
   List<advisor>searchlist=[];
   List<advisor>shownlist=[];
 
-  var isloading = true;
+  var isloading = false;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     shownlist =advisors;
-   load();
+//   load();
   }
 
   load()
   async {
+
     await Future.delayed(Duration(seconds: 2),() {
       isloading = false;
     },);
     setState(() {
     });
   }
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          key: _key,
+            drawerEnableOpenDragGesture: false,
+            drawer: FilterDrawer(),
         appBar: getAppBarWidgetWithNotificationIcon(AppStrings.advisors.tr(), context),
     body: SingleChildScrollView(
       child: Column(
@@ -77,6 +83,35 @@ class _advisors_pageState extends State<advisors_page> {
               },
             ),
           ),
+          SizedBox(height: 10,)
+          ,
+          InkWell(
+            onTap: (){
+              _key.currentState!.openDrawer();
+            },
+            child: Container(
+              height: 40,
+              width: 110,
+              child : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text("التصنيف"),
+                  Icon(Icons.filter_alt,color: Colors.black54,)
+                ],
+                ),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 5,
+                        offset: const Offset(0, 5),
+                      )
+                ],
+                    borderRadius: BorderRadius.circular(15))
+            ),
+          )
+          ,
           SizedBox(
             height: 20.h,
           ),

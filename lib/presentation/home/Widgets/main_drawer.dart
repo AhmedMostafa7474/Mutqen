@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/presentation/advisors/advisors_screen.dart';
+import 'package:mutqen/presentation/meetings/meetings_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:mutqen/resources/style_manager.dart';
@@ -120,6 +121,17 @@ class _MainDrawerState extends State<MainDrawer> {
                 () {
                     PersistentNavBarNavigator.pushNewScreen(context, screen: advisors_page());
             },
+          ),
+          SizedBox(
+            height: 15.h,
+          ),
+          buildListTile(
+            AppStrings.advices.tr(),
+            Icons.question_answer,
+                () {
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
+
+                },
           ),
           SizedBox(
             height: 15.h,
