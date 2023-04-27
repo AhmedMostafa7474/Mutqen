@@ -44,7 +44,7 @@ class _home_pageState extends State<home_page> {
                   },
                   child: Container(
                     padding: EdgeInsets.all(9.0),
-                    height: 180.h,
+                    height: 185.h,
                     width: 300.w,
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(

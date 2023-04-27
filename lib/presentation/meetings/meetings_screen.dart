@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/data/model/meeting.dart';
+import 'package:mutqen/presentation/meetings/meetingdetails_screen.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../resources/assets_manager.dart';
@@ -60,6 +62,7 @@ class _meetings_pageState extends State<meetings_page> {
                             return UnconstrainedBox(
                               child: InkWell(
                                 onTap: (){
+                                  PersistentNavBarNavigator.pushNewScreen(context, screen: meetingdetails_page(index));
                                 },
                                 child: Container(
                                   padding: EdgeInsets.all(9.0),
@@ -87,8 +90,8 @@ class _meetings_pageState extends State<meetings_page> {
                                               Hero(
                                                   tag: "Hero"+index.toString(),
                                                   child: Container(
-                                                    height: 60 ,
-                                                    width: 60,
+                                                    height: 50.sp ,
+                                                    width: 50.sp,
                                                     decoration: BoxDecoration(
                                                         borderRadius: BorderRadius.circular(100),
                                                         image: DecorationImage(image: AssetImage(ImageAssets.meetingimage))
