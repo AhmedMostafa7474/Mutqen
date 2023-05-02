@@ -1,0 +1,118 @@
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/data/model/exam.dart';
+import 'package:mutqen/presentation/exam/exam_screen.dart';
+import 'package:mutqen/resources/common_widgets/button_widget.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
+import '../../data/model/exam.dart';
+import '../../resources/assets_manager.dart';
+import '../../resources/common_widgets/app_bar.dart';
+import '../exam/exam2_screen.dart';
+
+class homecard_page extends StatefulWidget {
+  int index;
+  exam examm;
+
+   homecard_page(this.index, this.examm, {Key? key}) : super(key: key);
+
+  @override
+  State<homecard_page> createState() => _homecard_pageState(index);
+}
+
+class _homecard_pageState extends State<homecard_page> {
+  int index;
+  _homecard_pageState(this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        appBar:getAppBarWidgetWithNotificationIcon(widget.examm.title, context),
+        body: Column(
+          children: [
+            SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(widget.examm.title,style: TextStyle(
+                  fontSize: 15.sp
+                ),),
+                SizedBox(width: 10,),
+                Hero(
+                    tag: "Hero"+index.toString(),
+                    child: Image.asset(ImageAssets.smallLogo,height: 80.h,width: 80.w,))
+              ],
+            ),
+            SizedBox(height: 20,),
+            Text("سيساعدك هذا المقياس علي:",style: TextStyle(
+              fontSize: 19.sp,
+              fontWeight: FontWeight.w500
+            )),
+            SizedBox(height: 10,),
+            ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 3,
+              separatorBuilder: (BuildContext context, int index) { return SizedBox(height:5.0); },
+              itemBuilder: (BuildContext context, int index) {
+                return UnconstrainedBox(
+                  alignment: Alignment.center,
+                  child: Container(
+                   // height:75,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                        boxShadow: [BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 5,
+                          offset: const Offset(0, 5),
+                        )
+                        ],
+                        borderRadius: BorderRadius.circular(15)),
+                    width: 335.w,
+                    padding: EdgeInsets.all(18),
+                      child: Text(list[index],style: TextStyle(
+                        fontSize: 15.sp,
+                        color: Colors.black
+                        ,fontWeight: FontWeight.normal
+                      ),)),
+                );
+              },)
+            ,
+            SizedBox(height: 25,)
+            ,
+            defaultButton(width: 140.w, function: (){
+              if(widget.examm.title == exams[1].title || widget.examm.title == exams[2].title)
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page2(widget.examm));
+              else
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page2(widget.examm));
+
+            }, text: "اجراء المقياس", txtColor: Colors.white, height: 33.h, fontSize: 16.sp),
+            SizedBox(height: 15,),
+            Text("الماده المعرفيه",style: TextStyle(
+                fontSize: 19.sp,
+                fontWeight: FontWeight.w500
+            )),
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Text("يمكنك الاستفاده من من هذا الملف في حاله حضورك ورشه عمل وازن ",
+              style: TextStyle(
+                fontSize: 16
+              ),),
+            ),
+            defaultButton(
+                width: 140.w,
+                function: (){},
+                text: "تحميل الملف", txtColor: Colors.white,
+                height: 33.h, fontSize: 16.sp)
+          ],
+        ),
+      ),
+    );
+  }
+  List<String>list=["معرفه ضروره التوازن بين جوانب الحياه المختلفه","تقييم مستوي التوازن لديك من خلال المقياس",
+    "التخطيط الواقعي والعملي والمبني علي الاولويات التي تختلف من شخص لاخر"];
+}
