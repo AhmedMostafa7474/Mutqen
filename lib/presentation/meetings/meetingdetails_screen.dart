@@ -129,6 +129,7 @@ class _meetingdetails_pageState extends State<meetingdetails_page> {
             }, text: "محادثه",
                 txtColor: Colors.black, height: 35.h, fontSize: 19.sp,background: Colors.white),
             defaultButton(width:  125.w, function: (){}, text: "الغاء",
+
                 txtColor: Colors.white, height: 35.h, fontSize: 19.sp,background: Colors.red),
           ],
         )
