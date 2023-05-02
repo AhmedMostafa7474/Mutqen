@@ -28,7 +28,7 @@ class _DISC_detailsState extends State<DISC_details> {
         pages:  [
           _GetCardsContent(
 
-            image: 'assets/images/Logo/Pic1.png',
+            image: 'assets/images/Logo/1.png',
             title: widget.resultt.resultdescription[0].description ,
             cardContent:widget.resultt.resultdescription[0].descrption2,
           ),
@@ -43,7 +43,7 @@ class _DISC_detailsState extends State<DISC_details> {
             cardContent:
             widget.resultt.resultdescription[2].descrption2,),
         ],
-         indicatorActiveDotColor: ColorManager.black,
+          indicatorActiveDotColor: ColorManager.black,
         indicatorDotHeight: 11.0,
         indicatorDotWidth: 11.0,
         indicatorType: IndicatorType.jumpingDots,

@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/presentation/meetings/chatroom_screen.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:zoom_native_sdk/zoom_native_sdk.dart';
 
 import '../../data/model/meeting.dart';
 import '../../resources/assets_manager.dart';
@@ -21,6 +23,34 @@ class meetingdetails_page extends StatefulWidget {
 }
 
 class _meetingdetails_pageState extends State<meetingdetails_page> {
+  String meetingid = "82144178575";
+  String password= "xPbU0s";
+  final _zoomNativelyPlugin = ZoomNativeSdk();
+  bool isInitialized = false;
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> initPlatformState() async {
+
+    try {
+      if (!isInitialized) {
+        isInitialized = (await _zoomNativelyPlugin.initZoom(
+          appKey: "92M7ZuZkS8ODARAHUFEB8Q",
+          appSecret: "64OuLAgStzkO9c2yVRrk2qob0kkH5Yp5",
+        )) ??
+            false;
+      }
+    } on PlatformException catch (e) {
+      debugPrint(e.message);
+    }
+
+    if (!mounted) return;
+  }
+
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
@@ -79,7 +109,15 @@ class _meetingdetails_pageState extends State<meetingdetails_page> {
           ),
         ),
         SizedBox(height: 10,),
-        defaultButton(width:  140.w, function: (){}, text: "موعد zoom",
+        defaultButton(width:  140.w, function: () async {
+          if (isInitialized) {
+            await _zoomNativelyPlugin.joinMeting(
+              meetingNumber: meetingid,
+              meetingPassword: password,
+            );
+
+          }
+        }, text: "موعد zoom",
             txtColor: Colors.white, height: 40.h, fontSize: 19.sp),
         SizedBox(height: 35,),
         Row(

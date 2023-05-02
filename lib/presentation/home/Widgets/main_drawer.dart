@@ -11,8 +11,6 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../aboutUs/about_screen.dart';
-
 class MainDrawer extends StatefulWidget {
   @override
   _MainDrawerState createState() => _MainDrawerState();
@@ -133,13 +131,7 @@ class _MainDrawerState extends State<MainDrawer> {
                 () {
                   PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
 
-                },),
-       buildListTile(
-            AppStrings.aboutUs.tr(),
-            Icons.info_outline,
-                () {
-                  PersistentNavBarNavigator.pushNewScreen(context, screen: about_page());
-            },
+                },
           ),
           SizedBox(
             height: 15.h,
@@ -150,7 +142,6 @@ class _MainDrawerState extends State<MainDrawer> {
                 () {
             },
           ),
-
           SizedBox(
             height: 15.h,
           ),
