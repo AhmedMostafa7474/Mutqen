@@ -46,6 +46,7 @@ class _home_pageState extends State<home_page> {
                     padding: EdgeInsets.all(9.0),
                     height: 185.h,
                     width: 300.w,
+
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.2),
