@@ -34,6 +34,7 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
       ],
           borderRadius: BorderRadius.circular(15)),
       child: TextFormField(
+
         maxLines:widget.multi? 5: 1,
         validator: (value) {
           if (value == null || value.isEmpty) {
@@ -51,6 +52,7 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
         obscureText: widget.obscure,
         textInputAction: widget.title == AppStrings.password.tr() ? TextInputAction.done:TextInputAction.next,
         decoration: InputDecoration(
+
             labelText: widget.title,
             fillColor: Colors.white,
             filled: true,
@@ -69,7 +71,7 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
                 widget.obscure = !widget.obscure;
               });
 
-            }, icon: Icon(widget.obscure?Icons.visibility_off:Icons.visibility)) :null
+            }, icon: Icon(widget.obscure?Icons.visibility_off:Icons.remove_red_eye_rounded)) :null
         ),
       ),
     );

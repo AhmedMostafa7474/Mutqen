@@ -23,8 +23,8 @@ class meetingdetails_page extends StatefulWidget {
 }
 
 class _meetingdetails_pageState extends State<meetingdetails_page> {
-  String meetingid = "82144178575";
-  String password= "xPbU0s";
+  String meetingid = "83698622237";
+  String password= "Jegw0F";
   final _zoomNativelyPlugin = ZoomNativeSdk();
   bool isInitialized = false;
   @override
