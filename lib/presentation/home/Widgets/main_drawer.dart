@@ -11,6 +11,8 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../profile/profile_screen.dart';
+
 class MainDrawer extends StatefulWidget {
   @override
   _MainDrawerState createState() => _MainDrawerState();
@@ -140,7 +142,9 @@ class _MainDrawerState extends State<MainDrawer> {
             AppStrings.settings.tr(),
             Icons.settings,
                 () {
-            },
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: (profile_page()));
+
+                },
           ),
           SizedBox(
             height: 15.h,
