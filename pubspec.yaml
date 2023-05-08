@@ -50,6 +50,8 @@ dependencies:
   onboarding_animation: ^0.0.2
   zoom_native_sdk: ^0.3.3
   country_picker: ^2.0.20
+  image_picker: ^0.8.7+4
+  file_picker: ^5.2.3
   
 dev_dependencies:
   flutter_test:
