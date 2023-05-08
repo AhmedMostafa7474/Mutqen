@@ -13,7 +13,9 @@ void main() async{
       EasyLocalization(
           child: Phoenix(child: MyAppp()),
           supportedLocales: const [ARABIC_LOCAL, ENGLISH_LOCAL],
-          path: ASSET_PATH_LOCALISATIONS)
+          path: ASSET_PATH_LOCALISATIONS
+
+      )
   );
 }
 

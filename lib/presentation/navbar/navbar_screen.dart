@@ -64,7 +64,7 @@ class _nav_screenState extends State<nav_screen> {
   List<Widget> _buildScreens() {
     return [
       home_page(User()),
-      login_page(),
+      home_page(User()),
       register_page(),
     ];
   }

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/presentation/login/Widgets/country_picker_widget.dart';
 import 'package:mutqen/presentation/login/Widgets/date_picker_widget.dart';
 import 'package:mutqen/presentation/login/Widgets/drop_down_widget.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
@@ -53,7 +54,8 @@ class _register_pageState extends State<register_page> {
                 SizedBox(height: 8.h,),
                 Text_Field_Widget(emailcontroller,AppStrings.email.tr(),Icons.email,AppStrings.pleaseEnterYourUserName.tr(),false),
                 SizedBox(height: 8.h,),
-                Drop_Down_Widget(countrycontroller, AppStrings.country.tr(), Icons.flag, AppStrings.pleaseEnterYourUserName.tr(),countryitems),
+                Country_Picker_Widget(countrycontroller, AppStrings.country.tr(), Icons.flag, AppStrings.pleaseEnterYourUserName.tr()),
+               // Drop_Down_Widget(countrycontroller, AppStrings.country.tr(), Icons.flag, AppStrings.pleaseEnterYourUserName.tr(),countryitems),
                 SizedBox(height: 8.h,),
                 Drop_Down_Widget(universitycontroller, AppStrings.university.tr(), Icons.school, AppStrings.pleaseEnterYourUserName.tr(),countryitems),
                 SizedBox(height: 8.h,),
