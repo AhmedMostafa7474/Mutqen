@@ -1,3 +1,4 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
@@ -46,8 +47,14 @@ class _MyAppState extends State<MyAppp> {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
+        List<LocalizationsDelegate>list = [];
+        for(int i = 0 ; i<context.localizationDelegates.length; i++)
+          {
+            list.add(context.localizationDelegates[i]);
+          }
+        list.add(CountryLocalizations.delegate);
         return MaterialApp(
-          localizationsDelegates: context.localizationDelegates,
+          localizationsDelegates: list,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           debugShowCheckedModeBanner: false,
