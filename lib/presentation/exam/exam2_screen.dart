@@ -190,8 +190,10 @@ class _exam_page2State extends State<exam_page2> {
                                           selected[index2]=1;
                                           if(selected.every((element) => element == 1))
                                           {
-                                            controller.nextPage(duration: Duration(milliseconds: 800),
-                                                curve: Curves.linear);
+                                            controller.nextPage(duration: Duration(milliseconds: 300),
+                                                curve: Curves.linearToEaseOut
+                                            );
+
                                           }
                                         //  print(selected);
                                         setState(() {

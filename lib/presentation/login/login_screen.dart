@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/app/app_pref.dart';
 import 'package:mutqen/presentation/register/register_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
+import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:mutqen/resources/assets_manager.dart';
 
@@ -43,16 +44,19 @@ class _login_pageState extends State<login_page> {
                 Text_Field_Widget(passwordcontroller,AppStrings.password.tr(),Icons.password,AppStrings.pleaseEnterYourUserName.tr(),true),
                 SizedBox(height: 15.h,),
                 LoginButton(formKey,usernamecontroller,passwordcontroller,context),
-                SizedBox(height: 15.h,),
+                SizedBox(height: 14.h,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(AppStrings.DontHave.tr()),
+                    Text(AppStrings.DontHave.tr(),
+                        style: getRegularStyle(color: Colors.black,fontSize: 18)),
                     InkWell(
                       onTap: () async {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=> register_page()));
                       },
-                        child: Text(" "+AppStrings.register.tr() ,style: getRegularStyle(color: ColorManager.primary),))
+                        child: Text(" "+AppStrings.register.tr()
+                          ,style: getRegularStyle(color: ColorManager.primary,fontSize: 18),))
 
                   ],
                 )

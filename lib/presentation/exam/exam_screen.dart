@@ -144,7 +144,7 @@ class _exam_pageState extends State<exam_page> {
                                           selected++;
                                           if(selected == 2)
                                             {
-                                              controller.nextPage(duration: Duration(seconds: 1),
+                                              controller.nextPage(duration: Duration(milliseconds: 100),
                                                   curve: Curves.bounceIn);
                                             }
                                         });
