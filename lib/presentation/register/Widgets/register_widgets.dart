@@ -21,7 +21,8 @@ class RegisterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return defaultButton( width: 300.w, function: () async {
+    return
+      defaultButton( width: 300.w, function: () async {
       if (formKey.currentState!.validate()) {
         AuthServices authServices = AuthServices();
         var response = await SignInRepo(authServices).register(usernamecontroller.text, emailcontroller.text,int.parse(agecontroller.text), passwordcontroller.text);

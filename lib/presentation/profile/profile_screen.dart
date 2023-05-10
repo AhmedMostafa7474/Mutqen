@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -9,9 +8,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
 
 import '../../resources/assets_manager.dart';
+import '../../resources/common_widgets/button_widget.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/style_manager.dart';
+import '../login/Widgets/drop_down_widget.dart';
 import '../login/Widgets/text_field_widget.dart';
+import '../register/Widgets/register_data.dart';
 
 class profile_page extends StatefulWidget {
   const profile_page({Key? key}) : super(key: key);
@@ -27,43 +29,81 @@ class _profile_pageState extends State<profile_page> {
   var usernamecontroller = TextEditingController();
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
+  var collegeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: getAppBarWidgetWithNotificationIcon("تعديل الصفحه الشخصيه", context),
+      appBar:
+          getAppBarWidgetWithNotificationIcon(AppStrings.profile.tr(), context),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Form(
-            key: formKey ,
+            key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                InkWell(
-              onTap: (){
-                  pickImageFromGallery().then((file) {
-
-                  });
-                        },
-                    child: Image.asset(ImageAssets.smallLogo,height: 200.h, width: 200.w)),
-                  Text_Field_Widget(usernamecontroller,"My name",Icons.person,"دخل اسمك عدل",
+                Container(
+                  height: 150.h,
+                  child: InkWell(
+                      onTap: () {
+                        pickImageFromGallery().then((file) {});
+                      },
+                      child: Image.asset(ImageAssets.smallLogo,
+                          height: 200.h, width: 200.w)),
+                ),
+                Text_Field_Widget(
+                    usernamecontroller,
+                    AppStrings.userName.tr(),
+                    Icons.person,
+                    AppStrings.pleaseEnterYourUserName.tr(),
                     false),
-                SizedBox(height: 8.h,),
-                Text_Field_Widget(emailcontroller,"My email",Icons.email,"دخل الايميل عدل",
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text_Field_Widget(
+                    emailcontroller,
+                    AppStrings.email.tr(),
+                    Icons.email,
+                    AppStrings.pleaseEnterYourUserName.tr(),
                     false),
-                SizedBox(height: 8.h,),
-                Text_Field_Widget(passwordcontroller,AppStrings.password.tr(),Icons.lock,"دخل الرقم السري عدل",
-                    true),
-                SizedBox(height: 8.h,),
-
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text_Field_Widget(passwordcontroller, AppStrings.password.tr(),
+                    Icons.lock, AppStrings.pleaseEnterYourUserName.tr(), true),
+                SizedBox(
+                  height: 5.h,
+                ),
+                Drop_Down_Widget(
+                    collegeController,
+                    AppStrings.college.tr(),
+                    Icons.school,
+                    AppStrings.pleaseEnterYourUserName.tr(),
+                    collegeitems),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                  child: defaultButton(
+                      width: 300.w,
+                      function: () async {
+                        if (formKey.currentState!.validate()) {}
+                      },
+                      text: "تعديل",
+                      txtColor: Colors.white,
+                      height: 50.h,
+                      fontSize: 18.sp),
+                ),
               ],
             ),
           ),
         ),
       ),
     );
-
   }
+
   Future<XFile?> pickImageFromGallery() async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
