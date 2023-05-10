@@ -10,6 +10,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../data/model/user.dart';
 import '../../resources/color_manager.dart';
 import '../../resources/strings_manager.dart';
+import '../homee/homee_screen.dart';
 import 'Widgets/onwillpop_widget.dart';
 
 class nav_screen extends StatefulWidget {
@@ -63,7 +64,7 @@ class _nav_screenState extends State<nav_screen> {
   }
   List<Widget> _buildScreens() {
     return [
-      home_page(User()),
+      homee_page(),
       home_page(User()),
       register_page(),
     ];

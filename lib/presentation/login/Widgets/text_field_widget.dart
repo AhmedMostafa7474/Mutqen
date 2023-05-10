@@ -24,7 +24,7 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+      margin: EdgeInsets.only(left: 20, right: 20, top: 15),
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
           color: Colors.black.withOpacity(0.2),

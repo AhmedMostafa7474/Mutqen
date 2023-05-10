@@ -31,7 +31,8 @@ class _home_pageState extends State<home_page> {
       child: Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon(AppStrings.home.tr(), context),
         drawer: MainDrawer(),
-        body: Container(
+        body:
+        Container(
           padding: EdgeInsets.only(top: 20),
           child: ListView.separated(
             padding:  EdgeInsets.only(bottom: 20),
