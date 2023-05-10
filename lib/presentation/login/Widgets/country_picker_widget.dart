@@ -16,23 +16,24 @@ class Country_Picker_Widget extends StatefulWidget {
 }
 
 class _Country_Picker_WidgetState extends State<Country_Picker_Widget> {
-
-
+  bool shadowshowen = true;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 20),
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.2),
+          color: shadowshowen?Colors.grey.withOpacity(0.3): Colors.grey.withOpacity(0.2),
           blurRadius: 5,
           offset: const Offset(0, 5),
         )
       ],
           borderRadius: BorderRadius.circular(15)),
       child: TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         readOnly: true,
         validator: (value) {
+          shadowshowen = false;
           if (value == null || value.isEmpty) {
             return widget.validate + widget.title;
           }

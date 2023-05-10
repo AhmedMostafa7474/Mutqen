@@ -10,6 +10,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../resources/common_widgets/app_bar.dart';
 import '../../resources/strings_manager.dart';
+import '../home/Widgets/main_drawer.dart';
 import 'Widgets/filter_drawer.dart';
 
 class advisors_page extends StatefulWidget {
@@ -50,8 +51,9 @@ class _advisors_pageState extends State<advisors_page> {
         child: Scaffold(
           key: _key,
             drawerEnableOpenDragGesture: false,
-            drawer: FilterDrawer(),
-        appBar: getAppBarWidgetWithNotificationIcon(AppStrings.advisors.tr(), context),
+            endDrawer: FilterDrawer() ,
+            drawer: MainDrawer() ,
+        appBar:getAppBarWidgetWithNotificationIcon(AppStrings.advisors.tr(),context),
     body: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +80,7 @@ class _advisors_pageState extends State<advisors_page> {
                   });
                 }
                 setState(() {
-                  searchlist.isEmpty? shownlist=advisors :shownlist=searchlist;
+                  searchlist.isEmpty? shownlist= advisors :shownlist=searchlist;
                 });
               },
             ),
@@ -87,7 +89,7 @@ class _advisors_pageState extends State<advisors_page> {
           ,
           InkWell(
             onTap: (){
-              _key.currentState!.openDrawer();
+              _key.currentState!.openEndDrawer();
             },
             child: Container(
               height: 35.h,

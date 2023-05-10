@@ -7,5 +7,11 @@ class ImageAssets {
   static  String quesionimage = "$IMAGE_PATH/Icon-Question.svg";
   static  String resultimage = "$IMAGE_PATH/mutqen_result.png";
   static  String meetingimage = "$IMAGE_PATH/profilee.jpeg";
+  static  String eventimage = "$IMAGE_PATH/wazenn.png";
+  static  String eventimage2 = "$IMAGE_PATH/faree2.png";
+  static  String wazenexamimage = "$IMAGE_PATH/wazenexam.json";
+  static  String fare2examimage = "$IMAGE_PATH/fare2exam.json";
+  static  String brainexamimage = "$IMAGE_PATH/brainexam.json";
+  static  String discexamimage = "$IMAGE_PATH/discexam.json";
 
 }

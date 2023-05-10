@@ -16,6 +16,7 @@ class Drop_Down_Widget extends StatefulWidget {
 }
 
 class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
+  bool shadowshowen = true;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,11 +31,13 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
           borderRadius: BorderRadius.circular(15)),
       child: DropdownButtonFormField<String>(
         validator: (value) {
+          shadowshowen = false;
           if (value == null ) {
             return widget.validate + widget.title;
           }
           return null;
         },
+          autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: widget.title,
             fillColor: Colors.white,
@@ -61,7 +64,15 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
           }).toList()
 
       ),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
 
+          color: shadowshowen?Colors.grey.withOpacity(0.3): Colors.grey.withOpacity(0.2),
+          blurRadius: 5,
+          offset: const Offset(0, 5),
+        )
+      ],
+          borderRadius: BorderRadius.circular(15)),
     );
   }
 

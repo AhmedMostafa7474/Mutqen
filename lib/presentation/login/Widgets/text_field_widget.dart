@@ -19,28 +19,27 @@ class Text_Field_Widget extends StatefulWidget {
 }
 
 class _Text_Field_WidgetState extends State<Text_Field_Widget> {
-
-
+  bool shadowshowen = true;
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20, right: 20, top: 15),
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.2),
+      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+      decoration: BoxDecoration(boxShadow:[
+       BoxShadow(
+          color: shadowshowen?Colors.grey.withOpacity(0.3): Colors.grey.withOpacity(0.2),
           blurRadius: 5,
           offset: const Offset(0, 5),
         )
       ],
           borderRadius: BorderRadius.circular(15)),
       child: TextFormField(
-
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         maxLines:widget.multi? 5: 1,
         validator: (value) {
+          shadowshowen = false;
           if (value == null || value.isEmpty) {
             return widget.validate + widget.title;
           }
-
           else if(!value.isValidEmail() &&
               widget.title == AppStrings.email.tr())
             {
@@ -52,7 +51,6 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
         obscureText: widget.obscure,
         textInputAction: widget.title == AppStrings.password.tr() ? TextInputAction.done:TextInputAction.next,
         decoration: InputDecoration(
-
             labelText: widget.title,
             fillColor: Colors.white,
             filled: true,
@@ -79,7 +77,6 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
 }
 extension EmailValidator on String {
   bool isValidEmail() {
-    print("yes");
     return RegExp(
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
         .hasMatch(this);

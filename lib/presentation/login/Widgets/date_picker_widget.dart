@@ -19,11 +19,14 @@ class _Date_Picker_WidgetState extends State<Date_Picker_Widget> {
 
   @override
   Widget build(BuildContext context) {
+    bool shadowshowen = true;
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 20),
       child: TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         readOnly: true,
         validator: (value) {
+          shadowshowen = false;
           if (value == null || value.isEmpty) {
             return widget.validate + widget.title;
           }
@@ -69,7 +72,7 @@ class _Date_Picker_WidgetState extends State<Date_Picker_Widget> {
       ),
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.2),
+          color: shadowshowen?Colors.grey.withOpacity(0.3): Colors.grey.withOpacity(0.2),
           blurRadius: 5,
           offset: const Offset(0, 5),
         )
