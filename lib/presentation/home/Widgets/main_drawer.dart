@@ -151,7 +151,8 @@ class _MainDrawerState extends State<MainDrawer> {
             height: 15.h,
           ),
           buildListTile(
-            AppStrings.settings.tr(),
+         
+            AppStrings.profile.tr(),
             Icons.settings,
                 () {
                   PersistentNavBarNavigator.pushNewScreen(context, screen: (profile_page()));

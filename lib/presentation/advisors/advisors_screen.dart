@@ -59,8 +59,8 @@ class _advisors_pageState extends State<advisors_page> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.only(top: 15,left: 30),
-            width: 380,
+            padding: EdgeInsets.only(top: 15),
+            width: 380.w,
             child: CupertinoSearchTextField(
               itemSize: 25,
               style: TextStyle(
@@ -92,8 +92,8 @@ class _advisors_pageState extends State<advisors_page> {
               _key.currentState!.openEndDrawer();
             },
             child: Container(
-              height: 40,
-              width: 110,
+              height: 35.h,
+              width: 110.w,
               child : Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -166,13 +166,13 @@ class _advisors_pageState extends State<advisors_page> {
                                   Text(shownlist[index].name,style: TextStyle(
                                     fontSize: 16.sp
                                   ),),
-                                  SizedBox(height: 10,),
+                                  SizedBox(height: 10.h,),
                                   isloading? Shimmer.fromColors(
                                     highlightColor: Colors.grey[100]! ,
                                     baseColor: Colors.grey[300]!,
                                     child: Container(
                                       width: 200.w,
-                                      height: 20.h,
+                                      height: 22.h,
                                       decoration: BoxDecoration(
                                         color: Colors.grey[300]!,
                                       ),
@@ -201,8 +201,8 @@ class _advisors_pageState extends State<advisors_page> {
                             Hero(
                               tag: "Hero"+index.toString(),
                            child: Container(
-                              height: 90,
-                              width: 90,
+                              height: 80.h,
+                              width: 80.w,
                               decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(

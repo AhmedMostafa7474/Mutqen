@@ -20,7 +20,15 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.2),
+          blurRadius: 5,
+          offset: const Offset(0, 5),
+        )
+      ],
+          borderRadius: BorderRadius.circular(15)),
       child: DropdownButtonFormField<String>(
         validator: (value) {
           shadowshowen = false;
@@ -36,21 +44,25 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
             filled: true,
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
-                borderSide: BorderSide(width: 1, color: Colors.transparent)
+                borderSide: const BorderSide(width: 1, color: Colors.transparent)
             ) ,
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
-                borderSide: BorderSide(width: 3, color: Colors.greenAccent)
+                borderSide: const BorderSide(width: 2, color: Colors.greenAccent)
             ),
             prefixIcon: Icon(widget.iconData),
 
         ), onChanged: (value) {  },
           items: widget.items.map((String items) {
+
             return DropdownMenuItem(
               value: items,
               child: Text(items),
+
             );
+
           }).toList()
+
       ),
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
@@ -63,4 +75,5 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
           borderRadius: BorderRadius.circular(15)),
     );
   }
+
 }
