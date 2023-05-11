@@ -52,7 +52,7 @@ class _MainDrawerState extends State<MainDrawer> {
       ),
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: 'Monadi',
           fontSize: 20,
           fontWeight: FontWeight.bold,
@@ -77,7 +77,7 @@ class _MainDrawerState extends State<MainDrawer> {
           Container(
             height: 70.h,
             width: double.infinity,
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             alignment: Alignment.centerRight,
             color: ColorManager.primary,
             // #A80F14 red
@@ -103,7 +103,7 @@ class _MainDrawerState extends State<MainDrawer> {
                   style: getRegularStyle(
                       font: FontWeight.w500,
                       fontSize: 18.sp,
-                      color: Color(0xFFFFFFFF)),
+                      color: const Color(0xFFFFFFFF)),
                 ),
               ],
             ),
@@ -125,7 +125,7 @@ class _MainDrawerState extends State<MainDrawer> {
             AppStrings.advisors.tr(),
                 FontAwesomeIcons.listCheck,
                 () {
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: advisors_page());
+                    PersistentNavBarNavigator.pushNewScreen(context, screen: const advisors_page());
             },
           ),
           SizedBox(
@@ -135,7 +135,8 @@ class _MainDrawerState extends State<MainDrawer> {
             AppStrings.advices.tr(),
             Icons.question_answer,
                 () {
-                  PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
+
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: (const meetings_page()));
                 },
           ),
           SizedBox(
@@ -145,7 +146,7 @@ class _MainDrawerState extends State<MainDrawer> {
             AppStrings.events.tr(),
             Icons.event,
                 () {
-              PersistentNavBarNavigator.pushNewScreen(context, screen: (events_page()));
+              PersistentNavBarNavigator.pushNewScreen(context, screen: (const events_page()));
 
             },
           ),
@@ -157,7 +158,7 @@ class _MainDrawerState extends State<MainDrawer> {
             AppStrings.profile.tr(),
             Icons.settings,
                 () {
-                  PersistentNavBarNavigator.pushNewScreen(context, screen: (profile_page()));
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: (const profile_page()));
 
                 },
           ),

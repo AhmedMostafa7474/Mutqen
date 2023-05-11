@@ -31,7 +31,7 @@ class _home_pageState extends State<home_page> {
     return SafeArea(
       child: Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon(AppStrings.home.tr(), context),
-        drawer: MainDrawer(),
+
         body:
         Container(
           padding: EdgeInsets.only(top: 20),
@@ -71,14 +71,14 @@ class _home_pageState extends State<home_page> {
                                 Text(exams[index].count.toString()+" سؤال" ,style: TextStyle(
                                     fontSize: 15.sp
                                 )),
-                                SizedBox(width: 10,),
+                                SizedBox(width: 80.w,),
                                 Hero(
                                   tag: "Hero"+index.toString(),
                                     child: Lottie.asset(exams[index].image,width: 120.sp,height: 120.sp)
                                 )
                               ],
                             ),
-                            SizedBox(height: 8,),
+                            SizedBox(height: 7,),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(exams[index].description,style: TextStyle(

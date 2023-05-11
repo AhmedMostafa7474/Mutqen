@@ -21,6 +21,15 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+
+          color: shadowshowen?Colors.grey.withOpacity(0.3): Colors.grey.withOpacity(0.2),
+          blurRadius: 5,
+          offset: const Offset(0, 5),
+        )
+      ],
+          borderRadius: BorderRadius.circular(15)),
       child: DropdownButtonFormField<String>(
         validator: (value) {
           shadowshowen = false;
@@ -56,15 +65,6 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
           }).toList()
 
       ),
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-
-          color: shadowshowen?Colors.grey.withOpacity(0.3): Colors.grey.withOpacity(0.2),
-          blurRadius: 5,
-          offset: const Offset(0, 5),
-        )
-      ],
-          borderRadius: BorderRadius.circular(15)),
     );
   }
 

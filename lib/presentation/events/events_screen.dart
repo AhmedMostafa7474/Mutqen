@@ -30,7 +30,7 @@ class _events_pageState extends State<events_page> {
     return  SafeArea(
         child: Scaffold(
             key: _key,
-          drawer: MainDrawer(),
+
           endDrawer: Filter_Drawer(),
         appBar: getAppBarWidgetWithNotificationIcon(AppStrings.events.tr(), context),
 
@@ -45,13 +45,6 @@ class _events_pageState extends State<events_page> {
                 child: Container(
                     height: 40,
                     width: 110,
-                    child : Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("التصنيف"),
-                        Icon(Icons.filter_alt,color: Colors.black54,)
-                      ],
-                    ),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         boxShadow: [
@@ -61,7 +54,14 @@ class _events_pageState extends State<events_page> {
                             offset: const Offset(0, 5),
                           )
                         ],
-                        borderRadius: BorderRadius.circular(15))
+                        borderRadius: BorderRadius.circular(15)),
+                    child : Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        Text("التصنيف"),
+                        Icon(Icons.filter_alt,color: Colors.black54,)
+                      ],
+                    )
                 ),
               )
               ,
@@ -91,7 +91,7 @@ class _events_pageState extends State<events_page> {
                             color: Colors.grey.withOpacity(0.2),
                             spreadRadius: 5,
                             blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                            offset: const Offset(0, 3), // changes position of shadow
                           ),
                         ],
                             color: Colors.white70,
@@ -99,7 +99,7 @@ class _events_pageState extends State<events_page> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            SizedBox(height: 8,),
+                            const SizedBox(height: 8,),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 25.0),
                                   child: Hero(
@@ -107,7 +107,7 @@ class _events_pageState extends State<events_page> {
                                       child: Image.asset(events[index].image,
                                         height: 120.sp,width: 120.sp,)),
                                 ),
-                            SizedBox(height: 8,),
+                            const SizedBox(height: 8,),
                             Align(
                               alignment: Alignment.centerRight,
                               child: Padding(
@@ -115,19 +115,15 @@ class _events_pageState extends State<events_page> {
                                 child: Row(
                                   children: [
                                     Icon(Icons.event_seat,color: ColorManager.primatylight , size: 21.sp,),
-                                    SizedBox(width: 10,),
-                                    Container(
-                                      child: Text("مقعد متاح : ",style: TextStyle(
-                                          color: ColorManager.primatylight,
-                                          fontSize: 16.sp
-                                      ),),
-                                    ),
-                                    Container(
-                                      child: Text(events[index].seats,style: TextStyle(
-                                          color: ColorManager.yellow,
-                                          fontSize: 16.sp
-                                      ),),
-                                    ),
+                                    const SizedBox(width: 10,),
+                                    Text("مقعد متاح : ",style: TextStyle(
+                                        color: ColorManager.primatylight,
+                                        fontSize: 16.sp
+                                    ),),
+                                    Text("0",style: TextStyle(
+                                        color: ColorManager.yellow,
+                                        fontSize: 16.sp
+                                    ),),
                                   ],
                                 ),
                               ),
@@ -177,15 +173,15 @@ class _events_pageState extends State<events_page> {
                                 color: Colors.grey.withOpacity(0.2),
                                 spreadRadius: 5,
                                 blurRadius: 7,
-                                offset: Offset(0, 3), // changes position of shadow
+                                offset: const Offset(0, 3), // changes position of shadow
                               ),
                             ],
                                 color: Colors.white70,
-                                borderRadius: BorderRadius.circular(8)),
+                                borderRadius: const BorderRadius.all(Radius.circular(10))),
                             child: Column(
                               children: [
-                                Container(
-                                  height: 40.h,
+                                Expanded(
+                                
                                   alignment: Alignment.center,
                                   child: Text(events[index].date.split(" ")[0],style: TextStyle(
                                     fontSize: 21.sp,
@@ -193,16 +189,15 @@ class _events_pageState extends State<events_page> {
                                   ),
                                       textAlign: TextAlign.center),
                                 ),
-                                Container(
-                                  height: 40.h,
+                                Expanded(     
                                   alignment: Alignment.center,
                                   color: events[index].color,
                                   child: Text(events[index].date.split(" ")[1],style: TextStyle(
                                     fontSize: 15.sp,
                                     color: Colors.white
+                                    ),
                                   ),
-                                      textAlign: TextAlign.center),
-                                ),
+
                               ],
                             ),
                           ),
@@ -213,7 +208,7 @@ class _events_pageState extends State<events_page> {
                 )
                   );
                 }, separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(
+                return const SizedBox(
                   height: 18,
                 );
               },),

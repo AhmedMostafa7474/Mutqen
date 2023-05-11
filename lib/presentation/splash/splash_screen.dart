@@ -30,7 +30,7 @@ class _SplashViewState extends State<SplashView> {
             nextScreen: login_page(),
             splashIconSize: 200,
             //splashTransition: SplashTransition.sizeTransition,
-            animationDuration: Duration(seconds: 2),
+            animationDuration: Duration(seconds: 3),
             splashTransition: SplashTransition.rotationTransition,
             pageTransitionType: PageTransitionType.bottomToTop,
       );
