@@ -49,21 +49,35 @@ class _advisors_pageState extends State<advisors_page> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          floatingActionButton:  FloatingActionButton.extended(
+              backgroundColor: Colors.white,
+              label: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text("التصنيف",style: TextStyle(color: Colors.black87),),
+              Icon(Icons.filter_alt,color: Colors.black54,)
+            ],
+          ),
+            onPressed: (){
+            _key.currentState!.openEndDrawer();
+
+          }),
           key: _key,
             drawerEnableOpenDragGesture: false,
             endDrawer: FilterDrawer() ,
-            drawer: MainDrawer() ,
+
         appBar:getAppBarWidgetWithNotificationIcon(AppStrings.advisors.tr(),context),
     body: SingleChildScrollView(
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15),
             width: 380.w,
             child: CupertinoSearchTextField(
               itemSize: 25,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20
               ),
               controller: searchcontroller,
@@ -85,40 +99,16 @@ class _advisors_pageState extends State<advisors_page> {
               },
             ),
           ),
-          SizedBox(height: 10,)
+          const SizedBox(height: 10,)
           ,
-          InkWell(
-            onTap: (){
-              _key.currentState!.openEndDrawer();
-            },
-            child: Container(
-              height: 35.h,
-              width: 110.w,
-              child : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text("التصنيف"),
-                  Icon(Icons.filter_alt,color: Colors.black54,)
-                ],
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        blurRadius: 5,
-                        offset: const Offset(0, 5),
-                      )
-                ],
-                    borderRadius: BorderRadius.circular(15))
-            ),
-          )
-          ,
+
+
+
           SizedBox(
             height: 20.h,
           ),
         ListView.separated(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: shownlist.length,
               separatorBuilder: (BuildContext context, int index) { return SizedBox(
@@ -131,7 +121,7 @@ class _advisors_pageState extends State<advisors_page> {
                       },
                       child: UnconstrainedBox(
                         child: Container(
-                          padding: EdgeInsets.all(9.0),
+                          padding: const EdgeInsets.all(9.0),
                           height: 110.h,
                           width: 340.w,
                           decoration: BoxDecoration(
@@ -209,7 +199,7 @@ class _advisors_pageState extends State<advisors_page> {
                                       color: Colors.black.withOpacity(0.2),
                                       spreadRadius: 5,
                                       blurRadius: 7,
-                                      offset: Offset(0, 3), // changes position of shadow
+                                      offset: const Offset(0, 3), // changes position of shadow
                                     ),
                                   ],
                                   borderRadius: BorderRadius.circular(100),
