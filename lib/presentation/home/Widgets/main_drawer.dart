@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/data/model/user.dart';
 import 'package:mutqen/presentation/advisors/advisors_screen.dart';
 import 'package:mutqen/presentation/events/events_screen.dart';
+import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/meetings/meetings_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
@@ -113,6 +115,7 @@ class _MainDrawerState extends State<MainDrawer> {
             AppStrings.home.tr(),
             CupertinoIcons.home,
                 () {
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: home_page(User()));
             },
           ),
           SizedBox(
@@ -133,7 +136,6 @@ class _MainDrawerState extends State<MainDrawer> {
             Icons.question_answer,
                 () {
                   PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
-
                 },
           ),
           SizedBox(

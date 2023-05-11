@@ -94,12 +94,12 @@ class _exam_page2State extends State<exam_page2> {
                                           color: Colors.grey.withOpacity(0.2),
                                           spreadRadius: 5,
                                           blurRadius: 7,
-                                          offset: Offset(
-                                              0, 3), // changes position of shadow
+                                          offset: Offset(0, 3), // changes position of shadow
                                         ),
                                       ],
                                           color: Colors.white70,
-                                          borderRadius: BorderRadius.circular(8)),
+                                          borderRadius: BorderRadius.circular(8)
+                                      ),
                                       child: Center(child: Text(
                                         "سؤال " + (index2 + (index1 *2) + 1).toString(),
                                         style: TextStyle(
