@@ -17,7 +17,6 @@ import 'package:mutqen/presentation/meetings/meetings_screen.dart';
 
 import '../profile/profile_screen.dart';
 class homee_page extends StatefulWidget {
-
   @override
   State<homee_page> createState() => _homee_pageState();
 }

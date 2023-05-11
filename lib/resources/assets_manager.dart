@@ -13,5 +13,8 @@ class ImageAssets {
   static  String fare2examimage = "$IMAGE_PATH/fare2exam.json";
   static  String brainexamimage = "$IMAGE_PATH/brainexam.json";
   static  String discexamimage = "$IMAGE_PATH/discexam.json";
+  static  String programhelpimage = "$IMAGE_PATH/programhelp.png";
+  static  String programdescripeimage = "$IMAGE_PATH/programdescripe.png";
+
 
 }
