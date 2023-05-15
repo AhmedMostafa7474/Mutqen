@@ -25,7 +25,8 @@ class _events_pageState extends State<events_page> {
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
-        child: Scaffold(
+        child:
+        Scaffold(
             key: _key,
 
           endDrawer: Filter_Drawer(),

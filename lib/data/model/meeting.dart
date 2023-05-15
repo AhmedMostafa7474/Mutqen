@@ -11,7 +11,7 @@ class meeting
       this.meetingn_subject);
 }
 List<meeting> Meetings=[
-  meeting("خالد حيدر عبدالله", ImageAssets.meetingimage, DateTime.now(), "ملتقي كافيه"),
+  meeting("خالد حيدر عبدالله", ImageAssets.meetingimage, DateTime.now(), "ملتقي كافيه ملتقي كافيه ملتقي كافيه ملتقي كافيه ملتقي كافيه ملتقي كافيه ملتقي كافيه ملتقي كافيه ملتقي كافيه ملتقي كافيه ملتقي كافيه"),
   meeting("محمد غنيم", ImageAssets.meetingimage, DateTime.now().add(Duration(hours: 2)), "ملتقي التوجيه المهني"),
   meeting("مها بنت نوح المطيري", ImageAssets.meetingimage, DateTime.now().add(Duration(days: 1)), "وازن")
 ];

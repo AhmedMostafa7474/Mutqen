@@ -27,7 +27,8 @@ class _disc_result_page extends State<disc_result_page> {
         appBar: getAppBarWidgetWithNotificationIcon("نتيجه DISC", context),
         body: Container(
           padding: const EdgeInsets.only(top: 20),
-          child: GridView.builder(
+          child:
+          GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, // Number of columns in the grid
               childAspectRatio: 0.7, // Ratio of child item's height to width
