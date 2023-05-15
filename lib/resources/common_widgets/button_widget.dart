@@ -20,17 +20,20 @@ Widget defaultButton(
     Container(
       width: width,
       height: height,
+      alignment:Alignment.topCenter,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
           color: background,
-          border: Border.all(width: 1.0, color: borderColor)),
+          border: Border.all(width: 1.0, color: borderColor)
+      ),
       child: MaterialButton(
         onPressed: () {
           function();
         },
         child: Text(
           text,
-          style: txtStyle ?? TextStyle(color: txtColor, fontSize: fontSize,),
-        ),
+          style: txtStyle ?? TextStyle(color: txtColor,
+            fontSize: fontSize,
+          ) ),
       ),
     );

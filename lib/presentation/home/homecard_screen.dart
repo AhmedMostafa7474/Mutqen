@@ -45,12 +45,12 @@ class _homecard_pageState extends State<homecard_page> {
                 fontSize: 19.sp,
                 fontWeight: FontWeight.w500
               )),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               ListView.separated(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: 3,
-                separatorBuilder: (BuildContext context, int index) { return SizedBox(height:5.0); },
+                separatorBuilder: (BuildContext context, int index) { return const SizedBox(height:5.0); },
                 itemBuilder: (BuildContext context, int index) {
                   return UnconstrainedBox(
                     alignment: Alignment.center,
@@ -66,7 +66,7 @@ class _homecard_pageState extends State<homecard_page> {
                           ],
                           borderRadius: BorderRadius.circular(15)),
                       width: 335.w,
-                      padding: EdgeInsets.all(18),
+                      padding: const EdgeInsets.all(18),
                         child: Text(list[index],style: TextStyle(
                           fontSize: 15.sp,
                           color: Colors.black
@@ -75,7 +75,7 @@ class _homecard_pageState extends State<homecard_page> {
                   );
                 },)
               ,
-              SizedBox(height: 25,)
+              const SizedBox(height: 25,)
               ,
               defaultButton(width: 140.w, function: (){
                 if(widget.examm.title == exams[1].title || widget.examm.title == exams[2].title)

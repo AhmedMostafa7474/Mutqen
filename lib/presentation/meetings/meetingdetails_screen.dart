@@ -56,10 +56,10 @@ class _meetingdetails_pageState extends State<meetingdetails_page> {
     return  SafeArea(
         child: Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon(AppStrings.advices.tr(), context),
-    body: SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+           children: [
               SizedBox(height: 15,),
               Align(
                 alignment: Alignment.center,

@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' as local;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +19,7 @@ class meetings_page extends StatefulWidget {
 }
 
 class _meetings_pageState extends State<meetings_page> {
-  DateFormat dateFormat = DateFormat("HH:mm a");
+  local.DateFormat dateFormat = local.DateFormat("HH:mm a");
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
   @override
@@ -34,7 +34,7 @@ class _meetings_pageState extends State<meetings_page> {
                   TableCalendar(
                     locale: "ar",
                     firstDay: DateTime.now(),
-                    lastDay: DateTime.now().add(Duration(days: 6)),
+                    lastDay: DateTime.now().add(const Duration(days: 6)),
                     daysOfWeekHeight: 40,
                     focusedDay: _focusedDay,
                     onFormatChanged: (C){
@@ -49,14 +49,14 @@ class _meetings_pageState extends State<meetings_page> {
                       });
                     },
                     calendarFormat: CalendarFormat.week,
-                    calendarStyle: CalendarStyle(
+                    calendarStyle: const CalendarStyle(
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20.h,),
                   ListView.separated(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          padding:  EdgeInsets.all(20),
+                          padding:  const EdgeInsets.all(20),
                           itemCount: _selectedDay.day == DateTime.now().day?2 :_selectedDay.day == DateTime.now().day + 1?1:0,
                           itemBuilder: (BuildContext context, int index) {
                             return UnconstrainedBox(
@@ -65,15 +65,15 @@ class _meetings_pageState extends State<meetings_page> {
                                   PersistentNavBarNavigator.pushNewScreen(context, screen: meetingdetails_page(index));
                                 },
                                 child: Container(
-                                  padding: EdgeInsets.all(9.0),
-                                  height: 150.h,
+                                  padding: const EdgeInsets.all(9.0),
+                                  height: 170.h,
                                   width: 300.w,
                                   decoration: BoxDecoration(boxShadow: [
                                     BoxShadow(
                                       color: Colors.grey.withOpacity(0.2),
                                       spreadRadius: 5,
                                       blurRadius: 7,
-                                      offset: Offset(0, 3), // changes position of shadow
+                                      offset: const Offset(0, 3), // changes position of shadow
                                     ),
                                   ],
                                       color: Colors.white70,
@@ -81,7 +81,7 @@ class _meetings_pageState extends State<meetings_page> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      SizedBox(height: 8,),
+                                      SizedBox(height: 8.h,),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
@@ -98,7 +98,7 @@ class _meetings_pageState extends State<meetings_page> {
                                                     ),
                                                   )
                                               ),
-                                            SizedBox(width: 10,),
+                                            const SizedBox(width: 10,),
                                             Text(Meetings[index].instructor_name ,style: TextStyle(
                                                   fontSize: 15.sp
                                               )),
@@ -112,12 +112,13 @@ class _meetings_pageState extends State<meetings_page> {
                                         color: Colors.grey.withOpacity(0.2),
                                         spreadRadius: 5,
                                         blurRadius: 7,
-                                        offset: Offset(0, 3), // changes position of shadow
+                                        offset: const Offset(0, 3), // changes position of shadow
                                       ),
                                     ],
                                         color: Colors.white70,
                                         borderRadius: BorderRadius.circular(8)),
                                     child: Center(child: Text(
+                                      textDirection: TextDirection.ltr,
                                         dateFormat.format(Meetings[index].meeting_time).toString(),style: TextStyle(
                                       fontSize: 15.sp,
                                     ),
@@ -125,7 +126,7 @@ class _meetings_pageState extends State<meetings_page> {
                                   ),
                                         ],
                                       ),
-                                      SizedBox(height: 20,),
+                                      SizedBox(height: 20.h,),
                                     Column(
                                               children: [
                                                 Container(
@@ -138,16 +139,16 @@ class _meetings_pageState extends State<meetings_page> {
                                                   ),
                                                       textAlign: TextAlign.center),),
                                                 ),
-                                                SizedBox(height: 10,),
+                                                SizedBox(height: 10.h,),
                                                 Container(
-                                                  height: 30.h,
-                                                  width: 130.w,
+                                                  height:45.h,
+                                                  width: double.infinity,
                                                   decoration: BoxDecoration(boxShadow: [
                                                     BoxShadow(
                                                       color: Colors.grey.withOpacity(0.2),
                                                       spreadRadius: 5,
                                                       blurRadius: 7,
-                                                      offset: Offset(0, 3), // changes position of shadow
+                                                      offset: const Offset(0, 3), // changes position of shadow
                                                     ),
                                                   ],
                                                       color: Colors.white70,
@@ -168,7 +169,7 @@ class _meetings_pageState extends State<meetings_page> {
                           },
                           separatorBuilder: (BuildContext context, int index) {
                             return SizedBox(
-                              height: 18,
+                              height: 12.h,
                             );
                           },),
                 ],

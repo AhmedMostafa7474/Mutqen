@@ -7,6 +7,7 @@ import 'package:mutqen/presentation/login/Widgets/date_picker_widget.dart';
 import 'package:mutqen/presentation/login/Widgets/drop_down_widget.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/register/Widgets/register_widgets.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../resources/assets_manager.dart';
 import '../../resources/color_manager.dart';
@@ -78,7 +79,8 @@ class _register_pageState extends State<register_page> {
                     Text(AppStrings.YouHave.tr()),
                     InkWell(
                         onTap: () async {
-                          Navigator.of(context).pop();
+                          PersistentNavBarNavigator.pushNewScreen(context, screen: const login_page());
+
                         },
                         child: Text(" "+AppStrings.login.tr() ,style: getRegularStyle(color: ColorManager.primary),))
 
