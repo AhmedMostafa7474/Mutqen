@@ -26,5 +26,5 @@ class AppStrings {
   static String Logout= "LogOut";
   static String advices = "advices";
   static String events = "events";
-
+  static String work = "work";
 }

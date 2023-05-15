@@ -14,6 +14,7 @@ import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:mutqen/presentation/advisors/advisors_screen.dart';
 import 'package:mutqen/presentation/events/events_screen.dart';
 import 'package:mutqen/presentation/meetings/meetings_screen.dart';
+import '../../resources/common_widgets/drawerwidget.dart';
 
 import '../profile/profile_screen.dart';
 class homee_page extends StatefulWidget {
@@ -45,7 +46,7 @@ class _homee_pageState extends State<homee_page> {
       ),
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
-      animationDuration: const Duration(milliseconds: 300),
+      animationDuration: const Duration(milliseconds: 200),
       animateChildDecoration: true,
       rtlOpening: true,
       openRatio: 0.65,
@@ -148,8 +149,6 @@ class _homee_pageState extends State<homee_page> {
                       () async {
                   },
                 ),
-
-
               ],
             ),
           ),
@@ -157,7 +156,8 @@ class _homee_pageState extends State<homee_page> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Center(child: Text('الرئيسية')),
+          centerTitle: true,
+          title:  Text('الرئيسية'),
           leading: IconButton(
             onPressed: _handleMenuButtonPressed,
             icon: ValueListenableBuilder<AdvancedDrawerValue>(
@@ -184,25 +184,4 @@ class _homee_pageState extends State<homee_page> {
     // _advancedDrawerController.value = AdvancedDrawerValue.visible();
     _advancedDrawerController.showDrawer();
   }
-}
-Widget buildListTile(String title, IconData icon, Function location) {
-  return ListTile(
-      leading: Icon(
-        icon,
-        size: 24.sp,
-        color: ColorManager.white,
-      ),
-      title: Text(
-
-        title,
-        style: TextStyle(
-            fontFamily: 'Monadi',
-            fontSize: 17.sp,
-            color: ColorManager.white,
-            fontWeight: FontWeight.w200,
-
-        ),
-      ),
-
-      onTap: ()=> location() );
 }
