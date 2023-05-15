@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/data/model/event.dart';
 import 'package:mutqen/presentation/result/Multiple/Widgets/preresult_data.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/style_manager.dart';
@@ -8,19 +9,23 @@ import 'package:mutqen/resources/style_manager.dart';
 import 'filter_data.dart';
 
 class Filter_Drawer extends StatefulWidget {
+  GlobalKey<State<StatefulWidget>> _key;
+  List<event> _showenevents;
+  Filter_Drawer(this._key,this._showenevents);
+
   @override
   _Filter_DrawerState createState() => _Filter_DrawerState();
 }
 
 class _Filter_DrawerState extends State<Filter_Drawer> {
-  bool selected = false;
-
-  Widget buildListTile(filter_data data, IconData icon, Function location) {
+  List<String> selected =[];
+  List<event> filterevents =[];
+  Widget buildListTile(int index, IconData icon, Function location) {
     return  ExpansionTile(
       iconColor: ColorManager.primary,
       collapsedIconColor: Colors.black ,
       title: Text(
-        data.title,
+        filterdata[index].title,
         style: TextStyle(
           fontSize: 17.sp,
           color: ColorManager.primary,
@@ -30,18 +35,30 @@ class _Filter_DrawerState extends State<Filter_Drawer> {
         ListView.separated(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: data.subtitles.length,
-          itemBuilder: (BuildContext context, int index) {
+          itemCount: filterdata[index].subtitles.length,
+          itemBuilder: (BuildContext context, int index1) {
             return CheckboxListTile(
               activeColor: ColorManager.primary,
-              value: selected, onChanged:
+              value: selected.contains(filterdata[index].subtitles[index1]),
+              onChanged:
                 (value){
-              selected = value!;
-              setState(() {
+                  value! == true ? selected.add(filterdata[index].subtitles[index1]): selected.remove(filterdata[index].subtitles[index1]);
+                  //     events.forEach((element) {
+                  //       if(selected.contains(element.title))
+                  //         {
+                  //          value! == true ? filterevents.add(element) : filterevents.remove(element);
+                  //         }
+                  //     });
+                  //
+                  // filterevents.isEmpty? widget._showenevents = events :widget._showenevents= filterevents;
+                  // //print(widget._showenevents.length);
+                  setState(() {
 
-              });
-            }
-              ,title: Text(data.subtitles[index],
+                  });
+                  // widget._key.currentState!.setState(() {
+                  // });
+                }
+              ,title: Text(filterdata[index].subtitles[index1],
               style: TextStyle(color: ColorManager.primary
                   ,
                   fontSize: 18.sp),)
@@ -112,7 +129,7 @@ class _Filter_DrawerState extends State<Filter_Drawer> {
               itemCount: data.length,
               itemBuilder: (BuildContext context, int index) {
                 return buildListTile(
-                  filterdata[index],
+                  index,
                   CupertinoIcons.add_circled,
                       () {
                   },

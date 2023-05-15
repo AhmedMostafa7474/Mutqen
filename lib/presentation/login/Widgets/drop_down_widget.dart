@@ -9,7 +9,9 @@ class Drop_Down_Widget extends StatefulWidget {
   final IconData iconData ;
   final String validate;
   final List<String> items;
-  const Drop_Down_Widget(this.userNameController,this.title , this.iconData ,this.validate,this.items, {Key? key}) : super(key: key);
+  double height;
+  GlobalKey<State<StatefulWidget>>? bottomkey ;
+  Drop_Down_Widget(this.userNameController,this.title , this.iconData ,this.validate,this.items, {Key? key,this.height = 0, this.bottomkey}) : super(key: key);
 
   @override
   State<Drop_Down_Widget> createState() => _Drop_Down_WidgetState();
@@ -20,10 +22,10 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: widget.height == 0? null :widget.height,
       margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
-
           color: shadowshowen?Colors.grey.withOpacity(0.3): Colors.grey.withOpacity(0.2),
           blurRadius: 5,
           offset: const Offset(0, 5),
@@ -53,7 +55,14 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
             ),
             prefixIcon: Icon(widget.iconData),
 
-        ), onChanged: (value) {  },
+        ), onChanged: (value) {
+        if(widget.bottomkey !=null)
+        {
+          widget.userNameController.text = value!;
+          widget.bottomkey!.currentState!.setState(() {
+          });
+        }
+      },
           items: widget.items.map((String items) {
 
             return DropdownMenuItem(

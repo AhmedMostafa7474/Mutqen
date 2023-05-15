@@ -2,11 +2,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:mutqen/data/model/event.dart';
+import 'package:mutqen/presentation/login/Widgets/drop_down_widget.dart';
+import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 
 import '../../resources/assets_manager.dart';
 import '../../resources/common_widgets/app_bar.dart';
+import '../../resources/common_widgets/button_widget.dart';
+import '../register/Widgets/register_data.dart';
 
 class eventdetails_page extends StatefulWidget {
   event eventt;
@@ -19,7 +24,14 @@ class eventdetails_page extends StatefulWidget {
 
 class _eventdetails_pageState extends State<eventdetails_page> {
   DateFormat dateFormat = DateFormat("HH:mm a");
+  final formKey = GlobalKey<FormState>();
+  final bottomkey = GlobalKey<State>();
+
   List<String> eventdata=[];
+  var workcontroller = TextEditingController();
+  var yearcontroller = TextEditingController();
+  var collegecontroller = TextEditingController();
+  var universitycontroller = TextEditingController();
 
   @override
   void initState() {
@@ -38,6 +50,85 @@ class _eventdetails_pageState extends State<eventdetails_page> {
         child: Scaffold(
             appBar: getAppBarWidgetWithNotificationIcon(
                 AppStrings.events.tr(), context),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            floatingActionButton: FloatingActionButton.extended(
+              backgroundColor: widget.eventt.color,
+              onPressed: (){
+                //       PersistentNavBarNavigator.pushNewScreen(context, screen: resultdetails_page(results[index]));
+                showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(22))),
+                    builder: (context)
+                    {
+                      return StatefulBuilder(
+                        key: bottomkey,
+                        builder: (BuildContext context, void Function(void Function()) setState) {
+                        return Container(
+                            height: (workcontroller.text == "طالب جامعي")?420.h:220.h,
+                            child: SingleChildScrollView(
+                              child: Form(
+                                key: formKey,
+                                child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Center(child: Text(
+                                          "نموذج الانضمام", style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 18.sp,
+                                            color: widget.eventt.color
+                                        ),),),
+                                      ),
+                                      Drop_Down_Widget(
+                                          workcontroller, AppStrings.work.tr(), Icons.work,
+                                          AppStrings.pleaseEnterYourUserName
+                                              .tr(), workitems,bottomkey: bottomkey,),
+                                      (workcontroller.text == "طالب جامعي")
+                                          ? Drop_Down_Widget(
+                                          universitycontroller,
+                                          AppStrings.university.tr(),
+                                          Icons.school,
+                                          AppStrings.pleaseEnterYourUserName
+                                              .tr(), countryitems)
+                                          :
+                                      SizedBox(),
+                                      (workcontroller.text == "طالب جامعي")
+                                          ?Drop_Down_Widget(collegecontroller,
+                                          AppStrings.college.tr(), Icons.school,
+                                          AppStrings.pleaseEnterYourUserName
+                                              .tr(), countryitems):
+                                      SizedBox(),
+                                      (workcontroller.text == "طالب جامعي")
+                                          ?Drop_Down_Widget(yearcontroller,
+                                          AppStrings.studentyear.tr(),
+                                          Icons.school,
+                                          AppStrings.pleaseEnterYourUserName
+                                              .tr(), countryitems):SizedBox(),
+                                      SizedBox(height: 12,),
+                                      defaultButton(width: 230.w,
+                                          function: () {},
+                                          text: "انضمام",
+                                          txtColor: Colors.white,
+                                          height: 40.h,
+                                          fontSize: 18.sp,
+                                          background:
+                                          widget.eventt.color)
+                                    ]
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                      );
+                    }
+                );
+
+
+              },
+              label: Text("الانضمام الآن",),
+        ),
             body: SingleChildScrollView(
                 child: Column(
                     children: [
@@ -53,46 +144,59 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                       width: 120.sp,
                     )),
               ),
-              GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 6,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,
-                childAspectRatio: 1.3,
-                crossAxisSpacing: 1),
-                itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFEBF5F7),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Icon(eventdetailss[index].icon, color: Color(0xFF008199),),
-                              Text(eventdetailss[index].title,style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
+                      AnimationLimiter(
+                child: GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 6,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,
+                  childAspectRatio: 1.3,
+                  crossAxisSpacing: 1),
+                  itemBuilder: (BuildContext context, int index) {
+                      return AnimationConfiguration.staggeredGrid(
+                        position: index,
+                        duration: Duration(milliseconds: 500),
+                        columnCount: 3,
+                        child: ScaleAnimation(
+                          duration: Duration(milliseconds: 900),
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          child: FadeInAnimation(
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEBF5F7),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Icon(eventdetailss[index].icon, color: Color(0xFF008199),),
+                                      Text(eventdetailss[index].title,style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w700,
 
-                              ),),
-                              SizedBox(width: 4.0)
-                            ],
+                                      ),),
+                                      SizedBox(width: 4.0)
+                                    ],
+                                  ),
+                                  SizedBox(height: 15,),
+                                  Text(eventdetailss[index].desc,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color(0xFF3F3F46),
+                                  ),
+                                  textAlign: TextAlign.center,)
+                                ],
+                              ),
+                            ),
                           ),
-                          SizedBox(height: 15,),
-                          Text(eventdetailss[index].desc,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Color(0xFF3F3F46),
-                          ),
-                          textAlign: TextAlign.center,)
-                        ],
-                      ),
-                    );
-                },
+                        ),
+                      );
+                  },
+                ),
               ),
                       SizedBox(height: 10,),
                       Padding(
@@ -143,6 +247,7 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                                 fontWeight: FontWeight.w400
                             )),),
 
+                      SizedBox(height: 60,)
             ]
                 )
             )

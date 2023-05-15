@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mutqen/presentation/home/homecard_screen.dart';
 import 'package:mutqen/resources/assets_manager.dart';
@@ -12,6 +14,11 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../data/model/exam.dart';
 import '../../data/model/user.dart';
 import '../../resources/color_manager.dart';
+import '../../resources/common_widgets/drawerwidget.dart';
+import '../advisors/advisors_screen.dart';
+import '../events/events_screen.dart';
+import '../meetings/meetings_screen.dart';
+import '../profile/profile_screen.dart';
 import 'Widgets/main_drawer.dart';
 
 class home_page extends StatefulWidget {
@@ -24,100 +31,244 @@ class home_page extends StatefulWidget {
 
 class _home_pageState extends State<home_page> {
   User user;
+  final _advancedDrawerController = AdvancedDrawerController();
+
   _home_pageState(this.user);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: getAppBarWidgetWithNotificationIcon(AppStrings.home.tr(), context),
+    return AdvancedDrawer(
+        backdrop: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomRight,
+              colors: [ColorManager.primary,
+                ColorManager.primatylight.withOpacity(0.8),
+                ColorManager.primatylight.withOpacity(0.7),
+              ],
+            ),
+          ),
+        ),
+        controller: _advancedDrawerController,
+        animationCurve: Curves.easeInOut,
+        animationDuration: const Duration(milliseconds: 200),
+        animateChildDecoration: true,
+        rtlOpening: true,
+        openRatio: 0.65,
+        openScale: 0.8,
+        // openScale: 1.0,
+        disabledGestures: false,
+        childDecoration: const BoxDecoration(
 
-        body:
-        Container(
-          padding: EdgeInsets.only(top: 20),
-          child: ListView.separated(
-            padding:  EdgeInsets.only(bottom: 20),
-            itemCount: exams.length,
-            itemBuilder: (BuildContext context, int index) {
-              return UnconstrainedBox(
-                child: InkWell(
-                  onTap: (){
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: homecard_page(index,exams[index]));
-                  },
-                  child: Stack(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(9.0),
-                        height: 195.h,
-                        width: 300.w,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.black,
+                blurRadius: 1,
+                blurStyle: BlurStyle.outer
+            ),
+          ],
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
 
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                            color: Colors.white70,
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(height: 8,),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(exams[index].count.toString()+" سؤال" ,style: TextStyle(
-                                    fontSize: 15.sp
-                                )),
-                                SizedBox(width: 80.w,),
-                                Hero(
-                                  tag: "Hero"+index.toString(),
-                                    child: Lottie.asset(exams[index].image,width: 120.sp,height: 120.sp)
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 7,),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(exams[index].description,style: TextStyle(
-                                color: Colors.black45,
-                                  fontSize: 12.sp
-                              ),),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 35.h,
-                        width: 150.w,
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                            color: Colors.white70,
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Center(child: Text(exams[index].title,style: TextStyle(
-                          fontSize: 15.sp,
-                        ),
-                            textAlign: TextAlign.center),),
-                      ),
-                    ],
+        ),
+        drawer: SafeArea(
+          child: Container(
+            child: ListTileTheme(
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: 128.0,
+                    height: 128.0,
+                    margin: const EdgeInsets.only(
+                      top: 24.0,
+                      bottom: 60.0,
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Image.asset(
+                        ImageAssets.smallLogo,height: 200.h, width: 200.w
+                    ),
                   ),
-                ),
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(
-                height: 18,
-              );
-            },),
-        ) ,
+                  buildListTile(
+                    AppStrings.home.tr(),
+                    CupertinoIcons.home,
+
+                        () {
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    AppStrings.advisors.tr(),
+                    FontAwesomeIcons.listCheck,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: advisors_page());
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    AppStrings.advices.tr(),
+                    Icons.question_answer,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
+
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    AppStrings.events.tr(),
+                    Icons.event,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (events_page()));
+
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+
+                    AppStrings.profile.tr(),
+                    Icons.person,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (profile_page()));
+
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    AppStrings.Logout.tr(),
+                    Icons.logout,
+                        () async {
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(title :Text(AppStrings.task.tr()),
+          centerTitle: true,
+            leading: IconButton(
+              onPressed: ()=> _advancedDrawerController.showDrawer(),
+              icon: ValueListenableBuilder<AdvancedDrawerValue>(
+                valueListenable: _advancedDrawerController,
+                builder: (_, value, __) {
+                  return AnimatedSwitcher(
+                    duration: Duration(milliseconds: 250),
+                    child: Icon(
+                      value.visible ? Icons.clear : Icons.menu,
+                      key: ValueKey<bool>(value.visible),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          body:
+          Container(
+            padding: EdgeInsets.only(top: 20),
+            child: ListView.separated(
+              padding:  EdgeInsets.only(bottom: 20),
+              itemCount: exams.length,
+              itemBuilder: (BuildContext context, int index) {
+                return UnconstrainedBox(
+                  child: InkWell(
+                    onTap: (){
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: homecard_page(index,exams[index]));
+                    },
+                    child: Stack(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(9.0),
+                          height: 195.h,
+                          width: 300.w,
+
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                              color: Colors.white70,
+                              borderRadius: BorderRadius.circular(15)),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(height: 8,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(exams[index].count.toString()+" سؤال" ,style: TextStyle(
+                                      fontSize: 15.sp
+                                  )),
+                                  SizedBox(width: 80.w,),
+                                  Hero(
+                                    tag: "Hero"+index.toString(),
+                                      child: Lottie.asset(exams[index].image,width: 120.sp,height: 120.sp)
+                                  )
+                                ],
+                              ),
+                              SizedBox(height: 7,),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(exams[index].description,style: TextStyle(
+                                  color: Colors.black45,
+                                    fontSize: 12.sp
+                                ),),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 35.h,
+                          width: 150.w,
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                              color: Colors.white70,
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Center(child: Text(exams[index].title,style: TextStyle(
+                            fontSize: 15.sp,
+                          ),
+                              textAlign: TextAlign.center),),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                  height: 18,
+                );
+              },),
+          ) ,
+        ),
       ),
     );
   }
