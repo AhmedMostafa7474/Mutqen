@@ -101,7 +101,8 @@ class _events_pageState extends State<events_page> {
                               PersistentNavBarNavigator.pushNewScreen(context, screen: eventdetails_page(
                                   showenevents[index],index));
                             },
-                            child: Stack(
+                            child:
+                            Stack(
                               children: [
                                 Container(
                                   padding: EdgeInsets.all(9.0),
