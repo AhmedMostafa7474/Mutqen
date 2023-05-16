@@ -469,7 +469,7 @@ class _homee_pageState extends State<homee_page> {
                   height: 128.0,
                   margin: const EdgeInsets.only(
                     top: 24.0,
-                    bottom: 60.0,
+                    bottom: 20.0,
                   ),
                   clipBehavior: Clip.antiAlias,
                   decoration: const BoxDecoration(
@@ -483,7 +483,6 @@ class _homee_pageState extends State<homee_page> {
                 buildListTile(
                   AppStrings.home.tr(),
                   CupertinoIcons.home,
-
                       () {
                   },
                 ),
@@ -523,7 +522,6 @@ class _homee_pageState extends State<homee_page> {
                   height: 10.h,
                 ),
                 buildListTile(
-
                   AppStrings.profile.tr(),
                   Icons.person,
                       () {
@@ -535,9 +533,8 @@ class _homee_pageState extends State<homee_page> {
                   height: 10.h,
                 ),
                 buildListTile(
-
                   "عن التطبيق",
-                  Icons.person,
+                  Icons.info_outline,
                       () {
                     PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
 

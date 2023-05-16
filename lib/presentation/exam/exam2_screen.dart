@@ -42,8 +42,7 @@ class _exam_page2State extends State<exam_page2> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
           appBar: getAppBarWidgetWithNotificationIcon("المقياس", context),
           body: PageView.builder(
               onPageChanged: (i){
@@ -165,8 +164,7 @@ class _exam_page2State extends State<exam_page2> {
                 );
               }
           ) ,
-        )
-    );
+        );
   }
   Container buildanswers(int index2, int index1) {
               return Container(
@@ -233,8 +231,4 @@ class _exam_page2State extends State<exam_page2> {
                               ),
                             );
   }
-
-  // List<String> list=["قيادي حريص علي النتائج العمليه","يستمتع بمخالطه الاخرين","يعمل ضمن روتين محدد وواضح","سووو","أحب العمل في السيارات"
-  // ,"أحب حل الألغاز","أنا جيد في الأعمال الفردية","أحب العمل ضمن فريق"];
-  // List<int> rate=[-1,-1,-1,-1,-1,-1,-1,-1];
 }
