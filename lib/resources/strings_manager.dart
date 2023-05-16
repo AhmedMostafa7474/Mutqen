@@ -27,4 +27,6 @@ class AppStrings {
   static String advices = "advices";
   static String events = "events";
   static String work = "work";
+  static String city = "city";
+
 }

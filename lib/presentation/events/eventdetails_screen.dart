@@ -46,8 +46,7 @@ class _eventdetails_pageState extends State<eventdetails_page> {
   }
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
             appBar: getAppBarWidgetWithNotificationIcon(
                 AppStrings.events.tr(), context),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -155,10 +154,10 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                   itemBuilder: (BuildContext context, int index) {
                       return AnimationConfiguration.staggeredGrid(
                         position: index,
-                        duration: Duration(milliseconds: 500),
+                        duration: Duration(milliseconds: 700),
                         columnCount: 3,
                         child: ScaleAnimation(
-                          duration: Duration(milliseconds: 900),
+                          duration: Duration(milliseconds: 1100),
                           curve: Curves.fastLinearToSlowEaseIn,
                           child: FadeInAnimation(
                             child: Container(
@@ -251,7 +250,6 @@ class _eventdetails_pageState extends State<eventdetails_page> {
             ]
                 )
             )
-        )
-    );
+        );
   }
 }

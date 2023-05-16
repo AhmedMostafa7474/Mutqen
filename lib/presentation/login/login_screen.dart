@@ -37,8 +37,12 @@ class _login_pageState extends State<login_page> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(ImageAssets.smallLogo,height: 200.h, width: 200.w),
-                Text_Field_Widget(usernamecontroller,AppStrings.userName.tr(),Icons.person,AppStrings.pleaseEnterYourUserName.tr(),
+                Image.asset(ImageAssets.smallLogo,height: 150.h, width: 200.w),
+                Text("أهلاً بك فى متقن",style: TextStyle(fontSize: 30,
+                    color: ColorManager.primary,
+                    fontWeight: FontWeight.w700
+                )),
+                Text_Field_Widget(usernamecontroller,AppStrings.email.tr(),Icons.email,AppStrings.pleaseEnterYourUserName.tr(),
                     false),
                 SizedBox(height: 8.h,),
                 Text_Field_Widget(passwordcontroller,AppStrings.password.tr(),Icons.password,AppStrings.pleaseEnterYourUserName.tr(),true),
@@ -53,7 +57,8 @@ class _login_pageState extends State<login_page> {
                         style: getRegularStyle(color: Colors.black,fontSize: 18)),
                     InkWell(
                       onTap: () async {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> register_page()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>
+                            register_page()));
                       },
                         child: Text(" "+AppStrings.register.tr()
                           ,style: getRegularStyle(color: ColorManager.primary,fontSize: 18),))

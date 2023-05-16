@@ -83,7 +83,7 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
                 duration: Duration(milliseconds: 2000),
                 opacity: _textOpacity,
                 child: Text(
-                  'Mutqen',
+                  'متقن',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

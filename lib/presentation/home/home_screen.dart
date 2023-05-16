@@ -15,6 +15,7 @@ import '../../data/model/exam.dart';
 import '../../data/model/user.dart';
 import '../../resources/color_manager.dart';
 import '../../resources/common_widgets/drawerwidget.dart';
+import '../about/aboutUs_screen.dart';
 import '../advisors/advisors_screen.dart';
 import '../events/events_screen.dart';
 import '../meetings/meetings_screen.dart';
@@ -86,7 +87,7 @@ class _home_pageState extends State<home_page> {
                     height: 128.0,
                     margin: const EdgeInsets.only(
                       top: 24.0,
-                      bottom: 60.0,
+                      bottom: 20.0,
                     ),
                     clipBehavior: Clip.antiAlias,
                     decoration: const BoxDecoration(
@@ -140,11 +141,21 @@ class _home_pageState extends State<home_page> {
                     height: 10.h,
                   ),
                   buildListTile(
-
                     AppStrings.profile.tr(),
                     Icons.person,
                         () {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: (profile_page()));
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const profile_page()));
+
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    "عن التطبيق",
+                    Icons.info_outline,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
 
                     },
                   ),
