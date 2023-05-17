@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:mutqen/presentation/advisors/Widgets/advisor_data.dart';
 import 'package:mutqen/presentation/advisors/advisordetails_screen.dart';
+import 'package:mutqen/presentation/events/Widgets/Filter.dart';
 import 'package:mutqen/resources/assets_manager.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -13,6 +14,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../resources/common_widgets/app_bar.dart';
 import '../../resources/strings_manager.dart';
+import '../events/Widgets/filter_data.dart';
 import '../home/Widgets/main_drawer.dart';
 import 'Widgets/filter_drawer.dart';
 
@@ -68,7 +70,8 @@ class _advisors_pageState extends State<advisors_page> {
           }),
           key: _key,
             drawerEnableOpenDragGesture: false,
-            endDrawer: FilterDrawer() ,
+
+            endDrawer: Filter_Drawer(_key,filterdata2) ,
 
         appBar:getAppBarWidgetWithNotificationIcon(AppStrings.advisors.tr(),context),
     body: SingleChildScrollView(
@@ -185,7 +188,7 @@ class _advisors_pageState extends State<advisors_page> {
                                               Text(shownlist[index].desc ,
                                                   style: TextStyle(color: ColorManager.yellow
                                                   ,fontSize: 14.sp,
-                                                  fontWeight: FontWeight.w600)
+                                                  fontWeight: FontWeight.w500)
                                                 ,textAlign: TextAlign.center,
                                               ),
                                          SizedBox(height: 20,),
