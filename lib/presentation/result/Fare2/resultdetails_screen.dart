@@ -75,7 +75,8 @@ class _resultdetails_pageState extends State<resultdetails_page> {
               }, itemCount: widget.resultt.resultdescription.length, itemBuilder:
                   (BuildContext context, int index) {
                     List<String> desc = widget.resultt.resultdescription[index].description.split("•");
-                    return ExpansionTile(
+                    return
+                      ExpansionTile(
                     textColor: widget.resultt.color,
                     iconColor: widget.resultt.color,
                     title: Row(

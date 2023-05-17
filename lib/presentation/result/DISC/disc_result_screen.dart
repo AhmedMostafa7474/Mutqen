@@ -14,7 +14,6 @@ import 'DISC_details.dart';
 class disc_result_page extends StatefulWidget {
   List<result> results;
   disc_result_page(this.results, {Key? key}) : super(key: key);
-
   @override
   State<disc_result_page> createState() => _disc_result_page();
 }
@@ -31,7 +30,7 @@ class _disc_result_page extends State<disc_result_page> {
           GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, // Number of columns in the grid
-              childAspectRatio: 0.7, // Ratio of child item's height to width
+              childAspectRatio: 0.63, // Ratio of child item's height to width
             ),
             padding: EdgeInsets.only(bottom: 20.h),
             itemCount: 4,
@@ -41,7 +40,6 @@ class _disc_result_page extends State<disc_result_page> {
                   onTap: (){
                     PersistentNavBarNavigator.pushNewScreen(context, screen: DISC_details(widget.results[index]));
                   },
-
                   child: Card(
                     elevation: 1.5,
                     child: Column(
@@ -49,7 +47,7 @@ class _disc_result_page extends State<disc_result_page> {
                       children: [
                         // Card's title
                         Container(
-                          height: 110.h,
+                          height: 120.h,
                           decoration: BoxDecoration(
                             borderRadius:
                             const BorderRadius.all(Radius.circular(10)),
@@ -72,11 +70,11 @@ class _disc_result_page extends State<disc_result_page> {
                         ),
                         // Card's description
                         Container(
-                          height: 70.h,
+                          height: 80.h,
                           child: Padding(
                             padding: const EdgeInsets.all(12),
                             child: Text(widget.results[index].description ,
-                              style: TextStyle(color: Colors.black54,fontSize: 15.sp),),
+                              style: TextStyle(color: Colors.black54,fontSize: 16.sp),),
                           ),
                         ),
                         Container(
