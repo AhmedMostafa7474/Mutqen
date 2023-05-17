@@ -22,26 +22,42 @@ class _DISC_detailsState extends State<DISC_details> {
         appBar: getAppBarWidgetWithNotificationIcon("نتيجه DISC", context),
             backgroundColor: Colors.white.withOpacity(.9),
     body: Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 22),
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
       child: OnBoardingAnimation(
         controller: PageController(initialPage: 0),
         pages:  [
           _GetCardsContent(
 
-            image: 'assets/images/Logo/1.png',
+            image: 'assets/images/Logo/3amal.png',
             title: widget.resultt.resultdescription[0].description ,
             cardContent:widget.resultt.resultdescription[0].descrption2,
+            color: ColorManager.D,
           ),
           _GetCardsContent(
-            image: 'assets/images/image_2.jpg',
+            image: 'assets/images/Logo/namat.png',
             title: widget.resultt.resultdescription[1].description,
             cardContent:
-            widget.resultt.resultdescription[1].descrption2, ),
+            widget.resultt.resultdescription[1].descrption2,
+            color: ColorManager.I,
+          ),
           _GetCardsContent(
-            image: 'assets/images/image_3.jpg',
+            image: 'assets/images/Logo/semat.png',
             title: widget.resultt.resultdescription[2].description,
             cardContent:
-            widget.resultt.resultdescription[2].descrption2,),
+            widget.resultt.resultdescription[2].descrption2,
+            color: ColorManager.S,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: _GetCardsContent(
+              image: 'assets/images/Logo/twasol.png',
+              title: widget.resultt.resultdescription[3].description,
+              cardContent:
+              widget.resultt.resultdescription[3].descrption2,
+              color: ColorManager.C,
+            ),
+          ),
+
         ],
           indicatorActiveDotColor: ColorManager.black,
         indicatorDotHeight: 11.0,
@@ -57,12 +73,14 @@ class _DISC_detailsState extends State<DISC_details> {
 }
 class _GetCardsContent extends StatelessWidget {
   final String image, cardContent,title;
-
-  const _GetCardsContent({
+   Color color;
+   _GetCardsContent({
     Key? key,
     this.image = '',
     this.title = '',
     this.cardContent = '',
+    this.color = Colors.black,
+
   }) : super(key: key);
 
   @override
@@ -75,7 +93,7 @@ class _GetCardsContent extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -85,25 +103,25 @@ class _GetCardsContent extends StatelessWidget {
                 borderRadius: const BorderRadius.all(
                   Radius.circular(20.0),
                 ),
-                child: Image.asset(image),
+                child: Image.asset(image,color: color,),
               ),
             ),
             Expanded(
               flex: 2,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(6.0),
                 child: Text(
                   title,
                   style: TextStyle(
-                      fontSize: 18.sp,
-                      color: ColorManager.black,
-                      fontWeight: FontWeight.w200
+                      fontSize: 20.sp,
+                      color: color,
+                      fontWeight: FontWeight.w700
                   ),
                 ),
               ),
             ),
             Expanded(
-              flex: 8,
+              flex: 10,
               child: Text(
                 cardContent,
                 style: TextStyle(

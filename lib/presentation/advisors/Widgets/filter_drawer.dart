@@ -13,7 +13,8 @@ class _FilterDrawerState extends State<FilterDrawer> {
   bool selected = false;
 
   Widget buildListTile(String title, IconData icon, Function location) {
-    return  ExpansionTile(
+    return
+      ExpansionTile(
           iconColor: Colors.black,
           collapsedIconColor: Colors.black,
           leading: Icon(

@@ -16,8 +16,10 @@ class ImageAssets {
   static  String programhelpimage = "$IMAGE_PATH/programhelp.png";
   static  String programdescripeimage = "$IMAGE_PATH/programdescripe.png";
   static  String HomepageMeeting1 = "$IMAGE_PATH/HomepageMeeting1.png";
-
   static  String HomepageMeeting = "$IMAGE_PATH/HomepageMeeting.png";
+  static  String Anmotqen = "$IMAGE_PATH/Anmotqen.png";
+  static  String About = "$IMAGE_PATH/Picture11.png";
+
 
 
 }
