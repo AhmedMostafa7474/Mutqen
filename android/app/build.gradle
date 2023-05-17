@@ -38,6 +38,10 @@ android {
         jvmTarget = '1.8'
     }
 
+    packagingOptions {
+        exclude "lib/armeabi-v7a/**"
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }

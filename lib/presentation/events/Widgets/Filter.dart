@@ -10,8 +10,9 @@ import 'filter_data.dart';
 
 class Filter_Drawer extends StatefulWidget {
   GlobalKey<State<StatefulWidget>> _key;
-  List<event> _showenevents;
-  Filter_Drawer(this._key,this._showenevents);
+  List<event>? showenevents;
+  List<filter_data> filterdataa;
+  Filter_Drawer(this._key, this.filterdataa,{this.showenevents = null});
 
   @override
   _Filter_DrawerState createState() => _Filter_DrawerState();
@@ -25,7 +26,7 @@ class _Filter_DrawerState extends State<Filter_Drawer> {
       iconColor: ColorManager.primary,
       collapsedIconColor: Colors.black ,
       title: Text(
-        filterdata[index].title,
+        widget.filterdataa[index].title,
         style: TextStyle(
           fontSize: 17.sp,
           color: ColorManager.primary,
@@ -35,14 +36,14 @@ class _Filter_DrawerState extends State<Filter_Drawer> {
         ListView.separated(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          itemCount: filterdata[index].subtitles.length,
+          itemCount: widget.filterdataa[index].subtitles.length,
           itemBuilder: (BuildContext context, int index1) {
             return CheckboxListTile(
               activeColor: ColorManager.primary,
-              value: selected.contains(filterdata[index].subtitles[index1]),
+              value: selected.contains(widget.filterdataa[index].subtitles[index1]),
               onChanged:
                 (value){
-                  value! == true ? selected.add(filterdata[index].subtitles[index1]): selected.remove(filterdata[index].subtitles[index1]);
+                  value! == true ? selected.add(widget.filterdataa[index].subtitles[index1]): selected.remove(widget.filterdataa[index].subtitles[index1]);
                   //     events.forEach((element) {
                   //       if(selected.contains(element.title))
                   //         {
@@ -58,7 +59,7 @@ class _Filter_DrawerState extends State<Filter_Drawer> {
                   // widget._key.currentState!.setState(() {
                   // });
                 }
-              ,title: Text(filterdata[index].subtitles[index1],
+              ,title: Text(widget.filterdataa[index].subtitles[index1],
               style: TextStyle(color: ColorManager.primary
                   ,
                   fontSize: 18.sp),)
@@ -102,7 +103,7 @@ class _Filter_DrawerState extends State<Filter_Drawer> {
                       Navigator.pop(context);
                     },
                     child: Icon(
-                      Icons.filter_alt,
+                      Icons.close,
                       color: Colors.white,
                       size: 30.sp,
                     ),
@@ -126,7 +127,7 @@ class _Filter_DrawerState extends State<Filter_Drawer> {
             ListView.separated(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: data.length,
+              itemCount: widget.filterdataa.length,
               itemBuilder: (BuildContext context, int index) {
                 return buildListTile(
                   index,

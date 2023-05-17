@@ -29,8 +29,7 @@ class _homecard_pageState extends State<homecard_page> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         appBar:getAppBarWidgetWithNotificationIcon(widget.examm.title, context),
         body: SingleChildScrollView(
           child: Column(
@@ -83,7 +82,8 @@ class _homecard_pageState extends State<homecard_page> {
                 else
                     PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page2(widget.examm));
 
-              }, text: "اجراء المقياس", txtColor: Colors.white, height: 33.h, fontSize: 16.sp),
+              }, text: "اجراء المقياس", txtColor: Colors.white, height: 33.h, fontSize: 16.sp
+                  ,background: Color(0xFFE48A07)),
               SizedBox(height: 15,),
               Text("الماده المعرفيه",style: TextStyle(
                   fontSize: 19.sp,
@@ -107,7 +107,6 @@ class _homecard_pageState extends State<homecard_page> {
             ],
           ),
         ),
-      ),
     );
   }
   List<String>list=["معرفه ضروره التوازن بين جوانب الحياه المختلفه","تقييم مستوي التوازن لديك من خلال المقياس",

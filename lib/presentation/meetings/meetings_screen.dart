@@ -24,8 +24,7 @@ class _meetings_pageState extends State<meetings_page> {
   DateTime _focusedDay = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return  Scaffold(
             appBar: getAppBarWidgetWithNotificationIcon(
             AppStrings.advices.tr(), context),
             body: SingleChildScrollView(
@@ -88,7 +87,7 @@ class _meetings_pageState extends State<meetings_page> {
                                           Row(
                                             children: [
                                               Hero(
-                                                  tag: "Hero"+index.toString(),
+                                                  tag: "Hero3"+index.toString(),
                                                   child: Container(
                                                     height: 50.sp ,
                                                     width: 50.sp,
@@ -175,6 +174,6 @@ class _meetings_pageState extends State<meetings_page> {
                 ],
               ),
             ),
-            ));
+            );
   }
 }

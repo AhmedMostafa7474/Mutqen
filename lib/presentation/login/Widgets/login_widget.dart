@@ -10,6 +10,7 @@ import 'package:mutqen/resources/common_widgets/button_widget.dart';
 
 import '../../../resources/color_manager.dart';
 import '../../../resources/strings_manager.dart';
+import '../../navbar/navbar_screen.dart';
 
 class LoginButton extends StatelessWidget {
   final formKey;
@@ -34,7 +35,7 @@ class LoginButton extends StatelessWidget {
         else
         {
           showSnackBar(context: context, msg: "Login Success");
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> home_page(response)));
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> nav_screen()));
         }
       }
     }, text: AppStrings.login.tr(), txtColor: Colors.white, height: 50.h, fontSize: 18.sp);

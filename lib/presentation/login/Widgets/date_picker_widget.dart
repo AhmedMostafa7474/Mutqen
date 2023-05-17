@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -38,7 +39,23 @@ class _Date_Picker_WidgetState extends State<Date_Picker_Widget> {
                 initialDate: DateTime.now(),
                 firstDate: DateTime(1950),
                 //DateTime.now() - not to allow to choose before today.
-                lastDate: DateTime(2100));
+                lastDate: DateTime(2100)
+                ,builder: (context, child) {
+              return Theme(
+                data: Theme.of(context).copyWith(
+                  colorScheme: ColorScheme.light(
+                    primary: ColorManager.primary, // header background color
+                  ),
+                  textButtonTheme: TextButtonThemeData(
+                    style: TextButton.styleFrom(
+                      foregroundColor: ColorManager.primary, // button text color
+                    ),
+                  ),
+                ),
+                child: child!,
+              );
+            },
+          );
 
             if (pickedDate != null) {
               print(
@@ -53,6 +70,7 @@ class _Date_Picker_WidgetState extends State<Date_Picker_Widget> {
               });
             } else {}
         },
+
         controller: widget.userNameController,
         textInputAction: widget.title == AppStrings.password.tr() ? TextInputAction.done:TextInputAction.next,
         decoration: InputDecoration(

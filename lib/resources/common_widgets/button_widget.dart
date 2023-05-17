@@ -17,23 +17,28 @@ Widget defaultButton(
       required double fontSize,
       Color borderColor =Colors.grey,
       TextStyle? txtStyle}) =>
-    Container(
-      width: width,
-      height: height,
-      alignment:Alignment.topCenter,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius),
-          color: background,
-          border: Border.all(width: 1.0, color: borderColor)
-      ),
-      child: MaterialButton(
-        onPressed: () {
-          function();
-        },
-        child: Text(
-          text,
-          style: txtStyle ?? TextStyle(color: txtColor,
-            fontSize: fontSize,
-          ) ),
+    InkWell(
+      onTap: (){
+        function();
+      },
+      child: Container(
+        width: width,
+        height: height,
+        alignment:Alignment.center,
+        padding: EdgeInsets.only(
+          bottom: 3
+        ),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(radius),
+            color: background,
+            border: Border.all(width: 1.0, color: borderColor)
+        ),
+        child:  Text(
+            text,
+            style: txtStyle ?? TextStyle(color: txtColor,
+              fontSize: fontSize,
+              fontWeight: FontWeight.w700
+            ) ),
+
       ),
     );
