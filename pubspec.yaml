@@ -48,7 +48,7 @@ dependencies:
   pie_chart: ^5.3.2
   table_calendar:
   onboarding_animation: ^0.0.2
-  zoom_native_sdk: ^0.3.3
+  #zoom_native_sdk: ^0.3.3
   country_picker: ^2.0.20
   image_picker: ^0.8.7+4
   file_picker: ^5.2.3
@@ -58,6 +58,7 @@ dependencies:
   intl_phone_field: ^3.1.0
   flutter_rating_bar: ^4.0.1
   carousel_slider: ^4.2.1
+  flutter_html: ^2.2.1
 
 dev_dependencies:
   flutter_test:

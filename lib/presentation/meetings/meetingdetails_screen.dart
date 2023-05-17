@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/presentation/meetings/chatroom_screen.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:zoom_native_sdk/zoom_native_sdk.dart';
+//import 'package:zoom_native_sdk/zoom_native_sdk.dart';
 
 import '../../data/model/meeting.dart';
 import '../../resources/assets_manager.dart';
@@ -25,7 +25,7 @@ class meetingdetails_page extends StatefulWidget {
 class _meetingdetails_pageState extends State<meetingdetails_page> {
   String meetingid = "83698622237";
   String password= "Jegw0F";
-  final _zoomNativelyPlugin = ZoomNativeSdk();
+//  final _zoomNativelyPlugin = ZoomNativeSdk();
   bool isInitialized = false;
   @override
   void initState() {
@@ -38,11 +38,11 @@ class _meetingdetails_pageState extends State<meetingdetails_page> {
 
     try {
       if (!isInitialized) {
-        isInitialized = (await _zoomNativelyPlugin.initZoom(
-          appKey: "92M7ZuZkS8ODARAHUFEB8Q",
-          appSecret: "64OuLAgStzkO9c2yVRrk2qob0kkH5Yp5",
-        )) ??
-            false;
+        // isInitialized = (await _zoomNativelyPlugin.initZoom(
+        //   appKey: "92M7ZuZkS8ODARAHUFEB8Q",
+        //   appSecret: "64OuLAgStzkO9c2yVRrk2qob0kkH5Yp5",
+        // )) ??
+        //     false;
       }
     } on PlatformException catch (e) {
       debugPrint(e.message);
@@ -64,7 +64,7 @@ class _meetingdetails_pageState extends State<meetingdetails_page> {
               Align(
                 alignment: Alignment.center,
                 child: Hero(
-                    tag: "Hero"+widget.index.toString(),
+                    tag: "Hero3"+widget.index.toString(),
                     child: Container(
                       height: 80 ,
                       width: 80,
@@ -111,10 +111,10 @@ class _meetingdetails_pageState extends State<meetingdetails_page> {
         SizedBox(height: 10,),
         defaultButton(width:  140.w, function: () async {
           if (isInitialized) {
-            await _zoomNativelyPlugin.joinMeting(
-              meetingNumber: meetingid,
-              meetingPassword: password,
-            );
+            // await _zoomNativelyPlugin.joinMeting(
+            //   meetingNumber: meetingid,
+            //   meetingPassword: password,
+            // );
 
           }
         }, text: "موعد zoom",
