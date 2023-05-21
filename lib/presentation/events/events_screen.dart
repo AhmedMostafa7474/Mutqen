@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:mutqen/presentation/events/Widgets/filter_data.dart';
@@ -9,6 +10,7 @@ import 'package:mutqen/presentation/home/Widgets/main_drawer.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../../business/filterBloc/filter_cubit.dart';
 import '../../data/model/event.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/common_widgets/app_bar.dart';
@@ -30,14 +32,20 @@ class _events_pageState extends State<events_page> {
   final listkey = GlobalKey<State>();
 
   List<event> showenevents =[];
+  void refresh(  List<event>showenev)
+  {
+    showenevents =showenev;
+    setState(() {
 
+    });
+}
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     showenevents = events;
-    print("yesss");
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +53,7 @@ class _events_pageState extends State<events_page> {
         child:
         Scaffold(
             key: _key,
-          endDrawer: Filter_Drawer(listkey,filterdata,showenevents:showenevents),
+          endDrawer: Filter_Drawer(refresh,filterdata,showenevents),
         appBar: getAppBarWidgetWithNotificationIcon(AppStrings.events.tr(), context),
         body: SingleChildScrollView(
           child: Column(

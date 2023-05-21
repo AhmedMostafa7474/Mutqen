@@ -39,7 +39,7 @@ class _result_pageState extends State<result_page> {
                   },
                   child: Container(
                     padding: EdgeInsets.all(9.0.sp),
-                    height: 110.h,
+                    height: 116.h,
                     width: 300.w,
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(

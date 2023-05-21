@@ -96,9 +96,8 @@ class _result_page2State extends State<result_page2> {
                                     color: wazenresults[index].color,
                                     fontSize: 15.sp
                                 ),),
-                            SizedBox(height: 40,),
+                            SizedBox(height: 30.h,),
                             Container(
-
                               child:
                               LinearPercentIndicator(
                                 width: 280.w,

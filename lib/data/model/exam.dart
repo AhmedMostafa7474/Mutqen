@@ -11,13 +11,13 @@ class exam
 }
 
 List<exam> exams = [
-  exam("مقياس DISC", "يساعدك علي التوازن في حياتك والتأكد من التجدد والتجسن المستمر", 44,
+  exam("مقياس DISC", "المميزات والقدرات الشخصيه التي تحدد هويتك وشخصيتك الفريده", 44,
   questions,ImageAssets.discexamimage),
   exam("مقياس وازن", "يساعدك علي التوازن في حياتك والتأكد من التجدد والتجسن المستمر", 100,
      wazenquestions,ImageAssets.wazenexamimage),
   exam("مقياس فرق", "اكتشاف الميول التعليميه والمهنيه والخصائص الشخصيه", 42,
      fare2questions,ImageAssets.fare2examimage),
-  exam("مقياس الذكاءات المتعدده", "يساعدك علي التوازن في حياتك والتأكد من التجدد والتجسن المستمر", 56,
+  exam("مقياس الذكاءات المتعدده", "اكتشاف الميول التعليميه والمهنيه والخصائص الشخصيه", 56,
      questions,ImageAssets.brainexamimage),
 ];
 List<answer> answers=[answer(title: "1"),answer(title: "2"),answer(title: "3"),answer(title: "4"),answer(title: "5")];

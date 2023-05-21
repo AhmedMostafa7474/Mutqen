@@ -107,7 +107,7 @@ class _exam_page2State extends State<exam_page2> {
                                     ),
                                     SizedBox(height: 50,),
                                     Text(widget.examm.questions[index2 + (index1 *2)].Question, style: TextStyle(fontSize: 18.sp),),
-                                    SizedBox(height: 70,),
+                                    SizedBox(height: 60.h,),
                                     buildanswers(index2, index1),
                                   ],
                                 ),
@@ -116,10 +116,10 @@ class _exam_page2State extends State<exam_page2> {
                           },
                           separatorBuilder: (BuildContext context, int index) {
                             return SizedBox(
-                              height: 18,
+                              height: 18.h,
                             );
                           },),
-                        SizedBox(height: 12,),
+                        SizedBox(height: 12.h,),
                         currentpage != widget.examm.questions.length / 2.toInt()?
                 Text("${currentpage} / ${(widget.examm.questions.length / 2).toInt()}"
                         ,style: TextStyle(
