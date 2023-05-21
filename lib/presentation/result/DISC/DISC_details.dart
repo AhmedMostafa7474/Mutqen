@@ -17,13 +17,13 @@ class DISC_details extends StatefulWidget {
 class _DISC_detailsState extends State<DISC_details> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return  Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon("نتيجه DISC", context),
             backgroundColor: Colors.white.withOpacity(.9),
     body: Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-      child: OnBoardingAnimation(
+      child:
+      OnBoardingAnimation(
         controller: PageController(initialPage: 0),
         pages:  [
           _GetCardsContent(
@@ -67,7 +67,7 @@ class _DISC_detailsState extends State<DISC_details> {
         indicatorPosition: IndicatorPosition.bottomCenter,
 
       ),
-    ))
+    )
     );
   }
 }
@@ -94,44 +94,40 @@ class _GetCardsContent extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Expanded(
-              flex: 4,
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(20.0),
-                ),
-                child: Image.asset(image,color: color,),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20.0),
+                  ),
+                  child: Image.asset(image,color: color,height: 170,width: 170,),
               ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: Text(
-                  title,
-                  style: TextStyle(
-                      fontSize: 20.sp,
-                      color: color,
-                      fontWeight: FontWeight.w700
+            SizedBox(height: 20,),
+            Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        fontSize: 20.sp,
+                        color: color,
+                        fontWeight: FontWeight.w700
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Expanded(
-              flex: 10,
-              child: Text(
-                cardContent,
-                style: TextStyle(
-                    fontSize: 15.sp,
-                    color: ColorManager.black,
-                    fontWeight: FontWeight.w100
+              SizedBox(height: 25.h,),
+              Text(
+                  cardContent,
+                  style: TextStyle(
+                      fontSize: 15.sp,
+                      color: ColorManager.black,
+                      fontWeight: FontWeight.w100
+                  ),
                 ),
-              ),
-            ),
-          ],
+              SizedBox(height: 15.h,)
+            ],
+          ),
         ),
       ),
     );
