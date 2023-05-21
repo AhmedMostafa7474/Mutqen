@@ -6,7 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mutqen/presentation/contactUs/contact_screen.dart';
 import 'package:mutqen/presentation/home/homecard_screen.dart';
+import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/resources/assets_manager.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:mutqen/resources/strings_manager.dart';
@@ -146,42 +148,43 @@ class _home_pageState extends State<home_page> {
                             create: (context) => FilterCubit(),
                             child:events_page())
                         ));
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    "عن التطبيق",
+                    Icons.info_outline,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
 
-                      },
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    buildListTile(
-                      AppStrings.profile.tr(),
-                      Icons.person,
-                          () {
-                        PersistentNavBarNavigator.pushNewScreen(context, screen: (const profile_page()));
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    "تواصل معنا",
+                    Icons.contact_support,
+                        () async {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const contact_page()));
 
-                      },
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    buildListTile(
-                      "عن التطبيق",
-                      Icons.info_outline,
-                          () {
-                        PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    AppStrings.Logout.tr(),
+                    Icons.logout,
+                        () async {
+                          PersistentNavBarNavigator.pushNewScreen(context, screen: (const login_page()));
 
-                      },
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    buildListTile(
-                      AppStrings.Logout.tr(),
-                      Icons.logout,
-                          () async {
-                      },
-                    ),
-                  ],
-                ),
+                        },
+                  ),
+
+                ],
               ),
             ),
           ),

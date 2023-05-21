@@ -17,6 +17,7 @@ import '../../data/model/user.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/color_manager.dart';
 import '../about/aboutUs_screen.dart';
+import '../contactUs/contact_screen.dart';
 import '../home/Widgets/main_drawer.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:mutqen/presentation/advisors/advisors_screen.dart';
@@ -134,41 +135,27 @@ class _homee_pageState extends State<homee_page> {
                         () {
                       PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
 
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    AppStrings.events.tr(),
-                    Icons.event,
-                        () {
-                     PersistentNavBarNavigator.pushNewScreen(context, screen: (
-                         BlocProvider(
-                             create: (context) => FilterCubit(),
-                             child:events_page())));
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    AppStrings.profile.tr(),
-                    Icons.person,
-                        () {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const profile_page()));
+                  },
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                buildListTile(
+                  "عن التطبيق",
+                  Icons.info_outline,
+                      () {
+                    PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
 
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    "عن التطبيق",
-                    Icons.info_outline,
-                        () {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
-
+                  },
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                buildListTile(
+                  "تواصل معنا",
+                  Icons.contact_support,
+                      () async {
+                    PersistentNavBarNavigator.pushNewScreen(context, screen: (const contact_page()));
                     },
                   ),
                   SizedBox(
