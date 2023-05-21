@@ -40,7 +40,8 @@ class _disc_result_page extends State<disc_result_page> {
                   onTap: (){
                     PersistentNavBarNavigator.pushNewScreen(context, screen: DISC_details(widget.results[index]));
                   },
-                  child: Card(
+                  child:
+                  Card(
                     elevation: 1.5,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
