@@ -1,8 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mutqen/business/filterBloc/advisorfilter_cubit.dart';
+import 'package:mutqen/business/filterBloc/filter_cubit.dart';
 import 'package:mutqen/presentation/homee/Widget/EventCard.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
@@ -81,95 +84,104 @@ class _homee_pageState extends State<homee_page> {
           child: ListTileTheme(
             textColor: Colors.white,
             iconColor: Colors.white,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: 128.0,
-                  height: 128.0,
-                  margin: const EdgeInsets.only(
-                    top: 24.0,
-                    bottom: 20.0,
+            child: SingleChildScrollView (
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: 128.0,
+                    height: 128.0,
+                    margin: const EdgeInsets.only(
+                      top: 24.0,
+                      bottom: 20.0,
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Image.asset(
+                        ImageAssets.smallLogo,height: 200.h, width: 200.w
+                    ),
                   ),
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
+                  buildListTile(
+                    AppStrings.home.tr(),
+                    CupertinoIcons.home,
+                        () {
+                    },
                   ),
-                  child: Image.asset(
-                      ImageAssets.smallLogo,height: 200.h, width: 200.w
+                  SizedBox(
+                    height: 10.h,
                   ),
-                ),
-                buildListTile(
-                  AppStrings.home.tr(),
-                  CupertinoIcons.home,
-                      () {
-                  },
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                buildListTile(
-                  AppStrings.advisors.tr(),
-                  FontAwesomeIcons.listCheck,
-                      () {
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: advisors_page());
-                  },
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                buildListTile(
-                  AppStrings.advices.tr(),
-                  Icons.question_answer,
-                      () {
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
+                  buildListTile(
+                    AppStrings.advisors.tr(),
+                    FontAwesomeIcons.listCheck,
+                        () {
 
-                  },
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                buildListTile(
-                  AppStrings.events.tr(),
-                  Icons.event,
-                      () {
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: (events_page()));
+                      PersistentNavBarNavigator.pushNewScreen(context, screen:
+                          BlocProvider(
+                          create: (context) => AdvisorfilterCubit(),
+                          child: advisors_page())
+                      );
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    AppStrings.advices.tr(),
+                    Icons.question_answer,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
 
-                  },
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                buildListTile(
-                  AppStrings.profile.tr(),
-                  Icons.person,
-                      () {
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: (const profile_page()));
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    AppStrings.events.tr(),
+                    Icons.event,
+                        () {
+                     PersistentNavBarNavigator.pushNewScreen(context, screen: (
+                         BlocProvider(
+                             create: (context) => FilterCubit(),
+                             child:events_page())));
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    AppStrings.profile.tr(),
+                    Icons.person,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const profile_page()));
 
-                  },
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                buildListTile(
-                  "عن التطبيق",
-                  Icons.info_outline,
-                      () {
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    "عن التطبيق",
+                    Icons.info_outline,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
 
-                  },
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                buildListTile(
-                  AppStrings.Logout.tr(),
-                  Icons.logout,
-                      () async {
-                  },
-                ),
-              ],
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    AppStrings.Logout.tr(),
+                    Icons.logout,
+                        () async {
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -228,7 +240,9 @@ class _homee_pageState extends State<homee_page> {
                 ),
               ),
               defaultButton(width: 160.w, function: (){
-                PersistentNavBarNavigator.pushNewScreen(context, screen: const events_page());},
+                PersistentNavBarNavigator.pushNewScreen(context, screen: BlocProvider(
+                    create: (context) => FilterCubit(),
+                child: events_page()));},
                   text: "المزيد من الفعاليات", txtColor: ColorManager.white, height: 32.h,
                   fontSize: 16.sp),
               SizedBox(height: 15.h,),
@@ -284,7 +298,10 @@ class _homee_pageState extends State<homee_page> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 15),
                 child: defaultButton(width: 160.w, function: (){
-                  PersistentNavBarNavigator.pushNewScreen(context, screen: const advisors_page());
+                  PersistentNavBarNavigator.pushNewScreen(context, screen:
+                      BlocProvider(
+                      create: (context) => AdvisorfilterCubit(),
+                  child: advisors_page()));
                   },
                     text: "احجز جلستك الآن!", txtColor: ColorManager.white, height: 32.h,
                     fontSize: 16.sp,background: Colors.orange),

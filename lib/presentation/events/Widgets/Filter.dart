@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mutqen/business/filterBloc/filter_cubit.dart';
 import 'package:mutqen/data/model/event.dart';
 import 'package:mutqen/presentation/result/Multiple/Widgets/preresult_data.dart';
 import 'package:mutqen/resources/color_manager.dart';
@@ -9,10 +11,10 @@ import 'package:mutqen/resources/style_manager.dart';
 import 'filter_data.dart';
 
 class Filter_Drawer extends StatefulWidget {
-  GlobalKey<State<StatefulWidget>> _key;
   List<event>? showenevents;
   List<filter_data> filterdataa;
-  Filter_Drawer(this._key, this.filterdataa,{this.showenevents = null});
+  Function refrseh;
+  Filter_Drawer(this.refrseh, this.filterdataa,this.showenevents);
 
   @override
   _Filter_DrawerState createState() => _Filter_DrawerState();
@@ -21,8 +23,19 @@ class Filter_Drawer extends StatefulWidget {
 class _Filter_DrawerState extends State<Filter_Drawer> {
   List<String> selected =[];
   List<event> filterevents =[];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+      selected =  BlocProvider.of<FilterCubit>(context).state;
+  }
+
   Widget buildListTile(int index, IconData icon, Function location) {
-    return  ExpansionTile(
+    return  BlocBuilder<FilterCubit, List<String>>(
+  builder: (context, state) {
+    selected = state;
+    return ExpansionTile(
       iconColor: ColorManager.primary,
       collapsedIconColor: Colors.black ,
       title: Text(
@@ -43,16 +56,17 @@ class _Filter_DrawerState extends State<Filter_Drawer> {
               value: selected.contains(widget.filterdataa[index].subtitles[index1]),
               onChanged:
                 (value){
-                  value! == true ? selected.add(widget.filterdataa[index].subtitles[index1]): selected.remove(widget.filterdataa[index].subtitles[index1]);
-                  //     events.forEach((element) {
-                  //       if(selected.contains(element.title))
-                  //         {
-                  //          value! == true ? filterevents.add(element) : filterevents.remove(element);
-                  //         }
-                  //     });
-                  //
-                  // filterevents.isEmpty? widget._showenevents = events :widget._showenevents= filterevents;
-                  // //print(widget._showenevents.length);
+                  filterevents.clear();
+                  value! == true ? context.read<FilterCubit>().add(widget.filterdataa[index].subtitles[index1]):
+                  context.read<FilterCubit>().delete(widget.filterdataa[index].subtitles[index1]);
+                      events.forEach((element) {
+                        if(selected.contains(element.title))
+                          {
+                           filterevents.add(element);
+                          }
+                      });
+                  filterevents.isEmpty? widget.showenevents = events :widget.showenevents= filterevents;
+                  widget.refrseh(widget.showenevents);
                   setState(() {
 
                   });
@@ -74,10 +88,8 @@ class _Filter_DrawerState extends State<Filter_Drawer> {
         )
       ],
     );
-  }
-  @override
-  void initState() {
-    super.initState();
+  },
+);
   }
 
   @override

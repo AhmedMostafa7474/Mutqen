@@ -203,7 +203,7 @@ class _advisordetails_pageState extends State<advisordetails_page> {
 
             },
               icon:  Icon(Icons.question_answer),
-              label:Text("استشاره"),
+              label:Text("احجز استشاره"),
               backgroundColor: ColorManager.primary,
 
     ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:mutqen/data/model/event.dart';
 import 'package:mutqen/presentation/advisors/Widgets/advisor_data.dart';
 import 'package:mutqen/presentation/advisors/advisordetails_screen.dart';
 import 'package:mutqen/presentation/events/Widgets/Filter.dart';
@@ -51,6 +52,12 @@ class _advisors_pageState extends State<advisors_page> {
     });
   }
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  void refresh(List<advisor> sh)
+  {
+    setState(() {
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -71,7 +78,7 @@ class _advisors_pageState extends State<advisors_page> {
           key: _key,
             drawerEnableOpenDragGesture: false,
 
-            endDrawer: Filter_Drawer(_key,filterdata2) ,
+            endDrawer: Advisor_Filter_Drawer(refresh,filterdata2,shownlist) ,
 
         appBar:getAppBarWidgetWithNotificationIcon(AppStrings.advisors.tr(),context),
     body: SingleChildScrollView(
@@ -140,7 +147,7 @@ class _advisors_pageState extends State<advisors_page> {
                                   UnconstrainedBox(
                                     child: Container(
                                       padding: const EdgeInsets.all(9.0),
-                                      height: 250.h,
+                                      height: 260.h,
                                       width: 170.w,
                                       decoration: BoxDecoration(
                                         color: Colors.white,
@@ -191,7 +198,7 @@ class _advisors_pageState extends State<advisors_page> {
                                                   fontWeight: FontWeight.w500)
                                                 ,textAlign: TextAlign.center,
                                               ),
-                                         SizedBox(height: 20,),
+                                         SizedBox(height: 15.h,),
                                          Row(
                                            mainAxisAlignment: MainAxisAlignment.center,
                                            children: [
@@ -200,7 +207,7 @@ class _advisors_pageState extends State<advisors_page> {
                                                  crossAxisAlignment: CrossAxisAlignment.center,
                                                  children: [
                                                    Text("عدد الاستشارات",style: TextStyle(
-                                                     fontSize: 16,
+                                                     fontSize: 14.sp,
                                                      fontWeight: FontWeight.w700,
 
                                                    ),
@@ -220,7 +227,7 @@ class _advisors_pageState extends State<advisors_page> {
                                                  children: [
                                                    Text("المواعيد المتاحه",
                                                      style: TextStyle(
-                                                   fontSize: 16,
+                                                   fontSize: 14.sp,
                                                        fontWeight: FontWeight.w700,
 
                                                      ),

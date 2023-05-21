@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
@@ -11,6 +12,8 @@ import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../../business/filterBloc/advisorfilter_cubit.dart';
+import '../../business/filterBloc/filter_cubit.dart';
 import '../../data/model/exam.dart';
 import '../../data/model/user.dart';
 import '../../resources/color_manager.dart';
@@ -79,96 +82,106 @@ class _home_pageState extends State<home_page> {
             child: ListTileTheme(
               textColor: Colors.white,
               iconColor: Colors.white,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    width: 128.0,
-                    height: 128.0,
-                    margin: const EdgeInsets.only(
-                      top: 24.0,
-                      bottom: 20.0,
+              child: SingleChildScrollView(
+
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: 128.0,
+                      height: 128.0,
+                      margin: const EdgeInsets.only(
+                        top: 24.0,
+                        bottom: 20.0,
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.asset(
+                          ImageAssets.smallLogo,height: 200.h, width: 200.w
+                      ),
                     ),
-                    clipBehavior: Clip.antiAlias,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
+                    buildListTile(
+                      AppStrings.home.tr(),
+                      CupertinoIcons.home,
+
+                          () {
+                      },
                     ),
-                    child: Image.asset(
-                        ImageAssets.smallLogo,height: 200.h, width: 200.w
+                    SizedBox(
+                      height: 10.h,
                     ),
-                  ),
-                  buildListTile(
-                    AppStrings.home.tr(),
-                    CupertinoIcons.home,
+                    buildListTile(
+                      AppStrings.advisors.tr(),
+                      FontAwesomeIcons.listCheck,
+                          () {
+                        PersistentNavBarNavigator.pushNewScreen(context, screen:
+                            BlocProvider(
+                            create: (context) => AdvisorfilterCubit(),
+                            child: advisors_page()));
+                      },
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    buildListTile(
+                      AppStrings.advices.tr(),
+                      Icons.question_answer,
+                          () {
+                        PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
 
-                        () {
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    AppStrings.advisors.tr(),
-                    FontAwesomeIcons.listCheck,
-                        () {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: advisors_page());
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    AppStrings.advices.tr(),
-                    Icons.question_answer,
-                        () {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
+                      },
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    buildListTile(
+                      AppStrings.events.tr(),
+                      Icons.event,
+                          () {
+                        PersistentNavBarNavigator.pushNewScreen(context, screen: (
+                            BlocProvider(
+                            create: (context) => FilterCubit(),
+                            child:events_page())
+                        ));
 
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    AppStrings.events.tr(),
-                    Icons.event,
-                        () {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: (events_page()));
+                      },
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    buildListTile(
+                      AppStrings.profile.tr(),
+                      Icons.person,
+                          () {
+                        PersistentNavBarNavigator.pushNewScreen(context, screen: (const profile_page()));
 
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    AppStrings.profile.tr(),
-                    Icons.person,
-                        () {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const profile_page()));
+                      },
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    buildListTile(
+                      "عن التطبيق",
+                      Icons.info_outline,
+                          () {
+                        PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
 
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    "عن التطبيق",
-                    Icons.info_outline,
-                        () {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
-
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    AppStrings.Logout.tr(),
-                    Icons.logout,
-                        () async {
-                    },
-                  ),
-                ],
+                      },
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    buildListTile(
+                      AppStrings.Logout.tr(),
+                      Icons.logout,
+                          () async {
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -195,9 +208,9 @@ class _home_pageState extends State<home_page> {
           ),
           body:
           Container(
-            padding: EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 20),
             child: ListView.separated(
-              padding:  EdgeInsets.only(bottom: 20),
+              padding:  const EdgeInsets.only(bottom: 20),
               itemCount: exams.length,
               itemBuilder: (BuildContext context, int index) {
                 return UnconstrainedBox(
@@ -208,16 +221,15 @@ class _home_pageState extends State<home_page> {
                     child: Stack(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(9.0),
-                          height: 195.h,
+                          padding: const EdgeInsets.all(9.0),
+                          height: 205.h,
                           width: 300.w,
-
                           decoration: BoxDecoration(boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.2),
                               spreadRadius: 5,
                               blurRadius: 7,
-                              offset: Offset(0, 3), // changes position of shadow
+                              offset: const Offset(0, 3), // changes position of shadow
                             ),
                           ],
                               color: Colors.white70,
@@ -225,21 +237,21 @@ class _home_pageState extends State<home_page> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              SizedBox(height: 8,),
+                              const SizedBox(height: 8,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text(exams[index].count.toString()+" سؤال" ,style: TextStyle(
+                                  Text("${exams[index].count} سؤال" ,style: TextStyle(
                                       fontSize: 15.sp
                                   )),
                                   SizedBox(width: 80.w,),
                                   Hero(
-                                    tag: "Hero"+index.toString(),
+                                    tag: "Hero$index",
                                       child: Lottie.asset(exams[index].image,width: 120.sp,height: 120.sp)
                                   )
                                 ],
                               ),
-                              SizedBox(height: 7,),
+                               SizedBox(height: 7.h,),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(exams[index].description,style: TextStyle(
@@ -258,7 +270,7 @@ class _home_pageState extends State<home_page> {
                               color: Colors.grey.withOpacity(0.2),
                               spreadRadius: 5,
                               blurRadius: 7,
-                              offset: Offset(0, 3), // changes position of shadow
+                              offset: const Offset(0, 3), // changes position of shadow
                             ),
                           ],
                               color: Colors.white70,
@@ -274,8 +286,8 @@ class _home_pageState extends State<home_page> {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  height: 18,
+                return  SizedBox(
+                  height: 18.h,
                 );
               },),
           ) ,
