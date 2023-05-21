@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
+import 'package:mutqen/presentation/profile/profile_screen.dart';
 import 'package:mutqen/presentation/register/register_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -66,7 +68,7 @@ class _nav_screenState extends State<nav_screen> {
     return [
       homee_page(),
       home_page(User()),
-      register_page(),
+      profile_page(),
     ];
   }
 
@@ -76,17 +78,20 @@ class _nav_screenState extends State<nav_screen> {
         icon: Icon(CupertinoIcons.home),
         title: (AppStrings.home.tr()),
         activeColorPrimary: ColorManager.primary,
+        textStyle: TextStyle(fontSize: 14.sp),
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(FontAwesomeIcons.listCheck),
         title: (AppStrings.task.tr()),
+        textStyle: TextStyle(fontSize: 14.sp),
         activeColorPrimary: ColorManager.primary,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.settings),
-        title: (AppStrings.settings.tr()),
+        icon: Icon(Icons.person),
+        textStyle: TextStyle(fontSize: 14.sp),
+        title: (AppStrings.profile.tr()),
         activeColorPrimary: ColorManager.primary,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       )

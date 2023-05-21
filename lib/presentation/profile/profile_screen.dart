@@ -32,6 +32,15 @@ class _profile_pageState extends State<profile_page> {
   var collegeController = TextEditingController();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    usernamecontroller.text ="عمر احمد ابراهيم";
+    emailcontroller.text = "omar@gmail.com";
+    collegeController.text ="الملك فهد";
+
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
