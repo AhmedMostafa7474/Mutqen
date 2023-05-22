@@ -115,7 +115,8 @@ class _MainDrawerState extends State<MainDrawer> {
             AppStrings.home.tr(),
             CupertinoIcons.home,
                 () {
-                  PersistentNavBarNavigator.pushNewScreen(context, screen: home_page(user));
+                  PersistentNavBarNavigator.pushNewScreen(context, screen:
+                  home_page());
             },
           ),
           SizedBox(
