@@ -37,8 +37,6 @@ class LoginButton extends StatelessWidget {
         }
         else
         {
-          showSnackBar(context: context, msg: "Login Success",value: true);
-
           Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
               nav_screen()), (Route<dynamic> route) => false);
         }
