@@ -1,6 +1,8 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mutqen/business/cityBloc/city_cubit.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -64,7 +66,10 @@ class _Country_Picker_WidgetState extends State<Country_Picker_Widget> {
                 ),
               ),
             ),
-            onSelect: (Country country) => widget.userNameController.text=country.nameLocalized!,
+            onSelect: (Country country) {
+              widget.userNameController.text = country.nameLocalized!;
+              BlocProvider.of<CityCubit>(context).GetCites(country.countryCode);
+            },
           );
         },
         controller: widget.userNameController,

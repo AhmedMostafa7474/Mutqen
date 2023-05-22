@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mutqen/data/model/city.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -9,9 +10,11 @@ class Drop_Down_Widget extends StatefulWidget {
   final IconData iconData ;
   final String validate;
   final List<String> items;
+  final List<City> cities;
   double height;
   GlobalKey<State<StatefulWidget>>? bottomkey ;
-  Drop_Down_Widget(this.userNameController,this.title , this.iconData ,this.validate,this.items, {Key? key,this.height = 0, this.bottomkey}) : super(key: key);
+  Drop_Down_Widget(this.userNameController,this.title , this.iconData ,this.validate,this.items,
+      {Key? key,this.height = 0, this.bottomkey,this.cities = const []}) : super(key: key);
 
   @override
   State<Drop_Down_Widget> createState() => _Drop_Down_WidgetState();
@@ -19,6 +22,11 @@ class Drop_Down_Widget extends StatefulWidget {
 
 class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
   bool shadowshowen = true;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +40,7 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
         )
       ],
           borderRadius: BorderRadius.circular(15)),
-      child: DropdownButtonFormField<String>(
+      child: DropdownButtonFormField<dynamic>(
         validator: (value) {
           shadowshowen = false;
           if (value == null ) {
@@ -56,19 +64,25 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
             prefixIcon: Icon(widget.iconData),
 
         ), onChanged: (value) {
+        widget.userNameController.text = value.toString()!;
         if(widget.bottomkey !=null)
         {
-          widget.userNameController.text = value!;
+          print(widget.userNameController.text);
           widget.bottomkey!.currentState!.setState(() {
           });
         }
       },
-          items: widget.items.map((String items) {
-
+          items: widget.items.isNotEmpty ? widget.items.map((String items) {
             return DropdownMenuItem(
               value: items,
               child: Text(items),
+            );
 
+          }).toList() :
+          widget.cities.map((City item) {
+            return DropdownMenuItem(
+              value: item.id,
+              child: Text(item.name),
             );
 
           }).toList()

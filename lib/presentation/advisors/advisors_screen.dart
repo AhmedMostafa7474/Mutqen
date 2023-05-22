@@ -147,7 +147,7 @@ class _advisors_pageState extends State<advisors_page> {
                                   UnconstrainedBox(
                                     child: Container(
                                       padding: const EdgeInsets.all(9.0),
-                                      height: 260.h,
+                                      height: 250.h,
                                       width: 170.w,
                                       decoration: BoxDecoration(
                                         color: Colors.white,

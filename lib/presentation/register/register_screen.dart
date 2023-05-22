@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:mutqen/business/cityBloc/city_cubit.dart';
 import 'package:mutqen/presentation/login/Widgets/country_picker_widget.dart';
 import 'package:mutqen/presentation/login/Widgets/date_picker_widget.dart';
 import 'package:mutqen/presentation/login/Widgets/drop_down_widget.dart';
@@ -29,13 +31,17 @@ class _register_pageState extends State<register_page> {
   var usernamecontroller = TextEditingController();
   var emailcontroller = TextEditingController();
   var phonecontroller = TextEditingController();
-  var agecontroller = TextEditingController();
   var countrycontroller = TextEditingController();
   var citycontroller = TextEditingController();
   var gendercontroller = TextEditingController();
   var datecontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    gendercontroller.text = "male";
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,7 +66,18 @@ class _register_pageState extends State<register_page> {
                 SizedBox(height: 8.h,),
                 Country_Picker_Widget(countrycontroller, AppStrings.country.tr(), Icons.flag, AppStrings.pleaseEnterYourUserName.tr()),
                 SizedBox(height: 8.h,),
-                Drop_Down_Widget(citycontroller, AppStrings.city.tr(), Icons.location_city, AppStrings.pleaseEnterYourUserName.tr(),countryitems),
+                BlocBuilder<CityCubit, CityState>(
+                builder: (context, state) {
+                  if(state is CityLoaded) {
+                    return Drop_Down_Widget(citycontroller,
+                        AppStrings.city.tr(), Icons.location_city,
+                        AppStrings.pleaseEnterYourUserName.tr(),[],cities:state.cities);
+                  }
+                  else{
+                    return SizedBox();
+                  }
+  },
+),
                 SizedBox(height: 8.h,),
                 Date_Picker_Widget(datecontroller, AppStrings.birthday.tr(), Icons.date_range,
                     AppStrings.pleaseEnterYourUserName.tr()),
@@ -110,7 +127,8 @@ class _register_pageState extends State<register_page> {
             ),
                 Text_Field_Widget(passwordcontroller,AppStrings.password.tr(),Icons.password,AppStrings.pleaseEnterYourUserName.tr(),true),
                 SizedBox(height: 15.h,),
-                RegisterButton(formKey,usernamecontroller,emailcontroller,agecontroller,passwordcontroller,context),
+                RegisterButton(formKey,usernamecontroller,emailcontroller,citycontroller,passwordcontroller,
+                    gendercontroller,phonecontroller,datecontroller,context),
                 SizedBox(height: 15.h,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -118,7 +136,15 @@ class _register_pageState extends State<register_page> {
                     Text(AppStrings.YouHave.tr()),
                     InkWell(
                         onTap: () async {
-                          PersistentNavBarNavigator.pushNewScreen(context, screen: const login_page());
+                          Navigator.of(context, rootNavigator: true)
+                              .pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return login_page();
+                              },
+                            ),
+                                (_) => false,
+                          );
 
                         },
                         child: Text(" "+AppStrings.login.tr() ,style: getRegularStyle(color: ColorManager.primary),))

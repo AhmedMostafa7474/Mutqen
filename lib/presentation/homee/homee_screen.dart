@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mutqen/business/filterBloc/advisorfilter_cubit.dart';
 import 'package:mutqen/business/filterBloc/filter_cubit.dart';
 import 'package:mutqen/presentation/homee/Widget/EventCard.dart';
+import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:mutqen/resources/strings_manager.dart';
@@ -137,6 +138,20 @@ class _homee_pageState extends State<homee_page> {
 
                   },
                 ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    AppStrings.events.tr(),
+                    Icons.event,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (
+                          BlocProvider(
+                              create: (context) => FilterCubit(),
+                              child:events_page())
+                      ));
+                    },
+                  ),
                 SizedBox(
                   height: 10.h,
                 ),
@@ -165,6 +180,15 @@ class _homee_pageState extends State<homee_page> {
                     AppStrings.Logout.tr(),
                     Icons.logout,
                         () async {
+                          Navigator.of(context, rootNavigator: true)
+                              .pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return login_page();
+                              },
+                            ),
+                                (_) => false,
+                          );
                     },
                   ),
                 ],

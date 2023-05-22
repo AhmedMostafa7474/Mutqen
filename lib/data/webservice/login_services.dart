@@ -5,37 +5,47 @@ import 'package:http/http.dart' as http;
 import '../api_links.dart';
 class AuthServices
 {
-  Future<String> Signin (String username , String password)async
+  Future<http.Response?> Signin (String username , String password)async
   {
     print(username+ " "+password);
     http.Response response;
     try{
-       response = await http.post(Uri.parse(EndPoints().loginLink),headers: <String,String>{"Content-Type": "application/json"}
+       response = await http.post(Uri.parse(EndPoints().loginLink),
+           headers: <String,String>{"Content-Type": "application/json"}
       ,body: jsonEncode(
               <String, String>{
-                "username":  username,
+                "email":  username,
                 "password":   password
               }));
       print(response.statusCode);
-      return response.body;
+      return response;
     }
     catch(e)
     {
       print(e);
-      return "Error";
+      return null;
     }
   }
-  Future<http.Response?> register (String username , String email , int age , String password)async
+  Future<http.Response?> register (String name,String email,int city, String password ,String gender,String phone,String date)async
   {
     http.Response response;
     try{
-      response = await http.post(Uri.parse(EndPoints().registerLink),headers: <String,String>{"Content-Type": "application/json"}
+      response = await http.post(Uri.parse(EndPoints().registerLink),
+          headers: <String,String>{"Content-Type": "application/json"}
           ,body: jsonEncode(
               <String, dynamic>{
-                "name":  username,
-                "email":email,
-                "age": age,
-                "password": password
+                "user_data":{
+                  "email": email,
+                  "phone": phone,
+                  "password": password
+                },
+                "profile":{
+                  "name": name,
+                  "gender": gender,
+                  "birthDate": date,
+                  "country":65,
+                  "city": city
+                }
               }));
       print(response.statusCode);
       return response;

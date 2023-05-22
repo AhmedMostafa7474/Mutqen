@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/data/repo/login_repo.dart';
 import 'package:mutqen/data/webservice/login_services.dart';
@@ -25,17 +26,21 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return defaultButton(
         width: 300.w, function: () async {
+          EasyLoading.show(status: "جاري تسجيل الدخول");
       if (formKey.currentState!.validate()) {
         AuthServices authServices = AuthServices();
         var response = await SignInRepo(authServices).signIn(emailController.text, passwordController.text);
+        EasyLoading.dismiss();
         if(response is String)
         {
           showSnackBar(context: context, msg: response);
         }
         else
         {
-          showSnackBar(context: context, msg: "Login Success");
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> nav_screen()));
+          showSnackBar(context: context, msg: "Login Success",value: true);
+
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+              nav_screen()), (Route<dynamic> route) => false);
         }
       }
     }, text: AppStrings.login.tr(), txtColor: Colors.white, height: 50.h, fontSize: 18.sp);
