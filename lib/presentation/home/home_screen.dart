@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mutqen/app/app_pref.dart';
 import 'package:mutqen/presentation/contactUs/contact_screen.dart';
 import 'package:mutqen/presentation/home/homecard_screen.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
@@ -178,7 +179,7 @@ class _home_pageState extends State<home_page> {
                   buildListTile(
                     AppStrings.Logout.tr(),
                     Icons.logout,
-                        ()  {
+                        ()  async {
                           Navigator.of(context, rootNavigator: true)
                               .pushAndRemoveUntil(
                             MaterialPageRoute(
