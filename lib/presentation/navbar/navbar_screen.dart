@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mutqen/business/bloc_initialze.dart';
 import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/profile/profile_screen.dart';
@@ -30,7 +32,11 @@ class _nav_screenState extends State<nav_screen> {
   }
   @override
   Widget build(BuildContext context) {
-    return  PersistentTabView(
+    return  MultiBlocProvider(
+  providers: [
+    BlocProvider(create: (context) => blocGenerator().profileCubit)
+  ],
+  child: PersistentTabView(
         context,
         controller: _controller,
         screens: _buildScreens(),
@@ -61,12 +67,13 @@ class _nav_screenState extends State<nav_screen> {
         {
 
         },// Choose the nav bar style with this property.
-    );
+    ),
+);
   }
   List<Widget> _buildScreens() {
     return [
       homee_page(),
-      home_page(user),
+      home_page(),
       profile_page(),
     ];
   }

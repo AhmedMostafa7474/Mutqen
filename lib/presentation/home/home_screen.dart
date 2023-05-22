@@ -29,18 +29,14 @@ import '../profile/profile_screen.dart';
 import 'Widgets/main_drawer.dart';
 
 class home_page extends StatefulWidget {
-  User user;
-  home_page(this.user, {Key? key}) : super(key: key);
+  home_page( {Key? key}) : super(key: key);
 
   @override
-  State<home_page> createState() => _home_pageState(user);
+  State<home_page> createState() => _home_pageState();
 }
 
 class _home_pageState extends State<home_page> {
-  User user;
   final _advancedDrawerController = AdvancedDrawerController();
-
-  _home_pageState(this.user);
 
   @override
   Widget build(BuildContext context) {
