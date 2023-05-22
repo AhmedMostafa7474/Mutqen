@@ -2,15 +2,15 @@ class User {
   int? id;
   String? name;
   String? email;
-  int? age;
+  bool? activated;
 
-  User({this.id, this.name, this.email, this.age});
+  User({this.id, this.name, this.email, this.activated});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     email = json['email'];
-    age = json['age'];
+    activated = json['activated'];
   }
 
   Map<String, dynamic> toJson() {
@@ -18,7 +18,7 @@ class User {
     data['id'] = this.id;
     data['name'] = this.name;
     data['email'] = this.email;
-    data['age'] = this.age;
+    data['activated'] = this.activated;
     return data;
   }
 }

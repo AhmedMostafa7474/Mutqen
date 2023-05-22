@@ -1,8 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/app/app_pref.dart';
+import 'package:mutqen/business/bloc_initialze.dart';
+import 'package:mutqen/business/cityBloc/city_cubit.dart';
+import 'package:mutqen/data/repo/city_repo.dart';
 import 'package:mutqen/presentation/register/register_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
@@ -57,8 +61,10 @@ class _login_pageState extends State<login_page> {
                         style: getRegularStyle(color: Colors.black,fontSize: 18)),
                     InkWell(
                       onTap: () async {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>
-                            register_page()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> BlocProvider(
+  create: (context) => blocGenerator().cityCubit,
+  child: register_page(),
+)));
                       },
                         child: Text(" "+AppStrings.register.tr()
                           ,style: getRegularStyle(color: ColorManager.primary,fontSize: 18),))

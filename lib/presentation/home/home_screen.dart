@@ -178,13 +178,20 @@ class _home_pageState extends State<home_page> {
                   buildListTile(
                     AppStrings.Logout.tr(),
                     Icons.logout,
-                        () async {
-                          PersistentNavBarNavigator.pushNewScreen(context, screen: (const login_page()));
-
+                        ()  {
+                          Navigator.of(context, rootNavigator: true)
+                              .pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return login_page();
+                              },
+                            ),
+                                (_) => false,
+                          );
                         },
                   ),
-
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -225,7 +232,7 @@ class _home_pageState extends State<home_page> {
                       children: [
                         Container(
                           padding: const EdgeInsets.all(9.0),
-                          height: 205.h,
+                          height: 200.h,
                           width: 300.w,
                           decoration: BoxDecoration(boxShadow: [
                             BoxShadow(
