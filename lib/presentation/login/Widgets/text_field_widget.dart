@@ -33,6 +33,7 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
       ],
           borderRadius: BorderRadius.circular(15)),
       child: TextFormField(
+
         autovalidateMode: AutovalidateMode.onUserInteraction,
         maxLines:widget.multi? 5: 1,
         validator: (value) {
@@ -45,6 +46,11 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
             {
               return "قم يادخال بريد الكتروني صحيح" ;
             }
+          else if(value.length < 8 &&
+              widget.title == AppStrings.password.tr())
+          {
+            return "كلمه المرور يجب ان تكون ٨ احرف او اكثر" ;
+          }
           return null;
         },
         controller: widget.userNameController,

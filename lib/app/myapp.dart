@@ -67,7 +67,7 @@ class _MyAppState extends State<MyAppp> {
               backgroundColor: ColorManager.primary,
             )
           ),
-          home: login_page(),
+          home: MyCustomSplashScreen(),
         );
       },
     );

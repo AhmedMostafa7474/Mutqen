@@ -38,9 +38,9 @@ class _homee_pageState extends State<homee_page> {
 
   _homee_pageState();
   List<Widget> imgList = [
-    eventcard(230.h,300.w,events[0],0),
-    eventcard(230.h,300.w,events[1],1),
-    eventcard(230.h,300.w,events[2],2),
+    eventcard(220.h,300.w,events[0],0),
+    eventcard(220.h,300.w,events[1],1),
+    eventcard(220.h,300.w,events[2],2),
   ];
 
   @override
@@ -315,7 +315,8 @@ class _homee_pageState extends State<homee_page> {
                   child: advisors_page()));
                   },
                     text: "احجز جلستك الآن!", txtColor: ColorManager.white, height: 32.h,
-                    fontSize: 16.sp,background: Colors.orange),
+                    fontSize: 16.sp,background: ColorManager.yellow,borderColor: ColorManager.yellow
+                ),
               ),
               SizedBox(height: 30,)
             ],

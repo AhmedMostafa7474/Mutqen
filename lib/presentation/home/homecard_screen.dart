@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mutqen/data/model/exam.dart';
 import 'package:mutqen/presentation/exam/exam_screen.dart';
+import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -83,7 +84,7 @@ class _homecard_pageState extends State<homecard_page> {
                     PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page2(widget.examm));
 
               }, text: "اجراء المقياس", txtColor: Colors.white, height: 33.h, fontSize: 16.sp
-                  ,background: Color(0xFFE48A07)),
+                  ,background: ColorManager.yellow,borderColor: ColorManager.yellow),
               SizedBox(height: 15,),
               Text("الماده المعرفيه",style: TextStyle(
                   fontSize: 19.sp,

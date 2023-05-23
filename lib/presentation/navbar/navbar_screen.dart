@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mutqen/business/bloc_initialze.dart';
 import 'package:mutqen/presentation/home/home_screen.dart';
@@ -63,9 +64,12 @@ class _nav_screenState extends State<nav_screen> {
           duration: Duration(milliseconds: 200),
         ),
         navBarStyle: NavBarStyle.simple,
-        onItemSelected: (int)
+        onItemSelected: (index)
         {
-
+          if (index == 2)
+            {
+              EasyLoading.show(status: "جاري تحميل الصفحه الشخصيه");
+            }
         },// Choose the nav bar style with this property.
     ),
 );

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/navbar/navbar_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import '../../resources/assets_manager.dart';
@@ -51,7 +52,7 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
 
     Timer(Duration(seconds: 4), () {
       setState(() {
-        Navigator.pushReplacement(context, PageTransition(nav_screen()));
+        Navigator.pushReplacement(context, PageTransition(login_page()));
       });
     });
   }

@@ -144,10 +144,9 @@ class _advisors_pageState extends State<advisors_page> {
                             child: FadeInAnimation(
                               child: Stack(
                                 children: [
-                                  UnconstrainedBox(
-                                    child: Container(
+                                Container(
                                       padding: const EdgeInsets.all(9.0),
-                                      height: 250.h,
+                                      height: 240.h,
                                       width: 170.w,
                                       decoration: BoxDecoration(
                                         color: Colors.white,
@@ -246,14 +245,13 @@ class _advisors_pageState extends State<advisors_page> {
                                          )
                                         ],
                                       ),
-                                    ),
                                   ),
                                   isloading? Shimmer.fromColors(
                                     highlightColor: Colors.grey[100]! ,
                                     baseColor: Colors.grey[300]!,
                                     child: Container(
-                                      height: 90.h,
-                                      width: 90.w,
+                                      height: 95.sp,
+                                      width: 95.sp,
                                       decoration: BoxDecoration(
                                         color: Colors.grey[300]!,
                                         borderRadius: BorderRadius.circular(100),

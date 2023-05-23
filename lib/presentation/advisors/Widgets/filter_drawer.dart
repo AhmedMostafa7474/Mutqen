@@ -60,7 +60,7 @@ class _Advisor_Filter_DrawerState extends State<Advisor_Filter_Drawer> {
                   value: selected.contains(widget.filterdataa[index].subtitles[index1]),
                   onChanged:
                       (value){
-                        filteradvisors.clear();
+                    filteradvisors.clear();
                     value! == true ? context.read<AdvisorfilterCubit>().add(widget.filterdataa[index].subtitles[index1]):
                     context.read<AdvisorfilterCubit>().delete(widget.filterdataa[index].subtitles[index1]);
                     advisors.forEach((element) {
@@ -80,7 +80,7 @@ class _Advisor_Filter_DrawerState extends State<Advisor_Filter_Drawer> {
                   ,title: Text(widget.filterdataa[index].subtitles[index1],
                   style: TextStyle(color: ColorManager.primary
                       ,
-                      fontSize: 18.sp),)
+                      fontSize: 15.sp),)
                   ,
                 );
 

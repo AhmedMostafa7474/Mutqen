@@ -24,14 +24,7 @@ PreferredSizeWidget getAppBarWidgetWithNotificationIcon(String title,BuildContex
       )
     ],
     backgroundColor: ColorManager.primary,
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children:  [
-        Container(
-          child: Text(title),
-        ),
-
-      ],
-    ),
+    centerTitle: true,
+    title:  Text(title),
   );
 }

@@ -76,7 +76,7 @@ class _Filter_DrawerState extends State<Filter_Drawer> {
               ,title: Text(widget.filterdataa[index].subtitles[index1],
               style: TextStyle(color: ColorManager.primary
                   ,
-                  fontSize: 18.sp),)
+                  fontSize: 15.sp),)
               ,
             );
 

@@ -39,8 +39,8 @@ class _advisordetails_pageState extends State<advisordetails_page> {
                 child: Hero(
                     tag: "Hero2"+widget.index.toString(),
                     child: Container(
-                      height: 120,
-                      width: 120,
+                      height: 115.sp,
+                      width: 115.sp,
                       decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
