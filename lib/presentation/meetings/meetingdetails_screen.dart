@@ -66,8 +66,8 @@ class _meetingdetails_pageState extends State<meetingdetails_page> {
                 child: Hero(
                     tag: "Hero3"+widget.index.toString(),
                     child: Container(
-                      height: 80 ,
-                      width: 80,
+                      height: 110.sp ,
+                      width: 110.sp,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100),
                           image: DecorationImage(image: AssetImage(ImageAssets.meetingimage))

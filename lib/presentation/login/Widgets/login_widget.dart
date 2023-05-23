@@ -26,18 +26,20 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return defaultButton(
         width: 300.w, function: () async {
-          EasyLoading.show(status: "جاري تسجيل الدخول");
       if (formKey.currentState!.validate()) {
+        EasyLoading.show(status: "جاري تسجيل الدخول");
         AuthServices authServices = AuthServices();
-        var response = await SignInRepo(authServices).signIn(emailController.text, passwordController.text);
+        var response = await SignInRepo(authServices).signIn(emailController.text,
+            passwordController.text);
         EasyLoading.dismiss();
         if(response is String)
         {
-          showSnackBar(context: context, msg: response);
+          showSnackBar(context: context, msg: "يوجد خطأ في البريد الالكتروني او كلمه المرور");
         }
         else
         {
-          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) =>
               nav_screen()), (Route<dynamic> route) => false);
         }
       }

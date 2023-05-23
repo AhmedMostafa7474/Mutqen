@@ -16,7 +16,9 @@ import '../../resources/assets_manager.dart';
 import '../../resources/common_widgets/button_widget.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/style_manager.dart';
+import '../login/Widgets/country_picker_widget.dart';
 import '../login/Widgets/drop_down_widget.dart';
+import '../login/Widgets/phone_number_widget.dart';
 import '../login/Widgets/text_field_widget.dart';
 import '../register/Widgets/register_data.dart';
 
@@ -34,13 +36,13 @@ class _profile_pageState extends State<profile_page> {
   var usernamecontroller = TextEditingController();
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
-  var collegeController = TextEditingController();
+  var countrycontroller = TextEditingController();
+  var phonecontroller = TextEditingController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    EasyLoading.show(status: "جاري تحميل الصفحه الشخصيه");
     Load();
   }
   Future<void> Load()
@@ -60,22 +62,47 @@ class _profile_pageState extends State<profile_page> {
               EasyLoading.dismiss();
               usernamecontroller.text = state.profile!.name;
               emailcontroller.text = state.profile!.user.email;
-              collegeController.text = state.profile!.gender;
-
               return SingleChildScrollView(
                 child: Form(
                   key: formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 150.h,
-                        child: InkWell(
-                            onTap: () {
-                              pickImageFromGallery().then((file) {});
-                            },
-                            child: Image.asset(ImageAssets.smallLogo,
-                                height: 200.h, width: 200.w)),
+                      SizedBox(height: 20,),
+                      InkWell(
+                        onTap: () {
+                          pickImageFromGallery().then((file) {});
+                        },
+                        child: Container(
+                    height: 110.sp,
+                    width: 110.sp,
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(100),
+                        image: DecorationImage(image: AssetImage(ImageAssets.realimage))
+                    ),
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Container(
+                              padding: EdgeInsets.only(top: 30),
+                              decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  borderRadius:BorderRadius.circular(100)
+                              ),
+                              child: Icon(
+                                Icons.photo_camera,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                      ),
                       ),
                       Text_Field_Widget(
                           usernamecontroller,
@@ -95,33 +122,27 @@ class _profile_pageState extends State<profile_page> {
                       SizedBox(
                         height: 5.h,
                       ),
-                      Text_Field_Widget(
-                          passwordcontroller, AppStrings.password.tr(),
-                          Icons.lock, AppStrings.pleaseEnterYourUserName.tr(),
-                          true),
+                      PhoneNumber_widget(phonecontroller),
+                      SizedBox(height: 8.h,),
+                      Country_Picker_Widget(countrycontroller, AppStrings.country.tr(), Icons.flag, AppStrings.pleaseEnterYourUserName.tr()),
                       SizedBox(
                         height: 5.h,
                       ),
-                      Drop_Down_Widget(
-                          collegeController,
-                          AppStrings.college.tr(),
-                          Icons.school,
-                          AppStrings.pleaseEnterYourUserName.tr(),
-                          collegeitems),
                       SizedBox(
                         height: 20.h,
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                         child: defaultButton(
-                            width: 300.w,
+                            width: 200.w,
                             function: () async {
                               if (formKey.currentState!.validate()) {}
                             },
-                            text: "تعديل",
+                            text: "حفظ",
                             txtColor: Colors.white,
                             height: 50.h,
-                            fontSize: 18.sp),
+                            fontSize: 20.sp
+                        ),
                       ),
                     ],
                   ),
