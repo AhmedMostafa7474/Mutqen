@@ -6,7 +6,7 @@ defaultBottomSheet(ctxt,int index){
   showModalBottomSheet(
       context: ctxt,
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
       builder: (context)
       {
         return Container(
@@ -26,7 +26,7 @@ defaultBottomSheet(ctxt,int index){
                     shrinkWrap: true,
                     separatorBuilder: (BuildContext context, int index) {
                       return SizedBox(
-                        height: 8.h,
+                        height: 5.h,
                       );
                     },
                     itemCount: list.length, itemBuilder: (BuildContext context, int index) {

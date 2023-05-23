@@ -5,6 +5,7 @@ class AppStrings {
   static String age = "age";
   static String country = "country";
   static String college = "college";
+  static String collegenumber = "collegenumber";
   static String university = "university";
   static String studentyear = "studentyear";
   static String gender = "gender";

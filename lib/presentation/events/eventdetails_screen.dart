@@ -88,7 +88,7 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                                           ? Drop_Down_Widget(
                                           universitycontroller,
                                           AppStrings.university.tr(),
-                                          Icons.school,
+                                          Icons.account_balance_rounded,
                                           AppStrings.pleaseEnterYourUserName
                                               .tr(), countryitems)
                                           :
@@ -102,7 +102,7 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                                       (workcontroller.text == "طالب جامعي")
                                           ?Drop_Down_Widget(yearcontroller,
                                           AppStrings.studentyear.tr(),
-                                          Icons.school,
+                                          Icons.date_range,
                                           AppStrings.pleaseEnterYourUserName
                                               .tr(), countryitems):SizedBox(),
                                       SizedBox(height: 12,),
