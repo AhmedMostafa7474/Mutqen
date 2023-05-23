@@ -26,92 +26,112 @@ class _result_page2State extends State<result_page2> {
       child: Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon("نتيجه وازن", context),
         body: Container(
-          padding: EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(top: 20),
           child: ListView.separated(
-            padding:  EdgeInsets.only(bottom: 20),
+            padding: const EdgeInsets.only(bottom: 20),
             itemCount: wazenresults.length,
             itemBuilder: (BuildContext context, int index) {
               return UnconstrainedBox(
                 child: InkWell(
-                  onTap: (){
-             //       PersistentNavBarNavigator.pushNewScreen(context, screen: resultdetails_page(results[index]));
-             showModalBottomSheet(
-             context: context,
-             builder: (context)
-             {
-               return SingleChildScrollView(
-                 child: Column(
-                     children: [
-                       Padding(
-                         padding: const EdgeInsets.all(12.0),
-                         child: Center(child: Text(" وسائل لتنمية "+wazenresults[index].title,style: TextStyle(
-                           fontSize: 18.sp,
-                           color: wazenresults[index].color
-                         ),),),
-                       ),
-                       ListView.separated(
-                         physics: NeverScrollableScrollPhysics(),
-                           shrinkWrap: true,
-                           separatorBuilder: (BuildContext context, int index) {
-                             return SizedBox(
-                               height: 8,
-                             );
-                           },
-                           itemCount: list.length, itemBuilder: (BuildContext context, int index) {
-                         return ListTile(
-                           leading: Text((index+1).toString(),style: TextStyle(
-                               fontSize: 17.sp
-                           )),
-                           title: Text(list[index],style: TextStyle(
-                             fontSize: 17.sp
-                           ),),
-                         );
-                       },),
-                       SizedBox(height: 50,)
-                     ]
-                 ),
-               );
-             }
-             );
+                  onTap: () {
+                    //       PersistentNavBarNavigator.pushNewScreen(context, screen: resultdetails_page(results[index]));
+                    showModalBottomSheet(
+                        shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(30))),
+                        context: context,
+                        builder: (context) {
+                          return SingleChildScrollView(
+                            child: Column(children: [
+                              Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Center(
+                                  child: Text(
+                                    " وسائل لتنمية " +
+                                        wazenresults[index].title,
+                                    style: TextStyle(
+                                        fontSize: 18.sp,
+                                        color: wazenresults[index].color),
+                                  ),
+                                ),
+                              ),
+                              ListView.separated(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                separatorBuilder:
+                                    (BuildContext context, int index) {
+                                  return SizedBox(
+                                    height: 5.h,
+                                  );
+                                },
+                                itemCount: list.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return ListTile(
+                                    leading: Text((index + 1).toString(),
+                                        style: TextStyle(fontSize: 16.sp)),
+                                    title: Text(
+                                      list[index],
+                                      style: TextStyle(fontSize: 16.sp),
+                                    ),
+                                  );
+                                },
+                              ),
+                              SizedBox(
+                                height: 30.h,
+                              )
+                            ]),
+                          );
+                        });
                   },
                   child: Container(
                     padding: EdgeInsets.all(9.0),
                     height: 110.h,
                     width: 300.w,
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.2),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: const Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
                         color: Colors.white70,
                         borderRadius: BorderRadius.circular(15)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(height: 8,),
-                            Text(wazenresults[index].title,style: TextStyle(
-                                    color: wazenresults[index].color,
-                                    fontSize: 15.sp
-                                ),),
-                            SizedBox(height: 30.h,),
-                            Container(
-                              child:
-                              LinearPercentIndicator(
-                                width: 280.w,
-                                animation: true,
-                                lineHeight: 23.h,
-                                animationDuration: 2500,
-                                percent: wazenresults[index].res/100,
-                                center: Text(wazenresults[index].res.toString()+"%"),
-                                barRadius: Radius.circular(8),
-                                  linearGradient: LinearGradient(colors:
-                                  [results[index].color.withOpacity(0.3),results[index].color.withOpacity(0.6),results[index].color])
-                              ),
+                        SizedBox(
+                          height: 6.h,
                         ),
-                        SizedBox(height: 8,),
+                        Text(
+                          wazenresults[index].title,
+                          style: TextStyle(
+                              color: wazenresults[index].color,
+                              fontSize: 15.sp),
+                        ),
+                        SizedBox(
+                          height: 30.h,
+                        ),
+                        Container(
+                          child: LinearPercentIndicator(
+                              width: 280.w,
+                              animation: true,
+                              lineHeight: 23.h,
+                              animationDuration: 2600,
+                              percent: wazenresults[index].res / 100,
+                              center: Text(
+                                  wazenresults[index].res.toString() + "%"),
+                              barRadius: Radius.circular(8),
+                              linearGradient: LinearGradient(colors: [
+                                results[index].color.withOpacity(0.3),
+                                results[index].color.withOpacity(0.6),
+                                results[index].color
+                              ])),
+                        ),
+                        SizedBox(
+                          height: 6.h,
+                        ),
                       ],
                     ),
                   ),
@@ -120,10 +140,11 @@ class _result_page2State extends State<result_page2> {
             },
             separatorBuilder: (BuildContext context, int index) {
               return SizedBox(
-                height: 18,
+                height: 15.h,
               );
-            },),
-        ) ,
+            },
+          ),
+        ),
       ),
     );
   }

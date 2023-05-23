@@ -106,18 +106,20 @@ class _homee_pageState extends State<homee_page> {
                         ImageAssets.smallLogo,height: 200.h, width: 200.w
                     ),
                   ),
-                  buildListTile(
-                    AppStrings.home.tr(),
-                    CupertinoIcons.home,
-                        () {
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
+                  // buildListTile(
+                  //   AppStrings.home.tr(),
+                  //   CupertinoIcons.home,
+                  //       () {
+                  //         PersistentNavBarNavigator.pushNewScreen(context, screen: (homee_page()));
+                  //
+                  //       },
+                  // ),
+                  // SizedBox(
+                  //   height: 10.h,
+                  // ),
                   buildListTile(
                     AppStrings.advisors.tr(),
-                    FontAwesomeIcons.listCheck,
+                    Icons.groups_rounded,
                         () {
 
                       PersistentNavBarNavigator.pushNewScreen(context, screen:
@@ -184,7 +186,7 @@ class _homee_pageState extends State<homee_page> {
                               .pushAndRemoveUntil(
                             MaterialPageRoute(
                               builder: (BuildContext context) {
-                                return login_page();
+                                return const login_page();
                               },
                             ),
                                 (_) => false,
@@ -300,8 +302,6 @@ class _homee_pageState extends State<homee_page> {
                         style: getBoldtStyle(
                           color: Colors.black54,fontSize: 12.sp,
                         ),),
-
-
 
                     ],
                   ),
