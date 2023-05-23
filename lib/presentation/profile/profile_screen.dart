@@ -61,6 +61,7 @@ class _profile_pageState extends State<profile_page> {
               usernamecontroller.text = state.profile!.name;
               emailcontroller.text = state.profile!.user.email;
               collegeController.text = state.profile!.gender;
+
               return SingleChildScrollView(
                 child: Form(
                   key: formKey,
