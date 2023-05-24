@@ -29,5 +29,9 @@ class AppStrings {
   static String events = "events";
   static String work = "work";
   static String city = "city";
-
+  static String didyouforget = "didyouforget";
+  static String oldPassword = "oldPassword";
+  static String newPassword = "newPassword";
+  static String reEnterNewPassword = "reEnterNewPassword";
+  static String secondaryEmail = "secondaryEmail";
 }

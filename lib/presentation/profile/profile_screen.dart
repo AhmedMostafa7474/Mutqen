@@ -11,10 +11,13 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mutqen/business/profileBloc/profile_cubit.dart';
 import 'package:mutqen/business/profileBloc/profile_cubit.dart';
 import 'package:mutqen/data/api_links.dart';
+import 'package:mutqen/presentation/profile/forgetPassword/forgetPassword_screen.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../business/cityBloc/city_cubit.dart';
 import '../../resources/assets_manager.dart';
+import '../../resources/color_manager.dart';
 import '../../resources/common_widgets/button_widget.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/style_manager.dart';
@@ -39,7 +42,6 @@ class _profile_pageState extends State<profile_page> {
   var imagee ;
   var usernamecontroller = TextEditingController();
   var emailcontroller = TextEditingController();
-  var passwordcontroller = TextEditingController();
   var countrycontroller = TextEditingController();
   var phonecontroller = TextEditingController();
   var citycontroller = TextEditingController();
@@ -57,7 +59,8 @@ class _profile_pageState extends State<profile_page> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+      Scaffold(
       appBar:
       getAppBarWidgetWithNotificationIcon(AppStrings.profile.tr(), context),
       body: SafeArea(
@@ -105,11 +108,12 @@ class _profile_pageState extends State<profile_page> {
                              )
                     ),
                           child: Align(
+
                             alignment: Alignment.bottomCenter,
                             child: Container(
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius:BorderRadius.circular(100)
+                                   borderRadius:BorderRadius.circular(20)
                               ),
                               child: Icon(
                                 Icons.photo_camera,
@@ -173,6 +177,22 @@ class _profile_pageState extends State<profile_page> {
                       ),
                       SizedBox(
                         height: 20.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(AppStrings.didyouforget.tr(),
+                            style: getRegularStyle(color: Colors.black,fontSize: 16.sp),),
+                          InkWell(
+                              onTap: () async {
+                                PersistentNavBarNavigator.pushNewScreen(context, screen:
+                                const forgetPassword_page());
+                              },
+                              child: Text(" "+AppStrings.password.tr()+" ؟" ,
+                                style: getRegularStyle(color: ColorManager.primary),
+                              ),)
+
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
