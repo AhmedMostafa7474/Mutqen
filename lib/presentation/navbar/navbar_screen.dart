@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -69,6 +71,9 @@ class _nav_screenState extends State<nav_screen> {
           if (index == 2)
             {
               EasyLoading.show(status: "جاري تحميل الصفحه الشخصيه");
+              Timer(Duration(seconds: 3), () {
+                EasyLoading.dismiss();
+              });
             }
         },// Choose the nav bar style with this property.
     ),
