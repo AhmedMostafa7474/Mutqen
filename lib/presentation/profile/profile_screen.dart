@@ -56,6 +56,7 @@ class _profile_pageState extends State<profile_page> {
       appBar:
       getAppBarWidgetWithNotificationIcon(AppStrings.profile.tr(), context),
       body: SafeArea(
+
         child: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if(state is ProfileLoaded){
