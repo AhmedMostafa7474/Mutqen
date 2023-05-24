@@ -159,9 +159,6 @@ class _profile_pageState extends State<profile_page> {
             }
             else
               {
-                Timer(Duration(seconds: 3), () {
-                  EasyLoading.dismiss();
-                });
                 return Container();
               }
 
