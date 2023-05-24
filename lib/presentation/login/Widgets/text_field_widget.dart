@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart' as local;
 
 class Text_Field_Widget extends StatefulWidget {
   final  TextEditingController userNameController;
+  final TextEditingController? passwordController;
   final String title ;
   final IconData iconData ;
   final String validate;
@@ -18,7 +19,7 @@ class Text_Field_Widget extends StatefulWidget {
    Text_Field_Widget(this.userNameController,this.title ,
        this.iconData ,this.validate, this.obscure,
        {Key? key,this.multi =false,this.readonly = true,this.align=TextAlign.start
-         ,this.alignmentDirectional = TextDirection.rtl}) : super(key: key);
+         ,this.alignmentDirectional = TextDirection.rtl,this.passwordController}) : super(key: key);
 
   @override
   State<Text_Field_Widget> createState() => _Text_Field_WidgetState();
@@ -59,6 +60,12 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
           {
             return "كلمه المرور يجب ان تكون ٨ احرف او اكثر" ;
           }
+          else if(widget.title == AppStrings.reEnterNewPassword.tr()
+          && widget.userNameController.text != widget.passwordController?.text)
+          {
+            return "كلمه المرور غير متطابقه" ;
+          }
+
           return null;
         },
         controller: widget.userNameController,
