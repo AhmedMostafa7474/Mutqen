@@ -20,7 +20,7 @@ class ImageAssets {
   static  String Anmotqen = "$IMAGE_PATH/Anmotqen.png";
   static  String About = "$IMAGE_PATH/Picture11.png";
   static  String realimage = "$IMAGE_PATH/realimage.jpg";
-
+  static  String placeholder = "$IMAGE_PATH/placeholder.jpg";
 
 
 }

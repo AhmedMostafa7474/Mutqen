@@ -40,8 +40,8 @@ class SignInRepo {
   }
 
 
-  Future<String> register(String name, String email, int city, String password,
-      String gender, String phone, String date) async {
+  Future<String> register(String name, String email, String city, String password,
+      String gender, String phone, String date,String country) async {
     var response = await authServices.register(
         name,
         email,
@@ -49,7 +49,8 @@ class SignInRepo {
         password,
         gender,
         phone,
-        date);
+        date,
+    country);
     if (response != null) {
       if (response.statusCode == 201) {
         return "Success";

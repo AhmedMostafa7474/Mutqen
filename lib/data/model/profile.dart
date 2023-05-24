@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final profile = profileFromJson(jsonString);
+
 import 'dart:convert';
 
 Profile profileFromJson(String str) => Profile.fromJson(json.decode(str));
@@ -7,6 +11,8 @@ String profileToJson(Profile data) => json.encode(data.toJson());
 class Profile {
   int id;
   User user;
+  City country;
+  City city;
   String name;
   dynamic firstName;
   dynamic lastName;
@@ -19,14 +25,14 @@ class Profile {
   dynamic profilePicture;
   DateTime createdAt;
   DateTime updatedAt;
-  int country;
-  int city;
   dynamic university;
   dynamic college;
 
   Profile({
     required this.id,
     required this.user,
+    required this.country,
+    required this.city,
     required this.name,
     this.firstName,
     this.lastName,
@@ -39,8 +45,6 @@ class Profile {
     this.profilePicture,
     required this.createdAt,
     required this.updatedAt,
-    required this.country,
-    required this.city,
     this.university,
     this.college,
   });
@@ -48,6 +52,8 @@ class Profile {
   factory Profile.fromJson(Map<String, dynamic> json) => Profile(
     id: json["id"],
     user: User.fromJson(json["user"]),
+    country: City.fromJson(json["country"]),
+    city: City.fromJson(json["city"]),
     name: json["name"],
     firstName: json["firstName"],
     lastName: json["lastName"],
@@ -60,8 +66,6 @@ class Profile {
     profilePicture: json["profile_picture"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
-    country: json["country"],
-    city: json["city"],
     university: json["university"],
     college: json["college"],
   );
@@ -69,6 +73,8 @@ class Profile {
   Map<String, dynamic> toJson() => {
     "id": id,
     "user": user.toJson(),
+    "country": country.toJson(),
+    "city": city.toJson(),
     "name": name,
     "firstName": firstName,
     "lastName": lastName,
@@ -81,10 +87,44 @@ class Profile {
     "profile_picture": profilePicture,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
-    "country": country,
-    "city": city,
     "university": university,
     "college": college,
+  };
+}
+
+class City {
+  int id;
+  City? country;
+  String nameEn;
+  String nameAr;
+  String nameFr;
+  String code;
+
+  City({
+    required this.id,
+    this.country,
+    required this.nameEn,
+    required this.nameAr,
+    required this.nameFr,
+    required this.code,
+  });
+
+  factory City.fromJson(Map<String, dynamic> json) => City(
+    id: json["id"],
+    country: json["country"] == null ? null : City.fromJson(json["country"]),
+    nameEn: json["name_en"],
+    nameAr: json["name_ar"],
+    nameFr: json["name_fr"],
+    code: json["code"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "country": country?.toJson(),
+    "name_en": nameEn,
+    "name_ar": nameAr,
+    "name_fr": nameFr,
+    "code": code,
   };
 }
 

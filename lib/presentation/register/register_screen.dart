@@ -36,6 +36,7 @@ class _register_pageState extends State<register_page> {
   var gendercontroller = TextEditingController();
   var datecontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
+  var councontroller = TextEditingController();
   @override
   void initState() {
     // TODO: implement initState
@@ -69,7 +70,9 @@ class _register_pageState extends State<register_page> {
                 BlocBuilder<CityCubit, CityState>(
                 builder: (context, state) {
                   if(state is CityLoaded) {
-                    return Drop_Down_Widget(citycontroller,
+                    councontroller.text= state.cities[0].countryId.toString();
+                    print(councontroller.text + "^^^^^^^");
+                   return Drop_Down_Widget(citycontroller,
                         AppStrings.city.tr(), Icons.location_city,
                         AppStrings.pleaseEnterYourUserName.tr(),[],cities:state.cities);
                   }
@@ -81,9 +84,8 @@ class _register_pageState extends State<register_page> {
                 SizedBox(height: 8.h,),
                 Date_Picker_Widget(datecontroller, AppStrings.birthday.tr(), Icons.date_range,
                     AppStrings.pleaseEnterYourUserName.tr()),
-                PhoneNumber_widget(phonecontroller),
+                PhoneNumber_widget(phonecontroller,AppStrings.pleaseEnterYourUserName.tr(),"رقم الهاتف"),
                 SizedBox(height: 8.h,),
-
                 Align(
               alignment: Alignment.centerRight,
               child: Padding(
@@ -109,7 +111,7 @@ class _register_pageState extends State<register_page> {
                     },
                   ),
                 ),
-                
+
                 Expanded(
                   child: RadioListTile(
                     activeColor: ColorManager.primary,
@@ -127,8 +129,39 @@ class _register_pageState extends State<register_page> {
             ),
                 Text_Field_Widget(passwordcontroller,AppStrings.password.tr(),Icons.password,AppStrings.pleaseEnterYourUserName.tr(),true),
                 SizedBox(height: 15.h,),
-                RegisterButton(formKey,usernamecontroller,emailcontroller,citycontroller,passwordcontroller,
-                    gendercontroller,phonecontroller,datecontroller,context),
+                BlocBuilder<CityCubit, CityState>(
+                builder: (context, state) {
+                  if(state is CityLoaded) {
+                    councontroller.text = state.cities[0].countryId.toString();
+                    print("here");
+                    return RegisterButton(
+                        formKey,
+                        usernamecontroller,
+                        emailcontroller,
+                        citycontroller,
+                        passwordcontroller,
+                        gendercontroller,
+                        phonecontroller,
+                        datecontroller,
+                        context,
+                        councontroller);
+                  }
+                else {
+                    return RegisterButton(
+                        formKey,
+                        usernamecontroller,
+                        emailcontroller,
+                        citycontroller,
+                        passwordcontroller,
+                        gendercontroller,
+                        phonecontroller,
+                        datecontroller,
+                        context,
+                        councontroller);
+                  }
+                },
+              ),
+
                 SizedBox(height: 15.h,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -136,6 +169,7 @@ class _register_pageState extends State<register_page> {
                     Text(AppStrings.YouHave.tr()),
                     InkWell(
                         onTap: () async {
+                          print(councontroller.text +"&&&&&");
                           Navigator.of(context, rootNavigator: true)
                               .pushAndRemoveUntil(
                             MaterialPageRoute(

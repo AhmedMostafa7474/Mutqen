@@ -42,7 +42,6 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
       ],
           borderRadius: BorderRadius.circular(15)),
       child: DropdownButtonFormField<dynamic>(
-
         validator: (value) {
           shadowshowen = false;
           if (value == null ) {
@@ -73,30 +72,25 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
           widget.bottomkey!.currentState!.setState(() {
           });
         }
-      },
-          items: widget.items.isNotEmpty ? widget.items.map((String items) {
+      }, items: widget.items.isNotEmpty ? widget.items.map((String items) {
             return DropdownMenuItem(
               value: items,
               child: Text(items),
 
             );
-
           }).toList() :
           widget.cities.map((City item) {
             return DropdownMenuItem(
-              value: item.id,
+              value: widget.cities.length ==1 || widget.cities[0] == item? 3889 : item.id,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(item.name),
+                  Text(widget.cities.length ==1 || widget.cities[0] == item? "اخري": item.name),
                 ],
               ),
             );
-
           }).toList()
-
       ),
     );
   }
-
 }
