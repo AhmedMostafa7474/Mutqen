@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' as local;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -62,6 +62,8 @@ class _profile_pageState extends State<profile_page> {
               EasyLoading.dismiss();
               usernamecontroller.text = state.profile!.name;
               emailcontroller.text = state.profile!.user.email;
+              // countrycontroller.text = state.profile!.country;
+               phonecontroller.text =state.profile!.user.phone;
               return SingleChildScrollView(
                 child: Form(
                   key: formKey,
@@ -109,7 +111,7 @@ class _profile_pageState extends State<profile_page> {
                           AppStrings.userName.tr(),
                           Icons.person,
                           AppStrings.pleaseEnterYourUserName.tr(),
-                          false),
+                          false,readonly: false,),
                       SizedBox(
                         height: 5.h,
                       ),
@@ -118,11 +120,17 @@ class _profile_pageState extends State<profile_page> {
                           AppStrings.email.tr(),
                           Icons.email,
                           AppStrings.pleaseEnterYourUserName.tr(),
-                          false),
+                          false,readonly: false,),
                       SizedBox(
                         height: 5.h,
                       ),
-                      PhoneNumber_widget(phonecontroller),
+                      Text_Field_Widget(
+                          phonecontroller,
+                          "رقم الهاتف",
+                          Icons.phone,
+                          AppStrings.pleaseEnterYourUserName.tr(),
+                          false,align: TextAlign.end,
+                      alignmentDirectional: TextDirection.ltr),
                       SizedBox(height: 8.h,),
                       Country_Picker_Widget(countrycontroller, AppStrings.country.tr(), Icons.flag, AppStrings.pleaseEnterYourUserName.tr()),
                       SizedBox(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mutqen/resources/strings_manager.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' as local;
 
 class Text_Field_Widget extends StatefulWidget {
   final  TextEditingController userNameController;
@@ -10,9 +10,15 @@ class Text_Field_Widget extends StatefulWidget {
   final String validate;
   bool obscure;
   bool multi ;
+  bool readonly;
+  TextAlign align;
+  TextDirection alignmentDirectional;
+
 
    Text_Field_Widget(this.userNameController,this.title ,
-       this.iconData ,this.validate, this.obscure, {Key? key,this.multi =false}) : super(key: key);
+       this.iconData ,this.validate, this.obscure,
+       {Key? key,this.multi =false,this.readonly = true,this.align=TextAlign.start
+         ,this.alignmentDirectional = TextDirection.rtl}) : super(key: key);
 
   @override
   State<Text_Field_Widget> createState() => _Text_Field_WidgetState();
@@ -33,9 +39,11 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
       ],
           borderRadius: BorderRadius.circular(15)),
       child: TextFormField(
-
+        textAlign: widget.align,
+        textDirection: widget.alignmentDirectional,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         maxLines:widget.multi? 5: 1,
+        enabled: widget.readonly,
         validator: (value) {
           shadowshowen = false;
           if (value == null || value.isEmpty) {
@@ -55,7 +63,8 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
         },
         controller: widget.userNameController,
         obscureText: widget.obscure,
-        textInputAction: widget.title == AppStrings.password.tr() ? TextInputAction.done:TextInputAction.next,
+        textInputAction: widget.title == AppStrings.password.tr() ?
+        TextInputAction.done:TextInputAction.next,
         decoration: InputDecoration(
             labelText: widget.title,
             fillColor: Colors.white,
