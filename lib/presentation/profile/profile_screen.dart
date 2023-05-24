@@ -10,8 +10,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mutqen/business/profileBloc/profile_cubit.dart';
 import 'package:mutqen/business/profileBloc/profile_cubit.dart';
+import 'package:mutqen/data/api_links.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
 
+import '../../business/cityBloc/city_cubit.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/common_widgets/button_widget.dart';
 import '../../resources/strings_manager.dart';
@@ -30,14 +32,17 @@ class profile_page extends StatefulWidget {
 }
 
 class _profile_pageState extends State<profile_page> {
-  File? image;
+  String ?image ;
   var imagePicker = ImagePicker();
   final formKey = GlobalKey<FormState>();
+  String countryid = "";
+  var imagee ;
   var usernamecontroller = TextEditingController();
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
   var countrycontroller = TextEditingController();
   var phonecontroller = TextEditingController();
+  var citycontroller = TextEditingController();
 
   @override
   void initState() {
@@ -56,15 +61,17 @@ class _profile_pageState extends State<profile_page> {
       appBar:
       getAppBarWidgetWithNotificationIcon(AppStrings.profile.tr(), context),
       body: SafeArea(
-
         child: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if(state is ProfileLoaded){
               EasyLoading.dismiss();
-              usernamecontroller.text = state.profile!.name;
-              emailcontroller.text = state.profile!.user.email;
-              // countrycontroller.text = state.profile!.country;
+               usernamecontroller.text = state.profile!.name;
+               print(state.profile!.name);
+               emailcontroller.text = state.profile!.user.email;
+               countrycontroller.text = state.profile!.country.nameAr;
                phonecontroller.text =state.profile!.user.phone;
+               citycontroller.text =state.profile!.city.nameAr;
+               imagee = state.profile!.profilePicture == null ? AssetImage(ImageAssets.placeholder): NetworkImage(baseLink + state.profile!.profilePicture);
               return SingleChildScrollView(
                 child: Form(
                   key: formKey,
@@ -89,14 +96,19 @@ class _profile_pageState extends State<profile_page> {
                           ),
                         ],
                         borderRadius: BorderRadius.circular(100),
-                        image: DecorationImage(image: AssetImage(ImageAssets.realimage))
+                        image: DecorationImage(image: imagee,
+                          onError: (Object e, StackTrace? stackTrace) {
+                            imagee = AssetImage(ImageAssets.placeholder);
+                            setState(() {
+                            });
+                          },
+                             )
                     ),
                           child: Align(
                             alignment: Alignment.bottomCenter,
                             child: Container(
-                              padding: EdgeInsets.only(top: 30),
                               decoration: BoxDecoration(
-                                  color: Colors.transparent,
+                                  color: Colors.white,
                                   borderRadius:BorderRadius.circular(100)
                               ),
                               child: Icon(
@@ -136,6 +148,28 @@ class _profile_pageState extends State<profile_page> {
                       Country_Picker_Widget(countrycontroller, AppStrings.country.tr(), Icons.flag, AppStrings.pleaseEnterYourUserName.tr()),
                       SizedBox(
                         height: 5.h,
+                      ),
+                      BlocBuilder<CityCubit, CityState>(
+                      builder: (context, state) {
+                        if (state is CityLoaded) {
+                          countryid = state.cities[0].countryId.toString();
+                          state.cities.removeAt(0);
+                          return Drop_Down_Widget(citycontroller,
+                              AppStrings.city.tr(), Icons.location_city,
+                              AppStrings.pleaseEnterYourUserName.tr(), [],
+                              cities: state.cities);
+                        }
+                        else
+                          {
+                            return Text_Field_Widget(
+                              citycontroller,
+                              AppStrings.city.tr(),
+                              Icons.location_city,
+                              AppStrings.pleaseEnterYourUserName.tr(),
+                              false,readonly: false);
+                          }
+                      }
+
                       ),
                       SizedBox(
                         height: 20.h,

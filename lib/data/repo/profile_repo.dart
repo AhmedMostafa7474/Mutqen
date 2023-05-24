@@ -12,7 +12,7 @@ class ProfileRepo {
     var response = await ProfileServices.GetProfile();
     if (response != null) {
       if (response.statusCode == 200) {
-        var jsonresponse = json.decode(response.body);
+        var jsonresponse = json.decode(utf8.decode(response.bodyBytes));
          var profilee = jsonresponse["data"]  ;
         Profile profile = Profile.fromJson(profilee);
 

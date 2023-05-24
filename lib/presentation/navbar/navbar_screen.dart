@@ -35,10 +35,9 @@ class _nav_screenState extends State<nav_screen> {
   }
   @override
   Widget build(BuildContext context) {
-    return  MultiBlocProvider(
-  providers: [
-    BlocProvider(create: (context) => blocGenerator().profileCubit)
-  ],
+    return MultiBlocProvider(
+      providers: [          BlocProvider(create: (context) => blocGenerator().profileCubit),
+      ],
   child: PersistentTabView(
         context,
         controller: _controller,
@@ -76,15 +75,17 @@ class _nav_screenState extends State<nav_screen> {
               });
             }
         },// Choose the nav bar style with this property.
-    ),
+),
 );
   }
   List<Widget> _buildScreens() {
     return [
       homee_page(),
       home_page(),
-      BlocProvider(
-  create: (context) => blocGenerator().cityCubit,
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => blocGenerator().cityCubit)
+        ],
   child: profile_page(),
 ),
     ];

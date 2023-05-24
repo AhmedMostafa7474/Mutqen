@@ -26,7 +26,8 @@ class AuthServices
       return null;
     }
   }
-  Future<http.Response?> register (String name,String email,int city, String password ,String gender,String phone,String date)async
+  Future<http.Response?> register (String name,String email,String city, String password ,String gender,String phone,
+      String date , String country)async
   {
     http.Response response;
     try{
@@ -43,11 +44,12 @@ class AuthServices
                   "name": name,
                   "gender": gender,
                   "birthDate": date,
-                  "country":65,
+                  "country":country,
                   "city": city
                 }
               }));
       print(response.statusCode);
+      print(response.body);
       return response;
     }
     catch(e)
