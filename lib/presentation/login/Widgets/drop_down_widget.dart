@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/data/model/city.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -37,17 +38,18 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
           color: shadowshowen?Colors.grey.withOpacity(0.3): Colors.grey.withOpacity(0.2),
           blurRadius: 5,
           offset: const Offset(0, 5),
-        )
+        ),
       ],
           borderRadius: BorderRadius.circular(15)),
       child: DropdownButtonFormField<dynamic>(
+
         validator: (value) {
           shadowshowen = false;
           if (value == null ) {
             return widget.validate + widget.title;
           }
           return null;
-        },
+        },borderRadius: BorderRadius.circular(30),itemHeight: 55,style:const TextStyle(fontSize: 18,color: Colors.black,),menuMaxHeight: 250.h,
           autovalidateMode: AutovalidateMode.onUserInteraction,
         decoration: InputDecoration(
             labelText: widget.title,
@@ -76,13 +78,19 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
             return DropdownMenuItem(
               value: items,
               child: Text(items),
+
             );
 
           }).toList() :
           widget.cities.map((City item) {
             return DropdownMenuItem(
               value: item.id,
-              child: Text(item.name),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(item.name),
+                ],
+              ),
             );
 
           }).toList()

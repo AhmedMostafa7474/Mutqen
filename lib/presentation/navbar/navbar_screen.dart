@@ -78,7 +78,10 @@ class _nav_screenState extends State<nav_screen> {
     return [
       homee_page(),
       home_page(),
-      profile_page(),
+      BlocProvider(
+  create: (context) => blocGenerator().cityCubit,
+  child: profile_page(),
+),
     ];
   }
 
