@@ -127,7 +127,7 @@ class _advisors_pageState extends State<advisors_page> {
                 itemCount: shownlist.length,
                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                  crossAxisCount: 2,
-                 childAspectRatio: .65,
+                 childAspectRatio: .66,
                ),
                 itemBuilder: (BuildContext context, int index) {
                       return InkWell(
@@ -146,7 +146,7 @@ class _advisors_pageState extends State<advisors_page> {
                                 children: [
                                 Container(
                                       padding: const EdgeInsets.all(9.0),
-                                      height: 240.h,
+                                      height: 245.h,
                                       width: 170.w,
                                       decoration: BoxDecoration(
                                         color: Colors.white,

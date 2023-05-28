@@ -15,9 +15,6 @@ class ProfileRepo {
         var jsonresponse = json.decode(utf8.decode(response.bodyBytes));
          var profilee = jsonresponse["data"]  ;
         Profile profile = Profile.fromJson(profilee);
-
-        print("**************");
-        print(profile.user.phone);
         return profile ;
       }
       else if (response.statusCode == 403) {

@@ -8,6 +8,7 @@ import 'package:mutqen/business/filterBloc/advisorfilter_cubit.dart';
 import 'package:mutqen/business/filterBloc/filter_cubit.dart';
 import 'package:mutqen/presentation/homee/Widget/EventCard.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
+import 'package:mutqen/presentation/myevents/myevents_screen.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:mutqen/resources/strings_manager.dart';
@@ -114,9 +115,9 @@ class _homee_pageState extends State<homee_page> {
                   //
                   //       },
                   // ),
-                  // SizedBox(
-                  //   height: 10.h,
-                  // ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
                   buildListTile(
                     AppStrings.advisors.tr(),
                     Icons.groups_rounded,
@@ -154,17 +155,28 @@ class _homee_pageState extends State<homee_page> {
                       ));
                     },
                   ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                buildListTile(
-                  "عن التطبيق",
-                  Icons.info_outline,
-                      () {
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    "فعالياتي",
+                    Icons.event_available,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const myevents_page()));
 
-                  },
-                ),
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  buildListTile(
+                    "عن التطبيق",
+                    Icons.info_outline,
+                        () {
+                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
+
+                    },
+                  ),
                 SizedBox(
                   height: 10.h,
                 ),
