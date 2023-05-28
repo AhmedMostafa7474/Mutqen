@@ -10,6 +10,7 @@ import 'package:mutqen/app/app_pref.dart';
 import 'package:mutqen/presentation/contactUs/contact_screen.dart';
 import 'package:mutqen/presentation/home/homecard_screen.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
+import 'package:mutqen/presentation/myevents/myevents_screen2.dart';
 import 'package:mutqen/resources/assets_manager.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:mutqen/resources/strings_manager.dart';
@@ -25,6 +26,7 @@ import '../about/aboutUs_screen.dart';
 import '../advisors/advisors_screen.dart';
 import '../events/events_screen.dart';
 import '../meetings/meetings_screen.dart';
+import '../myevents/myevents_screen.dart';
 import '../profile/profile_screen.dart';
 import 'Widgets/main_drawer.dart';
 
@@ -65,7 +67,6 @@ class _home_pageState extends State<home_page> {
         // openScale: 1.0,
         disabledGestures: false,
         childDecoration: const BoxDecoration(
-
           boxShadow: <BoxShadow>[
             BoxShadow(
                 color: Colors.black,
@@ -101,13 +102,6 @@ class _home_pageState extends State<home_page> {
                       child: Image.asset(
                           ImageAssets.smallLogo,height: 200.h, width: 200.w
                       ),
-                    ),
-                    buildListTile(
-                      AppStrings.home.tr(),
-                      CupertinoIcons.home,
-
-                          () {
-                      },
                     ),
                     SizedBox(
                       height: 10.h,
@@ -147,7 +141,18 @@ class _home_pageState extends State<home_page> {
                         ));
                     },
                   ),
-                  SizedBox(
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    buildListTile(
+                      "فعالياتي",
+                      Icons.event_available,
+                          () {
+                        PersistentNavBarNavigator.pushNewScreen(context, screen: (const myevents2_page()));
+
+                      },
+                    ),
+                    SizedBox(
                     height: 10.h,
                   ),
                   buildListTile(

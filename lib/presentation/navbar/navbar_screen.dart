@@ -36,7 +36,8 @@ class _nav_screenState extends State<nav_screen> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [          BlocProvider(create: (context) => blocGenerator().profileCubit),
+      providers: [
+        BlocProvider(create: (context) => blocGenerator().profileCubit),
       ],
   child: PersistentTabView(
         context,
@@ -70,7 +71,7 @@ class _nav_screenState extends State<nav_screen> {
           if (index == 2)
             {
               EasyLoading.show(status: "جاري تحميل الصفحه الشخصيه");
-              Timer(Duration(seconds: 3), () {
+              Timer(Duration(seconds: 1), () {
                 EasyLoading.dismiss();
               });
             }

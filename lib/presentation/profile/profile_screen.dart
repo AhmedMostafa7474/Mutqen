@@ -66,7 +66,6 @@ class _profile_pageState extends State<profile_page> {
             if(state is ProfileLoaded){
               EasyLoading.dismiss();
                usernamecontroller.text = state.profile!.name;
-               print(state.profile!.name);
                emailcontroller.text = state.profile!.user.email;
                countrycontroller.text = state.profile!.country.nameAr;
                phonecontroller.text =state.profile!.user.phone;
