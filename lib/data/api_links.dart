@@ -4,4 +4,11 @@ class EndPoints {
   String registerLink = baseLink + "/auth/register/";
   String cityLink = baseLink + "/assets/get_cities/?country_code=";
   String profileLink = baseLink + "/auth/profile/me";
+  String passwordchangeLink = baseLink + "/auth/profile/change_password/";
+  String updateprofileLink = baseLink + "/auth/profile/edit/";
+
+
+
+
+
 }

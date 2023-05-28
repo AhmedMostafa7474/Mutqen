@@ -32,4 +32,36 @@ class ProfileRepo {
       return null;
     }
   }
+
+  Future<List<dynamic>> changePassword(String oldpassword, String newpassword) async {
+    var response = await ProfileServices.changePassword(oldpassword,newpassword);
+    List<dynamic> messege = [];
+    if (response != null) {
+      print(response.body);
+      var jsonresponse = json.decode(response.body);
+      if (response.statusCode == 200) {
+        messege.add(jsonresponse["message"]);
+        messege.add("1");
+        return messege;
+      }
+      else if (response.statusCode == 400){
+        try {
+          messege = jsonresponse["old_password"];
+        }catch(e)
+        {
+          messege = jsonresponse["new_password2"];
+        }
+        return messege;
+      }
+      else {
+        messege.add("Server Error");
+        return messege;
+      }
+    }
+    else {
+      messege.add("Server Error");
+      return messege;
+    }
+  }
+
 }
