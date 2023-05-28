@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:mutqen/app/app_pref.dart';
 
@@ -25,5 +27,27 @@ class profileServices
     }
   }
 
+  Future<http.Response?> changePassword (String oldpassword, String newpassword)
+  async {
+    http.Response response;
+    try
+    {
+      response = await http.post(Uri.parse(EndPoints().passwordchangeLink),
+          headers: <String,String>{"Content-Type": "application/json",
+            'Authorization': 'Bearer ' + await AppPreferences().getLocalToken()
+          },
+      body: jsonEncode(
+          <String, String>{
+            "old_password": oldpassword,
+            "new_password1": newpassword,
+            "new_password2": newpassword
+          }));
+      print(response.statusCode);
+      return response;
+    }catch(e)
+    {
+      return null;
+    }
+  }
 
 }
