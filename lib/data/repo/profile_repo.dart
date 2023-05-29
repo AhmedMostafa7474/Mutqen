@@ -37,7 +37,7 @@ class ProfileRepo {
     var response = await ProfileServices.changePassword(oldpassword,newpassword);
     List<dynamic> messege = [];
     try {
-      var jsonresponse = json.decode(response!.body);
+      var jsonresponse = json.decode(utf8.decode(response!.bodyBytes));
       if (response.statusCode == 200) {
         messege.add(jsonresponse["message"]);
         messege.add("1");
@@ -64,8 +64,12 @@ class ProfileRepo {
   }
 
 
-  Future<void> updateProfile(String phone, String country,String city) async {
+  Future<void> updateProfile(String phone, String country,String city ,{String imagepath = ""}) async {
     var response = await ProfileServices.updateprofile(phone, country, city);
+    if(imagepath.isNotEmpty)
+      {
+        await ProfileServices.updatepicture(imagepath);
+      }
 
   }
 

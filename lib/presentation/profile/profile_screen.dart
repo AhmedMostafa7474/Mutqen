@@ -15,6 +15,7 @@ import 'package:mutqen/business/profileBloc/profile_cubit.dart';
 import 'package:mutqen/data/api_links.dart';
 import 'package:mutqen/presentation/login/Widgets/city_dropdown_widget.dart';
 import 'package:mutqen/presentation/profile/forgetPassword/forgetPassword_screen.dart';
+import 'package:mutqen/resources/common_widgets/alert_messages.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -44,7 +45,6 @@ class _profile_pageState extends State<profile_page> {
   String countryid = "";
   String cityid = "";
   var imagee ;
-  XFile? selectedimage ;
   var usernamecontroller = TextEditingController();
   var emailcontroller = TextEditingController();
   var countrycontroller = TextEditingController();
@@ -82,7 +82,7 @@ class _profile_pageState extends State<profile_page> {
             if(state is ProfileLoaded){
               imageCache.clear();
               EasyLoading.dismiss();
-               imagee = state.profile!.profilePicture == null ? AssetImage(ImageAssets.placeholder): NetworkImage(baseLink + state.profile!.profilePicture);
+               imagee = state.profile!.profilePicture == null ? AssetImage(ImageAssets.meetingimage): NetworkImage(baseLink + state.profile!.profilePicture);
               return SingleChildScrollView(
                 child: Form(
                   key: formKey,
@@ -108,16 +108,14 @@ class _profile_pageState extends State<profile_page> {
                           ),
                         ],
                         borderRadius: BorderRadius.circular(100),
-
-                        image:
-                        DecorationImage(image: _selectedImage != null ?
+                        image: DecorationImage(image: _selectedImage != null ?
                         FileImage(File(_selectedImage!.path)): imagee  ,
                           onError: (Object e, StackTrace? stackTrace) {
-                            imagee = AssetImage(ImageAssets.placeholder);
+                            imagee = AssetImage(ImageAssets.meetingimage);
                             setState(() {
                             });
                           },
-                             ),
+                             fit: BoxFit.cover),
                     ),
                           child: Align(
                             alignment: Alignment.bottomCenter,
@@ -220,7 +218,8 @@ class _profile_pageState extends State<profile_page> {
                                     citycontroller.text+ " ");
                                 await BlocProvider.of<ProfileCubit>(context).updateProfile(phonecontroller.text,
                                     countryid.toString(),
-                                    citycontroller.text);
+                                    citycontroller.text,image: _selectedImage == null?"":_selectedImage!.path);
+                                showSnackBar(context: context, msg: "تم حفظ التعديل",value: true);
                               }
                             },
                             text: "حفظ",
@@ -269,7 +268,7 @@ class _profile_pageState extends State<profile_page> {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
 
-      builder: (BuildContext context) {
+      builder: (BuildContext context1) {
         return Container(
           height: 130.h,
           child: Column(
@@ -280,7 +279,7 @@ class _profile_pageState extends State<profile_page> {
                 leading: Icon(Icons.photo_library),
                 title: Center(child: Text('Choose from Gallery')),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pop(context1);
                   _pickImage(ImageSource.gallery);
                 },
               ),
@@ -288,7 +287,7 @@ class _profile_pageState extends State<profile_page> {
                 leading: Icon(Icons.camera_alt),
                 title: Center(child: Text('Take a Photo')),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pop(context1);
                   _pickImage(ImageSource.camera);
                 },
               ),
