@@ -50,6 +50,7 @@ class _profile_pageState extends State<profile_page> {
   var countrycontroller = TextEditingController();
   var phonecontroller = TextEditingController();
   var citycontroller = TextEditingController();
+  XFile? _selectedImage;
 
   @override
   void initState() {
@@ -90,10 +91,11 @@ class _profile_pageState extends State<profile_page> {
                     children: [
                       SizedBox(height: 20,),
                       InkWell(
-                        onTap: () async {
-                           pickImageFromGallery();
+                        onTap: () {
+                          _selectProfilePicture();
                         },
-                        child: Container(
+                        child:
+                        Container(
                     height: 110.sp,
                     width: 110.sp,
                     decoration: BoxDecoration(
@@ -106,9 +108,16 @@ class _profile_pageState extends State<profile_page> {
                           ),
                         ],
                         borderRadius: BorderRadius.circular(100),
-                        image: DecorationImage(image: selectedimage !=null ? FileImage(File(selectedimage!.path)) :imagee,
 
-                             )
+                        image:
+                        DecorationImage(image: _selectedImage != null ?
+                        FileImage(File(_selectedImage!.path)): imagee  ,
+                          onError: (Object e, StackTrace? stackTrace) {
+                            imagee = AssetImage(ImageAssets.placeholder);
+                            setState(() {
+                            });
+                          },
+                             ),
                     ),
                           child: Align(
                             alignment: Alignment.bottomCenter,
@@ -125,6 +134,7 @@ class _profile_pageState extends State<profile_page> {
                           ),
                       ),
                       ),
+
                       Text_Field_Widget(
                           usernamecontroller,
                           AppStrings.userName.tr(),
@@ -235,17 +245,60 @@ class _profile_pageState extends State<profile_page> {
     );
   }
 
-  Future<void> pickImageFromGallery() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    if (image == null) {
-      selectedimage = image;
-      //imagee = FileImage(File(image!.path));
-      setState(() {
 
-      });
+
+  Future<void> _pickImage(ImageSource source) async {
+    final picker = ImagePicker();
+    try {
+      final pickedImage = await picker.pickImage(source: source);
+      if (pickedImage != null) {
+        setState(() {
+          _selectedImage = pickedImage;
+          imagee=_selectedImage!.path;
+
+        });
+      }
+    } catch (e) {
+      print('Error picking image: $e');
     }
   }
+
+  void _selectProfilePicture() {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+
+      builder: (BuildContext context) {
+        return Container(
+          height: 130.h,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ListTile(
+                leading: Icon(Icons.photo_library),
+                title: Center(child: Text('Choose from Gallery')),
+                onTap: () {
+                  Navigator.pop(context);
+                  _pickImage(ImageSource.gallery);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.camera_alt),
+                title: Center(child: Text('Take a Photo')),
+                onTap: () {
+                  Navigator.pop(context);
+                  _pickImage(ImageSource.camera);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
 
   Future<XFile?> tackPhotoByCamera() async {
     final ImagePicker picker = ImagePicker();
