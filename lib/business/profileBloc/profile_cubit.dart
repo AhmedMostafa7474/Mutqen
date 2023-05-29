@@ -23,9 +23,10 @@ class ProfileCubit extends Cubit<ProfileState> {
     return profile;
   }
 
-  Future <void> updateProfile(String phone,String country,String city)
+  Future <void> updateProfile(String phone,String country,String city,{String image = ""})
   async {
-     await profilerepo.updateProfile(phone, country, city);
+     await profilerepo.updateProfile(phone, country, city,imagepath: image);
+
     emit(ProfileEdited());
     await GetProfile();
       }

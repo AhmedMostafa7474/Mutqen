@@ -75,5 +75,24 @@ class profileServices
       return null;
     }
   }
+  Future<http.StreamedResponse?> updatepicture (String imagepath)
+  async {
+    http.StreamedResponse response;
+    var headers = {
+      'Authorization': 'Bearer ' + await AppPreferences().getLocalToken()
+    };
+    try
+    {
+      var request = http.MultipartRequest('PATCH', Uri.parse(EndPoints().updateprofileLink));
+      request.files.add(await http.MultipartFile.fromPath('profile_picture', imagepath));
+      request.headers.addAll(headers);
+      response = await request.send();
+      print(response.statusCode);
+      return response;
+    }catch(e)
+    {
+      return null;
+    }
+  }
 
 }

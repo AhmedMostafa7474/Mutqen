@@ -16,7 +16,7 @@ class SignInRepo {
     var response = await authServices.Signin(email, password);
 
     if (response != null) {
-      var jsonresponse = json.decode(response.body);
+      var jsonresponse = json.decode(utf8.decode(response.bodyBytes));
       if (response.statusCode == 200) {
         token = jsonresponse["data"]["access"];
         var userr = jsonresponse["data"]["user"];
