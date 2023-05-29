@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mutqen/business/bloc_initialze.dart';
+import 'package:mutqen/business/cityBloc/citytext_cubit.dart';
 import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/profile/profile_screen.dart';
@@ -85,7 +86,9 @@ class _nav_screenState extends State<nav_screen> {
       home_page(),
       MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => blocGenerator().cityCubit)
+          BlocProvider(create: (context) => blocGenerator().cityCubit),
+          BlocProvider(create: (context) => CitytextCubit())
+
         ],
   child: profile_page(),
 ),

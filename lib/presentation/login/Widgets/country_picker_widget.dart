@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mutqen/business/cityBloc/city_cubit.dart';
+import 'package:mutqen/business/cityBloc/citytext_cubit.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -11,7 +12,9 @@ class Country_Picker_Widget extends StatefulWidget {
   final String title ;
   final IconData iconData ;
   final String validate;
-  Country_Picker_Widget(this.userNameController,this.title , this.iconData ,this.validate, {Key? key}) : super(key: key);
+  TextEditingController ?citycontroller;
+  Country_Picker_Widget(this.userNameController,this.title , this.iconData ,this.validate,
+      {Key? key, this.citycontroller}) : super(key: key);
 
   @override
   State<Country_Picker_Widget> createState() => _Country_Picker_WidgetState();
@@ -69,6 +72,10 @@ class _Country_Picker_WidgetState extends State<Country_Picker_Widget> {
             onSelect: (Country country) {
               widget.userNameController.text = country.nameLocalized!;
               BlocProvider.of<CityCubit>(context).GetCites(country.countryCode);
+              context.read<CitytextCubit>().add("");
+              if(widget.citycontroller != null) {
+                widget.citycontroller!.text = "";
+              }
             },
           );
         },

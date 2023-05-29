@@ -56,7 +56,7 @@ class SignInRepo {
         return "Success";
       }
       else if (response.statusCode == 400) {
-        var jsonresponse = json.decode(response.body);
+        var jsonresponse = json.decode(utf8.decode(response.bodyBytes));
         String messsge = jsonresponse["message"];
         return messsge;
       }

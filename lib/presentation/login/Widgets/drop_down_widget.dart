@@ -51,6 +51,7 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
           return null;
         },borderRadius: BorderRadius.circular(30),itemHeight: 55,style:const TextStyle(fontSize: 18,color: Colors.black,),menuMaxHeight: 250.h,
           autovalidateMode: AutovalidateMode.onUserInteraction,
+
         decoration: InputDecoration(
             labelText: widget.title,
             fillColor: Colors.white,
@@ -74,11 +75,12 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
           widget.bottomkey!.currentState!.setState(() {
           });
         }
-      }, items: widget.items.isNotEmpty ? widget.items.map((String items) {
+      },
+          value: widget.userNameController.text.isNotEmpty? int.parse(widget.userNameController.text) : null,
+          items: widget.items.isNotEmpty ? widget.items.map((String items) {
             return DropdownMenuItem(
               value: items,
               child: Text(items),
-
             );
           }).toList() :
           widget.cities.map((City item) {

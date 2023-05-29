@@ -15,6 +15,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../resources/color_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../../resources/style_manager.dart';
+import '../login/Widgets/city_dropdown_widget.dart';
 import '../login/Widgets/text_field_widget.dart';
 import 'Widgets/register_data.dart';
 
@@ -37,6 +38,8 @@ class _register_pageState extends State<register_page> {
   var datecontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
   var councontroller = TextEditingController();
+  final globalKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -65,22 +68,22 @@ class _register_pageState extends State<register_page> {
                 SizedBox(height: 8.h,),
                 Text_Field_Widget(emailcontroller,AppStrings.email.tr(),Icons.email,AppStrings.pleaseEnterYourUserName.tr(),false),
                 SizedBox(height: 8.h,),
-                Country_Picker_Widget(countrycontroller, AppStrings.country.tr(), Icons.flag, AppStrings.pleaseEnterYourUserName.tr()),
+                Country_Picker_Widget(countrycontroller, AppStrings.country.tr(), Icons.flag,
+                    AppStrings.pleaseEnterYourUserName.tr(),),
                 SizedBox(height: 8.h,),
                 BlocBuilder<CityCubit, CityState>(
                 builder: (context, state) {
                   if(state is CityLoaded) {
                     councontroller.text= state.cities[0].countryId.toString();
-                    print(councontroller.text + "^^^^^^^");
-                   return Drop_Down_Widget(citycontroller,
+                   return city_dropdown_Widget(citycontroller,
                         AppStrings.city.tr(), Icons.location_city,
                         AppStrings.pleaseEnterYourUserName.tr(),[],cities:state.cities);
                   }
                   else{
                     return SizedBox();
                   }
-  },
-),
+                  },
+                ),
                 SizedBox(height: 8.h,),
                 Date_Picker_Widget(datecontroller, AppStrings.birthday.tr(), Icons.date_range,
                     AppStrings.pleaseEnterYourUserName.tr()),
