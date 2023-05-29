@@ -12,6 +12,7 @@ class CityCubit extends Cubit<CityState> {
   CityCubit(this.cityrepo) : super(CityInitial());
   Future <List<City>> GetCites(country)
   async {
+    emit(CityInitial());
     cities = await cityrepo.GetCities(country);
     emit(CityLoaded(cities));
     return cities;

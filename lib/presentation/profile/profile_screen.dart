@@ -8,9 +8,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mutqen/business/bloc_initialze.dart';
+import 'package:mutqen/business/cityBloc/citytext_cubit.dart';
 import 'package:mutqen/business/profileBloc/profile_cubit.dart';
 import 'package:mutqen/business/profileBloc/profile_cubit.dart';
 import 'package:mutqen/data/api_links.dart';
+import 'package:mutqen/presentation/login/Widgets/city_dropdown_widget.dart';
 import 'package:mutqen/presentation/profile/forgetPassword/forgetPassword_screen.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -36,12 +39,12 @@ class profile_page extends StatefulWidget {
 }
 
 class _profile_pageState extends State<profile_page> {
-  String ?image ;
   var imagePicker = ImagePicker();
   final formKey = GlobalKey<FormState>();
   String countryid = "";
   String cityid = "";
   var imagee ;
+  XFile? selectedimage ;
   var usernamecontroller = TextEditingController();
   var emailcontroller = TextEditingController();
   var countrycontroller = TextEditingController();
@@ -57,12 +60,13 @@ class _profile_pageState extends State<profile_page> {
   Future<void> Load()
   async {
    Profile? profile = await BlocProvider.of<ProfileCubit>(context).GetProfile();
+   print("reloded");
     usernamecontroller.text = profile!.name;
     emailcontroller.text = profile!.user.email;
     countrycontroller.text = profile!.country.nameAr;
     phonecontroller.text =profile!.user.phone;
-    citycontroller.text =profile!.city.nameAr;
-    cityid = profile!.city.id.toString();
+    citycontroller.text = profile!.city.id.toString();
+    await BlocProvider.of<CityCubit>(context).GetCites(profile!.country.code);
   }
 
   @override
@@ -75,8 +79,8 @@ class _profile_pageState extends State<profile_page> {
         child: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if(state is ProfileLoaded){
+              imageCache.clear();
               EasyLoading.dismiss();
-
                imagee = state.profile!.profilePicture == null ? AssetImage(ImageAssets.placeholder): NetworkImage(baseLink + state.profile!.profilePicture);
               return SingleChildScrollView(
                 child: Form(
@@ -86,8 +90,8 @@ class _profile_pageState extends State<profile_page> {
                     children: [
                       SizedBox(height: 20,),
                       InkWell(
-                        onTap: () {
-                          pickImageFromGallery().then((file) {});
+                        onTap: () async {
+                           pickImageFromGallery();
                         },
                         child: Container(
                     height: 110.sp,
@@ -102,16 +106,11 @@ class _profile_pageState extends State<profile_page> {
                           ),
                         ],
                         borderRadius: BorderRadius.circular(100),
-                        image: DecorationImage(image: imagee,
-                          onError: (Object e, StackTrace? stackTrace) {
-                            imagee = AssetImage(ImageAssets.placeholder);
-                            setState(() {
-                            });
-                          },
+                        image: DecorationImage(image: selectedimage !=null ? FileImage(File(selectedimage!.path)) :imagee,
+
                              )
                     ),
                           child: Align(
-
                             alignment: Alignment.bottomCenter,
                             child: Container(
                               decoration: BoxDecoration(
@@ -152,7 +151,9 @@ class _profile_pageState extends State<profile_page> {
                           false,align: TextAlign.end,
                       alignmentDirectional: TextDirection.ltr),
                       SizedBox(height: 8.h,),
-                      Country_Picker_Widget(countrycontroller, AppStrings.country.tr(), Icons.flag, AppStrings.pleaseEnterYourUserName.tr()),
+                      Country_Picker_Widget(countrycontroller,
+                          AppStrings.country.tr(), Icons.flag,
+                          AppStrings.pleaseEnterYourUserName.tr(),citycontroller: citycontroller),
                       SizedBox(
                         height: 5.h,
                       ),
@@ -160,11 +161,12 @@ class _profile_pageState extends State<profile_page> {
                       builder: (context, state) {
                         if (state is CityLoaded) {
                           countryid = state.cities[0].countryId.toString();
-                          state.cities.removeAt(0);
-                          return Drop_Down_Widget(citycontroller,
+                          return Drop_Down_Widget(
+                              citycontroller,
                               AppStrings.city.tr(), Icons.location_city,
                               AppStrings.pleaseEnterYourUserName.tr(), [],
-                              cities: state.cities);
+                              cities: state.cities,
+                          );
                         }
                         else
                           {
@@ -203,9 +205,12 @@ class _profile_pageState extends State<profile_page> {
                             width: 200.w,
                             function: () async {
                               if (formKey.currentState!.validate()) {
+                                print(phonecontroller.text + " "+
+                                    countryid+ " "+
+                                    citycontroller.text+ " ");
                                 await BlocProvider.of<ProfileCubit>(context).updateProfile(phonecontroller.text,
                                     countryid.toString(),
-                                    cityid);
+                                    citycontroller.text);
                               }
                             },
                             text: "حفظ",
@@ -230,13 +235,15 @@ class _profile_pageState extends State<profile_page> {
     );
   }
 
-  Future<XFile?> pickImageFromGallery() async {
+  Future<void> pickImageFromGallery() async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image == null) {
-      return null;
-    } else {
-      return image;
+      selectedimage = image;
+      //imagee = FileImage(File(image!.path));
+      setState(() {
+
+      });
     }
   }
 
