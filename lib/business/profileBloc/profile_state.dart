@@ -9,3 +9,4 @@ class ProfileLoaded extends ProfileState {
   ProfileLoaded(this.profile);
 }
 class ProfileFailed extends ProfileState {}
+class ProfileEdited extends ProfileState {}

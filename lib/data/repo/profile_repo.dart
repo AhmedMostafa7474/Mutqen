@@ -64,4 +64,10 @@ class ProfileRepo {
     }
   }
 
+
+  Future<void> updateProfile(String phone, String country,String city) async {
+    var response = await ProfileServices.updateprofile(phone, country, city);
+
+  }
+
 }

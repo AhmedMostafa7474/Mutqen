@@ -16,6 +16,7 @@ import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../business/cityBloc/city_cubit.dart';
+import '../../data/model/profile.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/color_manager.dart';
 import '../../resources/common_widgets/button_widget.dart';
@@ -39,6 +40,7 @@ class _profile_pageState extends State<profile_page> {
   var imagePicker = ImagePicker();
   final formKey = GlobalKey<FormState>();
   String countryid = "";
+  String cityid = "";
   var imagee ;
   var usernamecontroller = TextEditingController();
   var emailcontroller = TextEditingController();
@@ -54,7 +56,13 @@ class _profile_pageState extends State<profile_page> {
   }
   Future<void> Load()
   async {
-    await BlocProvider.of<ProfileCubit>(context).GetProfile();
+   Profile? profile = await BlocProvider.of<ProfileCubit>(context).GetProfile();
+    usernamecontroller.text = profile!.name;
+    emailcontroller.text = profile!.user.email;
+    countrycontroller.text = profile!.country.nameAr;
+    phonecontroller.text =profile!.user.phone;
+    citycontroller.text =profile!.city.nameAr;
+    cityid = profile!.city.id.toString();
   }
 
   @override
@@ -68,11 +76,7 @@ class _profile_pageState extends State<profile_page> {
           builder: (context, state) {
             if(state is ProfileLoaded){
               EasyLoading.dismiss();
-               usernamecontroller.text = state.profile!.name;
-               emailcontroller.text = state.profile!.user.email;
-               countrycontroller.text = state.profile!.country.nameAr;
-               phonecontroller.text =state.profile!.user.phone;
-               citycontroller.text =state.profile!.city.nameAr;
+
                imagee = state.profile!.profilePicture == null ? AssetImage(ImageAssets.placeholder): NetworkImage(baseLink + state.profile!.profilePicture);
               return SingleChildScrollView(
                 child: Form(
@@ -198,7 +202,11 @@ class _profile_pageState extends State<profile_page> {
                         child: defaultButton(
                             width: 200.w,
                             function: () async {
-                              if (formKey.currentState!.validate()) {}
+                              if (formKey.currentState!.validate()) {
+                                await BlocProvider.of<ProfileCubit>(context).updateProfile(phonecontroller.text,
+                                    countryid.toString(),
+                                    cityid);
+                              }
                             },
                             text: "حفظ",
                             txtColor: Colors.white,
