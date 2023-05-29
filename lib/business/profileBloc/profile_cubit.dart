@@ -22,4 +22,11 @@ class ProfileCubit extends Cubit<ProfileState> {
       }
     return profile;
   }
+
+  Future <void> updateProfile(String phone,String country,String city)
+  async {
+     await profilerepo.updateProfile(phone, country, city);
+    emit(ProfileEdited());
+    await GetProfile();
+      }
 }

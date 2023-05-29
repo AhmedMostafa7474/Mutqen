@@ -50,4 +50,30 @@ class profileServices
     }
   }
 
+
+  Future<http.Response?> updateprofile (String phone,String country,String city)
+  async {
+    http.Response response;
+    try
+    {
+      response = await http.patch(Uri.parse(EndPoints().updateprofileLink),
+          headers: <String,String>{"Content-Type": "application/json",
+            'Authorization': 'Bearer ' + await AppPreferences().getLocalToken()
+          },
+          body: jsonEncode(
+              <String, String>{
+                "country": country,
+                "city": city,
+                "phone": phone
+              },
+          ),
+      );
+      print(response.statusCode);
+      return response;
+    }catch(e)
+    {
+      return null;
+    }
+  }
+
 }

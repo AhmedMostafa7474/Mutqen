@@ -13,9 +13,10 @@ class Drop_Down_Widget extends StatefulWidget {
   final List<String> items;
   final List<City> cities;
   double height;
+  String cityid;
   GlobalKey<State<StatefulWidget>>? bottomkey ;
   Drop_Down_Widget(this.userNameController,this.title , this.iconData ,this.validate,this.items,
-      {Key? key,this.height = 0, this.bottomkey,this.cities = const []}) : super(key: key);
+      {Key? key,this.height = 0, this.bottomkey,this.cities = const [],this.cityid =""}) : super(key: key);
 
   @override
   State<Drop_Down_Widget> createState() => _Drop_Down_WidgetState();
@@ -65,6 +66,7 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
             prefixIcon: Icon(widget.iconData),
 
         ), onChanged: (value) {
+        widget.cityid = value.toString();
         widget.userNameController.text = value.toString()!;
         if(widget.bottomkey !=null)
         {
