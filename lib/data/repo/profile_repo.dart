@@ -10,8 +10,8 @@ class ProfileRepo {
 
   Future<Profile?> Getprofile() async {
     var response = await ProfileServices.GetProfile();
-    if (response != null) {
-      if (response.statusCode == 200) {
+    try{
+      if (response!.statusCode == 200) {
         var jsonresponse = json.decode(utf8.decode(response.bodyBytes));
          var profilee = jsonresponse["data"]  ;
         Profile profile = Profile.fromJson(profilee);
@@ -27,7 +27,7 @@ class ProfileRepo {
         return null;
       }
     }
-    else {
+    catch(e) {
       String message = "Server Error";
       return null;
     }
@@ -36,9 +36,8 @@ class ProfileRepo {
   Future<List<dynamic>> changePassword(String oldpassword, String newpassword) async {
     var response = await ProfileServices.changePassword(oldpassword,newpassword);
     List<dynamic> messege = [];
-    if (response != null) {
-      print(response.body);
-      var jsonresponse = json.decode(response.body);
+    try {
+      var jsonresponse = json.decode(response!.body);
       if (response.statusCode == 200) {
         messege.add(jsonresponse["message"]);
         messege.add("1");
@@ -58,7 +57,7 @@ class ProfileRepo {
         return messege;
       }
     }
-    else {
+    catch(e) {
       messege.add("Server Error");
       return messege;
     }
