@@ -47,6 +47,7 @@ class _profile_pageState extends State<profile_page> {
   var imagee ;
   var usernamecontroller = TextEditingController();
   var emailcontroller = TextEditingController();
+  var secoundemailcontroller = TextEditingController();
   var countrycontroller = TextEditingController();
   var phonecontroller = TextEditingController();
   var citycontroller = TextEditingController();
@@ -63,10 +64,12 @@ class _profile_pageState extends State<profile_page> {
    Profile? profile = await BlocProvider.of<ProfileCubit>(context).GetProfile();
    print("reloded");
     usernamecontroller.text = profile!.name;
-    emailcontroller.text = profile!.user.email;
-    countrycontroller.text = profile!.country.nameAr;
-    phonecontroller.text =profile!.user.phone;
-    citycontroller.text = profile!.city.id.toString();
+    emailcontroller.text = profile.user.email;
+    countrycontroller.text = profile.country.nameAr;
+    phonecontroller.text =profile.user.phone;
+    citycontroller.text = profile.city.id.toString();
+    cityid = profile.city.nameAr;
+    secoundemailcontroller.text = profile.secondary_email??"";
     await BlocProvider.of<CityCubit>(context).GetCites(profile!.country.code);
   }
 
@@ -151,6 +154,15 @@ class _profile_pageState extends State<profile_page> {
                       SizedBox(
                         height: 5.h,
                       ),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Text_Field_Widget(
+                        secoundemailcontroller,
+                        AppStrings.secondaryEmail.tr(),
+                        Icons.email,
+                        AppStrings.pleaseEnterYourUserName.tr(),
+                        false,),
                       Text_Field_Widget(
                           phonecontroller,
                           "رقم الهاتف",
@@ -188,6 +200,7 @@ class _profile_pageState extends State<profile_page> {
                       }
 
                       ),
+
                       SizedBox(
                         height: 20.h,
                       ),
@@ -215,10 +228,18 @@ class _profile_pageState extends State<profile_page> {
                               if (formKey.currentState!.validate()) {
                                 print(phonecontroller.text + " "+
                                     countryid+ " "+
-                                    citycontroller.text+ " ");
-                                await BlocProvider.of<ProfileCubit>(context).updateProfile(phonecontroller.text,
+                                    citycontroller.text+ " "+secoundemailcontroller.text);
+                                EasyLoading.show(status: "يتم جفظ البيانات");
+                                await BlocProvider.of<ProfileCubit>(context).updateProfile(
+                                    phonecontroller.text,
                                     countryid.toString(),
-                                    citycontroller.text,image: _selectedImage == null?"":_selectedImage!.path);
+                                    citycontroller.text,
+                                    secoundemailcontroller.text,
+                                    image: _selectedImage == null?
+                                    "":_selectedImage!.path,
+
+                                );
+                                EasyLoading.dismiss();
                                 showSnackBar(context: context, msg: "تم حفظ التعديل",value: true);
                               }
                             },

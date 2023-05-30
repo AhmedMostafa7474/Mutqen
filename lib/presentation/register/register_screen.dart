@@ -110,7 +110,10 @@ class _register_pageState extends State<register_page> {
                     onChanged: (value){
                       setState(() {
                         gender = value.toString();
+                        gendercontroller.text =value.toString();
                       });
+                      print(gendercontroller.text);
+
                     },
                   ),
                 ),
@@ -124,7 +127,10 @@ class _register_pageState extends State<register_page> {
                     onChanged: (value){
                       setState(() {
                         gender = value.toString();
+                        gendercontroller.text =value.toString();
+
                       });
+                      print(gendercontroller.text);
                     },
                   ),
                 ),

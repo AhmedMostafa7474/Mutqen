@@ -20,6 +20,4 @@ class cityServices
       return "Error";
     }
   }
-
-
 }

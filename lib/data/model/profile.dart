@@ -27,6 +27,7 @@ class Profile {
   DateTime updatedAt;
   dynamic university;
   dynamic college;
+  String? secondary_email;
 
   Profile({
     required this.id,
@@ -47,6 +48,7 @@ class Profile {
     required this.updatedAt,
     this.university,
     this.college,
+    this.secondary_email
   });
 
   factory Profile.fromJson(Map<String, dynamic> json) => Profile(
@@ -68,6 +70,8 @@ class Profile {
     updatedAt: DateTime.parse(json["updated_at"]),
     university: json["university"],
     college: json["college"],
+    secondary_email: json["secondary_email"],
+
   );
 
   Map<String, dynamic> toJson() => {
@@ -89,6 +93,7 @@ class Profile {
     "updated_at": updatedAt.toIso8601String(),
     "university": university,
     "college": college,
+    "secondary_email":secondary_email
   };
 }
 

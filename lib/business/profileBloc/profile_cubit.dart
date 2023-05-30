@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:meta/meta.dart';
 import 'package:mutqen/data/model/profile.dart';
 import 'package:mutqen/data/repo/profile_repo.dart';
@@ -23,9 +24,9 @@ class ProfileCubit extends Cubit<ProfileState> {
     return profile;
   }
 
-  Future <void> updateProfile(String phone,String country,String city,{String image = ""})
+  Future <void> updateProfile(String phone,String country,String city, String secondemail,{String image = ""})
   async {
-     await profilerepo.updateProfile(phone, country, city,imagepath: image);
+     await profilerepo.updateProfile(phone, country, city,secondemail,imagepath: image);
 
     emit(ProfileEdited());
     await GetProfile();

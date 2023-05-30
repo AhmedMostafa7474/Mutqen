@@ -39,6 +39,8 @@ class _nav_screenState extends State<nav_screen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => blocGenerator().profileCubit),
+        BlocProvider(create: (context) => blocGenerator().uniCubit),
+        BlocProvider(create: (context) => blocGenerator().collegeCubit)
       ],
   child: PersistentTabView(
         context,

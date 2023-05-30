@@ -47,11 +47,15 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
         enabled: widget.readonly,
         validator: (value) {
           shadowshowen = false;
-          if (value == null || value.isEmpty) {
+          if (value == null || value.isEmpty ) {
+            if( widget.title == AppStrings.secondaryEmail.tr())
+              {
+                return null;
+              }
             return widget.validate + widget.title;
           }
           else if(!value.isValidEmail() &&
-              widget.title == AppStrings.email.tr())
+              (widget.title == AppStrings.email.tr() || widget.title == AppStrings.secondaryEmail.tr()))
             {
               return "قم يادخال بريد الكتروني صحيح" ;
             }

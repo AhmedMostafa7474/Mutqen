@@ -42,129 +42,157 @@ class _exam_page2State extends State<exam_page2> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-          appBar: getAppBarWidgetWithNotificationIcon("المقياس", context),
-          body: PageView.builder(
-              onPageChanged: (i){
-                selected[0]=0;
-                selected[1]=0;
-                currentpage = i +1;
-                setState(() {
+    return WillPopScope(
+        onWillPop: () async {
+      return await showDialog(
+          context: context,
+          builder: (BuildContext context1) {
+            return AlertDialog(
+              title: Text('الخروج بدون حفظ تقدمك ؟'),
+              titleTextStyle: TextStyle(
+                  fontSize: 18.sp,
+                  color: Colors.black
+              ),
+              actionsAlignment: MainAxisAlignment.center,
+              actions: <Widget>[
+                defaultButton(width: 80.w, function:  () {
+                  Navigator.of(context1).pop(false);
+                }, text: 'لا', txtColor: Colors.white, height: 30.h, fontSize: 13.sp)
+                ,
+                defaultButton(width: 80.w, function:  () {
+                  Navigator.of(context1).pop(true);
+                  Navigator.of(context).pop();
+                }, text: 'نعم', txtColor: Colors.white, height: 35.h, fontSize: 13.sp)
+                ,
+              ],
+            );
+          }
+      )?? false;
+    },
+      child: Scaffold(
+            appBar: getAppBarWidgetWithNotificationIcon("المقياس", context),
+            body: PageView.builder(
+                onPageChanged: (i){
+                  selected[0]=0;
+                  selected[1]=0;
+                  currentpage = i +1;
+                  setState(() {
 
-                });
-              },
-              itemCount: (widget.examm.questions.length / 2).ceil(),
-              controller: controller,
-              itemBuilder: (BuildContext context, int index1) {
-                return Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        ListView.separated(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          padding: EdgeInsets.only(bottom: 20),
-                          itemCount: 2,
-                          itemBuilder: (BuildContext context, int index2) {
-                            return UnconstrainedBox(
-                              child: Container(
-                                padding: EdgeInsets.all(9.0),
-                                height: 220.h,
-                                width: 300.w,
-                                decoration: BoxDecoration(boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.2),
-                                    spreadRadius: 5,
-                                    blurRadius: 7,
-                                    offset: Offset(0, 3), // changes position of shadow
-                                  ),
-                                ],
-                                    color: Colors.white70,
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      height: 25.h,
-                                      width: 150.w,
-                                      decoration: BoxDecoration(boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.2),
-                                          spreadRadius: 5,
-                                          blurRadius: 7,
-                                          offset: Offset(0, 3), // changes position of shadow
-                                        ),
-                                      ],
-                                          color: Colors.white70,
-                                          borderRadius: BorderRadius.circular(8)
-                                      ),
-                                      child: Center(child: Text(
-                                        "سؤال " + (index2 + (index1 *2) + 1).toString(),
-                                        style: TextStyle(
-                                            fontSize: 15.sp
-                                        ),),),
+                  });
+                },
+                itemCount: (widget.examm.questions.length / 2).ceil(),
+                controller: controller,
+                itemBuilder: (BuildContext context, int index1) {
+                  return Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          ListView.separated(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            padding: EdgeInsets.only(bottom: 20),
+                            itemCount: 2,
+                            itemBuilder: (BuildContext context, int index2) {
+                              return UnconstrainedBox(
+                                child: Container(
+                                  padding: EdgeInsets.all(9.0),
+                                  height: 220.h,
+                                  width: 300.w,
+                                  decoration: BoxDecoration(boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.2),
+                                      spreadRadius: 5,
+                                      blurRadius: 7,
+                                      offset: Offset(0, 3), // changes position of shadow
                                     ),
-                                    SizedBox(height: 50,),
-                                    Text(widget.examm.questions[index2 + (index1 *2)].Question, style: TextStyle(fontSize: 18.sp),),
-                                    SizedBox(height: 60.h,),
-                                    buildanswers(index2, index1),
                                   ],
+                                      color: Colors.white70,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        height: 25.h,
+                                        width: 150.w,
+                                        decoration: BoxDecoration(boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.2),
+                                            spreadRadius: 5,
+                                            blurRadius: 7,
+                                            offset: Offset(0, 3), // changes position of shadow
+                                          ),
+                                        ],
+                                            color: Colors.white70,
+                                            borderRadius: BorderRadius.circular(8)
+                                        ),
+                                        child: Center(child: Text(
+                                          "سؤال " + (index2 + (index1 *2) + 1).toString(),
+                                          style: TextStyle(
+                                              fontSize: 15.sp
+                                          ),),),
+                                      ),
+                                      SizedBox(height: 50,),
+                                      Text(widget.examm.questions[index2 + (index1 *2)].Question, style: TextStyle(fontSize: 18.sp),),
+                                      SizedBox(height: 60.h,),
+                                      buildanswers(index2, index1),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                          separatorBuilder: (BuildContext context, int index) {
-                            return SizedBox(
-                              height: 18.h,
-                            );
-                          },),
-                        SizedBox(height: 12.h,),
-                        currentpage != widget.examm.questions.length / 2.toInt()?
-                Text("${currentpage} / ${(widget.examm.questions.length / 2).toInt()}"
-                        ,style: TextStyle(
-                            fontSize: 18.sp
-                          ),):
-                        defaultButton(width: 160.w,
-                            function: (){
-                                 if(widget.examm.questions.every((element) => element.selectedanswer != null))
-                                   {
-                                     Navigator.popUntil(context, (route) => route.isFirst);
-                                     if(widget.examm.title == exams[0].title)
-                                     {
-                                       PersistentNavBarNavigator.pushNewScreen(context, screen: disc_result_page(disc_results));
-
-                                     }
-                                     else if(widget.examm.title == exams[1].title)
-                                     {
-                                       PersistentNavBarNavigator.pushNewScreen(context, screen: result_page2());
-                                     }
-                                     else if(widget.examm.title == exams[2].title)
-                                     {
-                                       PersistentNavBarNavigator.pushNewScreen(context, screen: result_page(results));
-                                     }
-                                     else if(widget.examm.title == exams[3].title)
-                                     {
-                                       PersistentNavBarNavigator.pushNewScreen(context, screen: preresult_page());
-                                     }
-                                   }
-                                 else
-                                   {
-                                     showSnackBar(context: context, msg: "يرجي اجابه جميع الاسئله !");
-                                   }
+                              );
                             },
-                            text: "حفظ النتائج", txtColor: Colors.white,
-                            height: 40.h, fontSize: 17.sp)
-                        ,
-                        SizedBox(height: 30,)
-                      ],
-                    ),
+                            separatorBuilder: (BuildContext context, int index) {
+                              return SizedBox(
+                                height: 18.h,
+                              );
+                            },),
+                          SizedBox(height: 12.h,),
+                          currentpage != widget.examm.questions.length / 2.toInt()?
+                  Text("${currentpage} / ${(widget.examm.questions.length / 2).toInt()}"
+                          ,style: TextStyle(
+                              fontSize: 18.sp
+                            ),):
+                          defaultButton(width: 160.w,
+                              function: (){
+                                   if(widget.examm.questions.every((element) => element.selectedanswer != null))
+                                     {
+                                       Navigator.popUntil(context, (route) => route.isFirst);
+                                       if(widget.examm.title == exams[0].title)
+                                       {
+                                         PersistentNavBarNavigator.pushNewScreen(context, screen: disc_result_page(disc_results));
 
-                  ),
-                );
-              }
-          ) ,
-        );
+                                       }
+                                       else if(widget.examm.title == exams[1].title)
+                                       {
+                                         PersistentNavBarNavigator.pushNewScreen(context, screen: result_page2());
+                                       }
+                                       else if(widget.examm.title == exams[2].title)
+                                       {
+                                         PersistentNavBarNavigator.pushNewScreen(context, screen: result_page(results));
+                                       }
+                                       else if(widget.examm.title == exams[3].title)
+                                       {
+                                         PersistentNavBarNavigator.pushNewScreen(context, screen: preresult_page());
+                                       }
+                                     }
+                                   else
+                                     {
+                                       showSnackBar(context: context, msg: "يرجي اجابه جميع الاسئله !");
+                                     }
+                              },
+                              text: "حفظ النتائج", txtColor: Colors.white,
+                              height: 40.h, fontSize: 17.sp)
+                          ,
+                          SizedBox(height: 30,)
+                        ],
+                      ),
+
+                    ),
+                  );
+                }
+            ) ,
+          ),
+    );
   }
   Container buildanswers(int index2, int index1) {
               return Container(
@@ -188,7 +216,7 @@ class _exam_page2State extends State<exam_page2> {
                                           selected[index2]=1;
                                           if(selected.every((element) => element == 1))
                                           {
-                                            controller.nextPage(duration: Duration(milliseconds: 300),
+                                            controller.nextPage(duration: Duration(milliseconds: 500),
                                                 curve: Curves.linearToEaseOut
                                             );
 

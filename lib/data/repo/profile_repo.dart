@@ -64,13 +64,9 @@ class ProfileRepo {
   }
 
 
-  Future<void> updateProfile(String phone, String country,String city ,{String imagepath = ""}) async {
-    var response = await ProfileServices.updateprofile(phone, country, city);
-    if(imagepath.isNotEmpty)
-      {
-        await ProfileServices.updatepicture(imagepath);
-      }
-
+  Future<void> updateProfile(String phone, String country,String city, String secondemail ,
+      {String imagepath = ""}) async {
+    var response = await ProfileServices.updateprofile(phone, country, city,secondemail,imagepath);
   }
 
 }
