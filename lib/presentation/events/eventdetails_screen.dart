@@ -1,13 +1,17 @@
 import 'package:easy_localization/easy_localization.dart' as local;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:mutqen/business/collegeBloc/college_cubit.dart';
+import 'package:mutqen/business/uniBloc/uni_cubit.dart';
 import 'package:mutqen/data/model/event.dart';
 import 'package:mutqen/presentation/login/Widgets/drop_down_widget.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 
+import '../../data/model/college.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/common_widgets/app_bar.dart';
 import '../../resources/common_widgets/button_widget.dart';
@@ -26,13 +30,12 @@ class _eventdetails_pageState extends State<eventdetails_page> {
   local.DateFormat dateFormat =  local.DateFormat("HH:mm a");
   final formKey = GlobalKey<FormState>();
   final bottomkey = GlobalKey<State>();
-
-  List<String> eventdata=[];
   var workcontroller = TextEditingController();
   var yearcontroller = TextEditingController();
   var collegecontroller = TextEditingController();
   var universitycontroller = TextEditingController();
-
+  List <College> colleges = [];
+  List <College> unives = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -43,6 +46,10 @@ class _eventdetails_pageState extends State<eventdetails_page> {
     eventdetailss[3].desc =(widget.eventt.seats);
     eventdetailss[4].desc =(widget.eventt.instructor);
     eventdetailss[5].desc =(widget.eventt.target);
+    load();
+  }
+  Future<void> load() async {
+    unives = await BlocProvider.of<UniCubit>(context).GetUnives();
   }
   @override
   Widget build(BuildContext context) {
@@ -53,7 +60,6 @@ class _eventdetails_pageState extends State<eventdetails_page> {
             floatingActionButton: FloatingActionButton.extended(
               backgroundColor: widget.eventt.color,
               onPressed: (){
-                //       PersistentNavBarNavigator.pushNewScreen(context, screen: resultdetails_page(results[index]));
                 showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
@@ -85,26 +91,53 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                                           AppStrings.pleaseEnterYourUserName
                                               .tr(), workitems,bottomkey: bottomkey,),
                                       (workcontroller.text == "طالب جامعي")
-                                          ? Drop_Down_Widget(
-                                          universitycontroller,
-                                          AppStrings.university.tr(),
-                                          Icons.account_balance_rounded,
-                                          AppStrings.pleaseEnterYourUserName
-                                              .tr(), countryitems)
+                                          ? BlocBuilder<UniCubit, UniState>(
+                                          builder: (context, state) {
+                                            if (state is UniLoaded) {
+                                              unives = state.univs;
+                                              return Drop_Down_Widget(
+                                                  universitycontroller,
+                                                  AppStrings.university.tr(),
+                                                  Icons.account_balance_rounded,
+                                                  AppStrings
+                                                      .pleaseEnterYourUserName
+                                                      .tr(), [],colleges: unives,);
+                                            }
+                                            else
+                                              {
+                                                return SizedBox();
+                                              }
+                                          }
+                                          )
                                           :
                                       SizedBox(),
-                                      (workcontroller.text == "طالب جامعي")
-                                          ?Drop_Down_Widget(collegecontroller,
-                                          AppStrings.college.tr(), Icons.school,
-                                          AppStrings.pleaseEnterYourUserName
-                                              .tr(), countryitems):
+                                      (workcontroller.text == "طالب جامعي" )
+                                          ?
+                                      BlocBuilder<CollegeCubit, CollegeState>(
+                                      builder: (context, state) {
+                                        if (state is CollegeLoaded) {
+                                          colleges = state.colleges;
+                                          colleges.removeAt(0);
+                                          return Drop_Down_Widget(
+                                              collegecontroller,
+                                              AppStrings.college.tr(),
+                                              Icons.school,
+                                              AppStrings.pleaseEnterYourUserName
+                                                  .tr(), [],colleges: colleges,);
+                                        }
+                                        else
+                                          {
+                                            return SizedBox();
+                                          }
+                                      },
+                                    ):
                                       SizedBox(),
                                       (workcontroller.text == "طالب جامعي")
                                           ?Drop_Down_Widget(yearcontroller,
                                           AppStrings.studentyear.tr(),
                                           Icons.date_range,
                                           AppStrings.pleaseEnterYourUserName
-                                              .tr(), countryitems):SizedBox(),
+                                              .tr(), yearsitems):SizedBox(),
                                       SizedBox(height: 12,),
                                       defaultButton(width: 230.w,
                                           function: () {},
@@ -122,9 +155,8 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                         }
                       );
                     }
+                ).whenComplete(() { workcontroller.text = "" ;}
                 );
-
-
               },
               label: Text("الانضمام الآن",),
         ),
