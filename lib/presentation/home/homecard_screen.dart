@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,13 +10,18 @@ import 'package:mutqen/presentation/exam/exam_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../data/model/exam.dart';
 import '../../resources/assets_manager.dart';
+import '../../resources/common_widgets/alert_messages.dart';
 import '../../resources/common_widgets/app_bar.dart';
 import '../exam/exam2_screen.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:http/http.dart' as http;
 
 class homecard_page extends StatefulWidget {
+  final String pdfUrl = '';
   int index;
   exam examm;
 
@@ -93,23 +100,38 @@ class _homecard_pageState extends State<homecard_page> {
               SizedBox(height: 10,),
               Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: Text("يمكنك الاستفاده من من هذا الملف في حاله حضورك ورشه عمل وازن ",
+                child: Text("يمكنك الاستفاده من من هذا الملف في حاله حضورك ورشه العمل الخاصه بالمقياس ",
                 style: TextStyle(
                   fontSize: 16
                 ),),
               ),
               defaultButton(
                   width: 140.w,
-                  function: (){},
+                  function: (){
+                    _openDrive(context,
+
+                        "https://drive.google.com/file/d/1ztgoteCO_axMFcz-7w-DPNEqjl6XG8Vd/view?usp=share_link");
+                  },
                   text: "تحميل الملف", txtColor: Colors.white,
-                  height: 33.h, fontSize: 16.sp)
-              ,
+                  height: 33.h, fontSize: 16.sp),
               SizedBox(height: 30,)
             ],
           ),
         ),
     );
+
+
+  }
+  Future<void> _openDrive(BuildContext context,String driveUrl) async {
+    if (await canLaunch(driveUrl)) {
+      await launch(driveUrl);
+    } else {
+      showSnackBar(context: context, msg: "يوجد خطأ عند محاوله فتح الدرايف");
+
+
+    }
   }
   List<String>list=["معرفه ضروره التوازن بين جوانب الحياه المختلفه","تقييم مستوي التوازن لديك من خلال المقياس",
     "التخطيط الواقعي والعملي والمبني علي الاولويات التي تختلف من شخص لاخر"];
 }
+

@@ -270,14 +270,39 @@ class _profile_pageState extends State<profile_page> {
 
       builder: (BuildContext context1) {
         return Container(
-          height: 130.h,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ListTile(
+                leading: Icon(Icons.view_array_rounded),
+                title: Center(child: Text('رؤية الصورة')),
+                onTap: () {
+                  Navigator.pop(context1);
+
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        backgroundColor: ColorManager.primary,
+                        contentPadding:EdgeInsets.all(2) ,
+                        content: Container(
+                          width: double.infinity,
+                          height: 250.h,
+                          child: Image(image: _selectedImage != null ?
+                        FileImage(File(_selectedImage!.path)): imagee,fit: BoxFit.cover
+                          ),),
+
+                       
+                      );
+                    },
+                  );
+
+                },
+              ),
+              ListTile(
                 leading: Icon(Icons.photo_library),
-                title: Center(child: Text('Choose from Gallery')),
+                title: Center(child: Text('اختر من معرض')),
                 onTap: () {
                   Navigator.pop(context1);
                   _pickImage(ImageSource.gallery);
@@ -285,7 +310,7 @@ class _profile_pageState extends State<profile_page> {
               ),
               ListTile(
                 leading: Icon(Icons.camera_alt),
-                title: Center(child: Text('Take a Photo')),
+                title: Center(child: Text('التقط صورة')),
                 onTap: () {
                   Navigator.pop(context1);
                   _pickImage(ImageSource.camera);
