@@ -15,13 +15,13 @@ class AppPreferences {
     SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
     return sharedPreferences.getString("token");
   }
-  getuserid()async{
+  getusername()async{
     SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
-    return sharedPreferences.getString("userid");
+    return sharedPreferences.getString("username");
   }
-  setuserid(String id)async{
+  setusername(String name)async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setString("userid",id);
+    sharedPreferences.setString("username",name);
   }
   saveTokenAndUserIdToSharedPrefrences(String localToken) async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -68,14 +68,21 @@ class AppPreferences {
   //login
 
   Future<void> setUserLoggedIn() async {
-    _sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);
+    SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
+    sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);
   }
 
   Future<bool> isUserLoggedIn() async {
-    return _sharedPreferences.getBool(PREFS_KEY_IS_USER_LOGGED_IN) ?? false;
+    SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
+
+    return sharedPreferences.getBool(PREFS_KEY_IS_USER_LOGGED_IN) ?? false;
   }
 
   Future<void> logout() async {
-    _sharedPreferences.remove(PREFS_KEY_IS_USER_LOGGED_IN);
+    SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
+
+    sharedPreferences.remove("token");
+    sharedPreferences.remove("username");
+    sharedPreferences.remove(PREFS_KEY_IS_USER_LOGGED_IN);
   }
 }

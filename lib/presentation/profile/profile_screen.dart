@@ -57,12 +57,13 @@ class _profile_pageState extends State<profile_page> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    EasyLoading.show(status: "جاري تحميل الصفحه الشخصيه");
     Load();
+    EasyLoading.dismiss();
   }
   Future<void> Load()
   async {
    Profile? profile = await BlocProvider.of<ProfileCubit>(context).GetProfile();
-   print("reloded");
     usernamecontroller.text = profile!.name;
     emailcontroller.text = profile.user.email;
     countrycontroller.text = profile.country.nameAr;

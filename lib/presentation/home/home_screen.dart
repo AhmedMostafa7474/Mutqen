@@ -152,28 +152,6 @@ class _home_pageState extends State<home_page> {
 
                       },
                     ),
-                    SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    "عن التطبيق",
-                    Icons.info_outline,
-                        () {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
-
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    "تواصل معنا",
-                    Icons.contact_support,
-                        () async {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const contact_page()));
-
-                    },
-                  ),
                   SizedBox(
                     height: 10.h,
                   ),
@@ -181,6 +159,7 @@ class _home_pageState extends State<home_page> {
                     AppStrings.Logout.tr(),
                     Icons.logout,
                         ()  async {
+                          await AppPreferences().logout();
                           Navigator.of(context, rootNavigator: true)
                               .pushAndRemoveUntil(
                             MaterialPageRoute(
