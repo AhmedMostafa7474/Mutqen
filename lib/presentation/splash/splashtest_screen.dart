@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/navbar/navbar_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
+import '../../app/app_pref.dart';
 import '../../resources/assets_manager.dart';
 
 class MyCustomSplashScreen extends StatefulWidget {
@@ -49,12 +50,26 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
         _containerOpacity = 1;
       });
     });
+    Navigate();
 
+  }
+  Future<void> Navigate()
+  async {
+   bool islogin = await AppPreferences().isUserLoggedIn();
     Timer(Duration(seconds: 4), () {
-      setState(() {
-        Navigator.pushReplacement(context, PageTransition(login_page()));
+      setState(()  {
+        if(islogin) {
+          Navigator.pushReplacement(context, PageTransition(
+              nav_screen()));
+          }
+        else
+          {
+            Navigator.pushReplacement(context, PageTransition(
+                login_page()));
+          }
       });
     });
+
   }
 
   @override

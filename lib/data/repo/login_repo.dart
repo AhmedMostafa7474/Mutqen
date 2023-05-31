@@ -9,6 +9,8 @@ class SignInRepo {
   final AuthServices authServices;
 
   String? token;
+  String? name;
+
 
   SignInRepo(this.authServices);
 
@@ -19,8 +21,10 @@ class SignInRepo {
       var jsonresponse = json.decode(utf8.decode(response.bodyBytes));
       if (response.statusCode == 200) {
         token = jsonresponse["data"]["access"];
+        name = jsonresponse["data"]["name"];
         var userr = jsonresponse["data"]["user"];
           AppPreferences().saveTokenAndUserIdToSharedPrefrences(token!);
+          AppPreferences().setusername(name!);
           User user = User.fromJson(userr);
           return user;
       }

@@ -9,6 +9,7 @@ import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/resources/common_widgets/alert_messages.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 
+import '../../../app/app_pref.dart';
 import '../../../resources/color_manager.dart';
 import '../../../resources/strings_manager.dart';
 import '../../navbar/navbar_screen.dart';
@@ -38,6 +39,7 @@ class LoginButton extends StatelessWidget {
         }
         else
         {
+          await AppPreferences().setUserLoggedIn();
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (context) =>
               nav_screen()), (Route<dynamic> route) => false);

@@ -14,6 +14,7 @@ import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:mutqen/resources/style_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import '../../app/app_pref.dart';
 import '../../data/model/event.dart';
 import '../../data/model/user.dart';
 import '../../resources/assets_manager.dart';
@@ -170,30 +171,10 @@ class _homee_pageState extends State<homee_page> {
                     height: 10.h,
                   ),
                   buildListTile(
-                    "عن التطبيق",
-                    Icons.info_outline,
-                        () {
-                      PersistentNavBarNavigator.pushNewScreen(context, screen: (const about_page()));
-
-                    },
-                  ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                buildListTile(
-                  "تواصل معنا",
-                  Icons.contact_support,
-                      () async {
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: (const contact_page()));
-                    },
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
                     AppStrings.Logout.tr(),
                     Icons.logout,
                         () async {
+                          await AppPreferences().logout();
                           Navigator.of(context, rootNavigator: true)
                               .pushAndRemoveUntil(
                             MaterialPageRoute(

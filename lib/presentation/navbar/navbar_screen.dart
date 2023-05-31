@@ -12,6 +12,7 @@ import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/profile/profile_screen.dart';
 import 'package:mutqen/presentation/register/register_screen.dart';
+import 'package:mutqen/presentation/settings/settings.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../data/model/user.dart';
@@ -69,16 +70,7 @@ class _nav_screenState extends State<nav_screen> {
           duration: Duration(milliseconds: 200),
         ),
         navBarStyle: NavBarStyle.simple,
-        onItemSelected: (index)
-        {
-          if (index == 2)
-            {
-              EasyLoading.show(status: "جاري تحميل الصفحه الشخصيه");
-              Timer(Duration(seconds: 1), () {
-                EasyLoading.dismiss();
-              });
-            }
-        },// Choose the nav bar style with this property.
+    // Choose the nav bar style with this property.
 ),
 );
   }
@@ -86,14 +78,7 @@ class _nav_screenState extends State<nav_screen> {
     return [
       homee_page(),
       home_page(),
-      MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => blocGenerator().cityCubit),
-          BlocProvider(create: (context) => CitytextCubit())
-
-        ],
-  child: profile_page(),
-),
+      settingView (),
     ];
   }
 
@@ -112,8 +97,8 @@ class _nav_screenState extends State<nav_screen> {
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.person),
-        title: (AppStrings.profile.tr()),
+        icon: Icon(Icons.settings),
+        title: (AppStrings.settings.tr()),
         activeColorPrimary: ColorManager.primary,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       )
