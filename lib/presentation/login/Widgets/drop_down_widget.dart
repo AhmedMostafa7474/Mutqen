@@ -56,7 +56,9 @@ class _Drop_Down_WidgetState extends State<Drop_Down_Widget> {
             return widget.validate + widget.title;
           }
           return null;
-        },borderRadius: BorderRadius.circular(30),itemHeight: 55,style:const TextStyle(fontSize: 18,color: Colors.black,),menuMaxHeight: 250.h,
+        },borderRadius: BorderRadius.circular(30),itemHeight: null,
+          style: TextStyle(fontSize: 15.sp,color: Colors.black,),
+          menuMaxHeight: 250.h,
           autovalidateMode: AutovalidateMode.onUserInteraction,
 
         decoration: InputDecoration(

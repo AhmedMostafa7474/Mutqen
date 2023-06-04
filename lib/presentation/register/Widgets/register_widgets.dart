@@ -7,6 +7,7 @@ import 'package:mutqen/presentation/navbar/navbar_screen.dart';
 import 'package:mutqen/resources/common_widgets/alert_messages.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 
+import '../../../app/app_pref.dart';
 import '../../../data/repo/login_repo.dart';
 import '../../../data/webservice/login_services.dart';
 import '../../../resources/strings_manager.dart';
@@ -46,6 +47,7 @@ class RegisterButton extends StatelessWidget {
             }
             else
             {
+              await AppPreferences().setUserLoggedIn();
               Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
                   nav_screen()), (Route<dynamic> route) => false);
             }

@@ -57,9 +57,7 @@ class _profile_pageState extends State<profile_page> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    EasyLoading.show(status: "جاري تحميل الصفحه الشخصيه");
     Load();
-    EasyLoading.dismiss();
   }
   Future<void> Load()
   async {
@@ -73,7 +71,12 @@ class _profile_pageState extends State<profile_page> {
     secoundemailcontroller.text = profile.secondary_email??"";
     await BlocProvider.of<CityCubit>(context).GetCites(profile!.country.code);
   }
-
+@override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    EasyLoading.dismiss();
+  }
   @override
   Widget build(BuildContext context) {
     return
@@ -84,7 +87,6 @@ class _profile_pageState extends State<profile_page> {
         child: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if(state is ProfileLoaded){
-              imageCache.clear();
               EasyLoading.dismiss();
                imagee = state.profile!.profilePicture == null ? AssetImage(ImageAssets.meetingimage): NetworkImage(baseLink + state.profile!.profilePicture);
               return SingleChildScrollView(
@@ -230,7 +232,7 @@ class _profile_pageState extends State<profile_page> {
                                 print(phonecontroller.text + " "+
                                     countryid+ " "+
                                     citycontroller.text+ " "+secoundemailcontroller.text);
-                                EasyLoading.show(status: "يتم جفظ البيانات");
+                                EasyLoading.show(status: "يتم حفظ البيانات");
                                 await BlocProvider.of<ProfileCubit>(context).updateProfile(
                                     phonecontroller.text,
                                     countryid.toString(),
@@ -257,6 +259,7 @@ class _profile_pageState extends State<profile_page> {
             }
             else
               {
+                EasyLoading.show(status: "جاري تحميل الصفحه الشخصيه");
                 return Container();
               }
 

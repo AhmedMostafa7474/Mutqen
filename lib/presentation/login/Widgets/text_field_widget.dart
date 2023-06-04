@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart' as local;
+import 'package:flutter/services.dart';
 
 class Text_Field_Widget extends StatefulWidget {
   final  TextEditingController userNameController;
@@ -40,6 +42,7 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
       ],
           borderRadius: BorderRadius.circular(15)),
       child: TextFormField(
+        style: TextStyle(fontSize: 13.sp),
         textAlign: widget.align,
         textDirection: widget.alignmentDirectional,
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -76,6 +79,7 @@ class _Text_Field_WidgetState extends State<Text_Field_Widget> {
         obscureText: widget.obscure,
         textInputAction: widget.title == AppStrings.password.tr() ?
         TextInputAction.done:TextInputAction.next,
+        keyboardType: widget.title == "رقم الهاتف" ?TextInputType.phone: null,
         decoration: InputDecoration(
             labelText: widget.title,
             fillColor: Colors.white,

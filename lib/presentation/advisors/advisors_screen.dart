@@ -114,13 +114,9 @@ class _advisors_pageState extends State<advisors_page> {
           ),
           const SizedBox(height: 10,)
           ,
-
-
-
           SizedBox(
             height: 20.h,
           ), AnimationLimiter(
-            
           child: GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -128,6 +124,8 @@ class _advisors_pageState extends State<advisors_page> {
                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                  crossAxisCount: 2,
                  childAspectRatio: .66,
+                 mainAxisSpacing: 10,
+                 crossAxisSpacing: 5
                ),
                 itemBuilder: (BuildContext context, int index) {
                       return InkWell(
@@ -146,8 +144,6 @@ class _advisors_pageState extends State<advisors_page> {
                                 children: [
                                 Container(
                                       padding: const EdgeInsets.all(9.0),
-                                      height: 245.h,
-                                      width: 170.w,
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                           boxShadow: [
