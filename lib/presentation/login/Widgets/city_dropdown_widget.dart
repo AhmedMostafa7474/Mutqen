@@ -55,7 +55,7 @@ class _city_dropdown_WidgetState extends State<city_dropdown_Widget> {
                   return widget.validate + widget.title;
                 }
                 return null;
-              },borderRadius: BorderRadius.circular(30),itemHeight: 55,style:const TextStyle(fontSize: 18,color: Colors.black,),menuMaxHeight: 250.h,
+              },borderRadius: BorderRadius.circular(30),itemHeight: 55,style: TextStyle(fontSize: 13.sp,color: Colors.black,),menuMaxHeight: 250.h,
               autovalidateMode: AutovalidateMode.onUserInteraction,
 
               decoration: InputDecoration(

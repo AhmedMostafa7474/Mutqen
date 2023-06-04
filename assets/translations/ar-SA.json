@@ -33,6 +33,7 @@
     "oldPassword" : "الرقم السري الحالي",
     "newPassword" : "الرقم السري الجديد",
     "reEnterNewPassword" : "إعاده الرقم السري الجديد",
-    "secondaryEmail" : "البريد الالكتروني الثانوي"
+    "secondaryEmail" : "البريد الالكتروني الثانوي",
+    "products": "المنتجات"
 
 }

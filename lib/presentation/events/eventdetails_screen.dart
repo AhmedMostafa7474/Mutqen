@@ -174,8 +174,7 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                       height: 120.sp,
                       width: 120.sp,
                     )),
-              ),
-                      AnimationLimiter(
+              ), AnimationLimiter(
                 child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -186,10 +185,10 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                   itemBuilder: (BuildContext context, int index) {
                       return AnimationConfiguration.staggeredGrid(
                         position: index,
-                        duration: Duration(milliseconds: 700),
+                        duration: Duration(milliseconds: 1200),
                         columnCount: 3,
                         child: ScaleAnimation(
-                          duration: Duration(milliseconds: 1100),
+                          duration: Duration(milliseconds: 1700),
                           curve: Curves.fastLinearToSlowEaseIn,
                           child: FadeInAnimation(
                             child: Container(

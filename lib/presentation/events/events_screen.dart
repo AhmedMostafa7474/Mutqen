@@ -101,8 +101,9 @@ class _events_pageState extends State<events_page> {
                     itemBuilder: (BuildContext context, int index) {
                       return AnimationConfiguration.staggeredList(
                         position: index,
-                        duration: const Duration(milliseconds: 700),
+                        duration: const Duration(milliseconds: 1000),
                         child: SlideAnimation(
+                          duration: Duration(seconds: 2),
                           verticalOffset: 80.0,
                           child: FadeInAnimation(
                             child: UnconstrainedBox(

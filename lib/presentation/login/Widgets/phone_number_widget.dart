@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class PhoneNumber_widget extends StatefulWidget {
@@ -29,6 +30,7 @@ class _PhoneNumber_widgetState extends State<PhoneNumber_widget> {
       ],
           borderRadius: BorderRadius.circular(15)),
       child: IntlPhoneField(
+        style: TextStyle(fontSize: 13.sp),
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (value) {
           shadowshowen = false;
@@ -52,7 +54,7 @@ class _PhoneNumber_widgetState extends State<PhoneNumber_widget> {
               borderSide: BorderSide(width: 3, color: Colors.greenAccent)
           ),
         ),
-        initialCountryCode: 'IN',
+        initialCountryCode: 'SA',
         onChanged: (phone) {
           widget.phonecontroller.text = phone.completeNumber;
         },

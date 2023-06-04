@@ -31,10 +31,8 @@ List<resultdesc> disc_result_des= [
 
 ];
 List<result> disc_results=[
-  result("D", "مسيطر و مباشر و حازم",30,ColorManager.D,disc_result_des),
   result("I", "تفاعلي و ملهم و عفوي",20,ColorManager.I,disc_result_des),
-  result("S", "داعم و مخلص ومتعاطف",25,ColorManager.S,disc_result_des),
+  result("D", "مسيطر و مباشر و حازم",30,ColorManager.D,disc_result_des),
   result("C", "وجداني و حذر و مستقيم",15,ColorManager.C,disc_result_des),
-
-
+  result("S", "داعم و مخلص ومتعاطف",25,ColorManager.S,disc_result_des),
 ];

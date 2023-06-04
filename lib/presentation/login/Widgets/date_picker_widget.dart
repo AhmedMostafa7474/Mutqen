@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -24,6 +25,7 @@ class _Date_Picker_WidgetState extends State<Date_Picker_Widget> {
     return Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 20),
       child: TextFormField(
+        style: TextStyle(fontSize: 13.sp),
         autovalidateMode: AutovalidateMode.onUserInteraction,
         readOnly: true,
         validator: (value) {

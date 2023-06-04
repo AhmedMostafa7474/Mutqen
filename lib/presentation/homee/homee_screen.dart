@@ -6,9 +6,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mutqen/business/filterBloc/advisorfilter_cubit.dart';
 import 'package:mutqen/business/filterBloc/filter_cubit.dart';
+import 'package:mutqen/data/model/product.dart';
 import 'package:mutqen/presentation/homee/Widget/EventCard.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/myevents/myevents_screen.dart';
+import 'package:mutqen/presentation/products/products_screen.dart';
+import 'package:mutqen/presentation/products/widget/product_card.dart';
 import 'package:mutqen/resources/common_widgets/app_bar.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 import 'package:mutqen/resources/strings_manager.dart';
@@ -43,6 +46,12 @@ class _homee_pageState extends State<homee_page> {
     eventcard(220.h,300.w,events[0],0),
     eventcard(220.h,300.w,events[1],1),
     eventcard(220.h,300.w,events[2],2),
+  ];
+
+  List<Widget> productList = [
+    product_card(products[0], 0),
+    product_card(products[1], 1),
+    product_card(products[2], 2),
   ];
 
   @override
@@ -234,7 +243,7 @@ class _homee_pageState extends State<homee_page> {
                 padding: const EdgeInsets.only(top: 10,bottom: 5),
                 child: CarouselSlider(
                   options: CarouselOptions(
-                    height: 270.h,
+                    height: 240.h,
                     aspectRatio: 0.6,
                     enlargeFactor: 0.3,
                     enlargeCenterPage: true,
@@ -246,9 +255,12 @@ class _homee_pageState extends State<homee_page> {
                 ),
               ),
               defaultButton(width: 160.w, function: (){
-                PersistentNavBarNavigator.pushNewScreen(context, screen: BlocProvider(
-                    create: (context) => FilterCubit(),
-                child: events_page()));},
+                PersistentNavBarNavigator.pushNewScreen(context, screen: products_page());
+                // PersistentNavBarNavigator.pushNewScreen(context, screen: BlocProvider(
+                //     create: (context) => FilterCubit(),
+                // child: events_page()));
+
+                },
                   text: "المزيد من الفعاليات", txtColor: ColorManager.white, height: 32.h,
                   fontSize: 16.sp),
               SizedBox(height: 15.h,),

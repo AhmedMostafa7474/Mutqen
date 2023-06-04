@@ -2,6 +2,7 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/business/cityBloc/city_cubit.dart';
 import 'package:mutqen/business/cityBloc/citytext_cubit.dart';
 import 'package:mutqen/resources/strings_manager.dart';
@@ -35,6 +36,7 @@ class _Country_Picker_WidgetState extends State<Country_Picker_Widget> {
       ],
           borderRadius: BorderRadius.circular(15)),
       child: TextFormField(
+        style: TextStyle(fontSize: 13.sp),
         autovalidateMode: AutovalidateMode.onUserInteraction,
         readOnly: true,
         validator: (value) {
