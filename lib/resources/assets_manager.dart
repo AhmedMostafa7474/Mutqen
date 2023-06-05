@@ -23,6 +23,6 @@ class ImageAssets {
   static  String placeholder = "$IMAGE_PATH/placeholder.jpg";
   static  String notificon = "$IMAGE_PATH/notificon.png";
   static  String notificon2 = "$IMAGE_PATH/notificon2.png";
-
+  static  String shaghafLogo = "$IMAGE_PATH/shaghaf_logo.png";
 
 }

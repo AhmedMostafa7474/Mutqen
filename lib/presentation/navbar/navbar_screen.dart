@@ -19,6 +19,7 @@ import '../../resources/color_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../homee/homee_screen.dart';
 import '../measures/measures_screen.dart';
+import '../routing/routing_screen.dart';
 import 'Widgets/onwillpop_widget.dart';
 
 class nav_screen extends StatefulWidget {
@@ -76,6 +77,7 @@ class _nav_screenState extends State<nav_screen> {
   }
   List<Widget> _buildScreens() {
     return [
+
       homee_page(),
       measures_page(),
       settingView (),
@@ -84,6 +86,7 @@ class _nav_screenState extends State<nav_screen> {
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
+
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.home),
         title: (AppStrings.home.tr()),

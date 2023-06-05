@@ -37,4 +37,7 @@ class ColorManager {
 
   static Color red = const Color(0xff862F39);
 
+  static Color blue = const Color(0xff105da6);
+  static Color lightblue = const Color(0xff1497a5);// red color
+
 }
