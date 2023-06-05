@@ -44,7 +44,7 @@ class eventcard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: Hero(
-                      tag: "Heroo" + index.toString(),
+                      tag: "event" + index.toString(),
                       child: Image.asset(showenevent.image,
                         height: 120.sp,width: 120.sp,)),
                 ),

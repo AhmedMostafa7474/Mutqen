@@ -8,7 +8,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mutqen/business/bloc_initialze.dart';
 import 'package:mutqen/business/cityBloc/citytext_cubit.dart';
-import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/profile/profile_screen.dart';
 import 'package:mutqen/presentation/register/register_screen.dart';
@@ -19,6 +18,7 @@ import '../../data/model/user.dart';
 import '../../resources/color_manager.dart';
 import '../../resources/strings_manager.dart';
 import '../homee/homee_screen.dart';
+import '../measures/measures_screen.dart';
 import 'Widgets/onwillpop_widget.dart';
 
 class nav_screen extends StatefulWidget {
@@ -77,7 +77,7 @@ class _nav_screenState extends State<nav_screen> {
   List<Widget> _buildScreens() {
     return [
       homee_page(),
-      home_page(),
+      measures_page(),
       settingView (),
     ];
   }

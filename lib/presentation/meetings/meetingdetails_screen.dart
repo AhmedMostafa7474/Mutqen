@@ -64,7 +64,7 @@ class _meetingdetails_pageState extends State<meetingdetails_page> {
               Align(
                 alignment: Alignment.center,
                 child: Hero(
-                    tag: "Hero3"+widget.index.toString(),
+                    tag: "meeting"+widget.index.toString(),
                     child: Container(
                       height: 110.sp ,
                       width: 110.sp,

@@ -17,7 +17,7 @@ class product
 
 
 List<product> products = [
-  product("فرق", "ساعتين", "جماهيري تفاعلي", ImageAssets.eventimage2,ColorManager.bluelight),
+  product("فرق", "ساعتين", "جماهيري تفاعلي", ImageAssets.eventimage2,ColorManager.grey),
   product("وازن", "ساعتين", "جماهيري بأسلوب التيسير التعاوني", ImageAssets.eventimage,ColorManager.greenlight),
   product("فرق", "ساعتين", "جماهيري تفاعلي", ImageAssets.eventimage2,ColorManager.bluelight),
   product("وازن", "ساعتين", "جماهيري بأسلوب التيسير التعاوني", ImageAssets.eventimage,ColorManager.greenlight)

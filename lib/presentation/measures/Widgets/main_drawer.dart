@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/data/model/user.dart';
 import 'package:mutqen/presentation/advisors/advisors_screen.dart';
 import 'package:mutqen/presentation/events/events_screen.dart';
-import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/meetings/meetings_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
 import 'package:mutqen/resources/strings_manager.dart';
@@ -15,6 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../profile/profile_screen.dart';
+import '../measures_screen.dart';
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -116,7 +116,7 @@ class _MainDrawerState extends State<MainDrawer> {
             CupertinoIcons.home,
                 () {
                   PersistentNavBarNavigator.pushNewScreen(context, screen:
-                  home_page());
+                  measures_page());
             },
           ),
           SizedBox(

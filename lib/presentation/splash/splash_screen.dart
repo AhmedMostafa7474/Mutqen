@@ -7,6 +7,8 @@ import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/resources/assets_manager.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../../resources/color_manager.dart';
+
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
 
@@ -26,7 +28,7 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
             duration: 2000,
-            splash: Image.asset(ImageAssets.smallLogo),
+            splash: Image.asset(ImageAssets.smallLogo,color: ColorManager.primary,),
             nextScreen: login_page(),
             splashIconSize: 200,
             //splashTransition: SplashTransition.sizeTransition,

@@ -87,7 +87,7 @@ class _meetings_pageState extends State<meetings_page> {
                                           Row(
                                             children: [
                                               Hero(
-                                                  tag: "Hero3"+index.toString(),
+                                                  tag: "meeting"+index.toString(),
                                                   child: Container(
                                                     height: 50.sp ,
                                                     width: 50.sp,

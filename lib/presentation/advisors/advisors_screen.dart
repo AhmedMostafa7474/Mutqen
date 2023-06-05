@@ -16,7 +16,6 @@ import 'package:shimmer/shimmer.dart';
 import '../../resources/common_widgets/app_bar.dart';
 import '../../resources/strings_manager.dart';
 import '../events/Widgets/filter_data.dart';
-import '../home/Widgets/main_drawer.dart';
 import 'Widgets/filter_drawer.dart';
 
 class advisors_page extends StatefulWidget {
@@ -43,7 +42,6 @@ class _advisors_pageState extends State<advisors_page> {
 
   load()
   async {
-
     await Future.delayed(Duration(seconds: 1),() {
       isloading = false;
     },);
@@ -257,7 +255,7 @@ class _advisors_pageState extends State<advisors_page> {
                                   Align(
                                     alignment: Alignment.topCenter,
                                     child: Hero(
-                                        tag: "Hero2"+index.toString(),
+                                        tag: "advisor"+index.toString(),
                                         child: Container(
                                           height: 80.sp,
                                           width: 80.sp,

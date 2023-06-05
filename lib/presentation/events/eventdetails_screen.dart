@@ -168,7 +168,7 @@ class _eventdetails_pageState extends State<eventdetails_page> {
               ),
               Center(
                 child: Hero(
-                    tag: "Heroo" + widget.index.toString(),
+                    tag: "event" + widget.index.toString(),
                     child: Image.asset(
                       widget.eventt.image,
                       height: 120.sp,

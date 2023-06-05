@@ -37,7 +37,7 @@ class _homecard_pageState extends State<homecard_page> {
             children: [
               SizedBox(height: 10,),
                   Hero(
-                      tag: "Hero"+index.toString(),
+                      tag: "exam"+index.toString(),
                       child: Lottie.asset(widget.examm.image,width: 150.sp,height: 150.sp,)
                   )
                ,

@@ -1,7 +1,7 @@
 const String IMAGE_PATH = "assets/images";
 
 class ImageAssets {
-  static  String smallLogo = "$IMAGE_PATH/logomutqen2.png";
+  static  String smallLogo = "$IMAGE_PATH/white-logo.png";
   static  String profileimage = "$IMAGE_PATH/profile2.jpeg";
   static  String personimage = "$IMAGE_PATH/Person_icon.svg";
   static  String quesionimage = "$IMAGE_PATH/Icon-Question.svg";
@@ -21,6 +21,8 @@ class ImageAssets {
   static  String About = "$IMAGE_PATH/Picture11.png";
   static  String realimage = "$IMAGE_PATH/realimage.jpg";
   static  String placeholder = "$IMAGE_PATH/placeholder.jpg";
+  static  String notificon = "$IMAGE_PATH/notificon.png";
+  static  String notificon2 = "$IMAGE_PATH/notificon2.png";
 
 
 }

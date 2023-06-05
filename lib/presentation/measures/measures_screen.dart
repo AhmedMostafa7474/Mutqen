@@ -8,7 +8,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mutqen/app/app_pref.dart';
 import 'package:mutqen/presentation/contactUs/contact_screen.dart';
-import 'package:mutqen/presentation/home/homecard_screen.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/myevents/myevents_screen2.dart';
 import 'package:mutqen/resources/assets_manager.dart';
@@ -21,163 +20,32 @@ import '../../business/filterBloc/filter_cubit.dart';
 import '../../data/model/exam.dart';
 import '../../data/model/user.dart';
 import '../../resources/color_manager.dart';
+import '../../resources/common_widgets/animated_drawer.dart';
 import '../../resources/common_widgets/drawerwidget.dart';
 import '../about/aboutUs_screen.dart';
 import '../advisors/advisors_screen.dart';
 import '../events/events_screen.dart';
 import '../meetings/meetings_screen.dart';
 import '../myevents/myevents_screen.dart';
+import '../products/products_screen.dart';
 import '../profile/profile_screen.dart';
 import 'Widgets/main_drawer.dart';
+import 'measurecard_screen.dart';
 
-class home_page extends StatefulWidget {
-  home_page( {Key? key}) : super(key: key);
+class measures_page extends StatefulWidget {
+  measures_page( {Key? key}) : super(key: key);
 
   @override
-  State<home_page> createState() => _home_pageState();
+  State<measures_page> createState() => _measures_pageState();
 }
 
-class _home_pageState extends State<home_page> {
+class _measures_pageState extends State<measures_page> {
   final _advancedDrawerController = AdvancedDrawerController();
 
   @override
   Widget build(BuildContext context) {
-    return AdvancedDrawer(
-        backdrop: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomRight,
-              colors: [ColorManager.primary,
-                ColorManager.primatylight.withOpacity(0.8),
-                ColorManager.primatylight.withOpacity(0.7),
-              ],
-            ),
-          ),
-        ),
-        controller: _advancedDrawerController,
-        animationCurve: Curves.easeInOut,
-        animationDuration: const Duration(milliseconds: 200),
-        animateChildDecoration: true,
-        rtlOpening: true,
-        openRatio: 0.65,
-        openScale: 0.8,
-        // openScale: 1.0,
-        disabledGestures: false,
-        childDecoration: const BoxDecoration(
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: Colors.black,
-                blurRadius: 1,
-                blurStyle: BlurStyle.outer
-            ),
-          ],
-          borderRadius: const BorderRadius.all(Radius.circular(16)),
-
-        ),
-        drawer: SafeArea(
-          child: Container(
-            child: ListTileTheme(
-              textColor: Colors.white,
-              iconColor: Colors.white,
-              child: SingleChildScrollView(
-
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: 128.0,
-                      height: 128.0,
-                      margin: const EdgeInsets.only(
-                        top: 24.0,
-                        bottom: 20.0,
-                      ),
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.asset(
-                          ImageAssets.smallLogo,height: 200.h, width: 200.w
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    buildListTile(
-                      AppStrings.advisors.tr(),
-                      FontAwesomeIcons.listCheck,
-                          () {
-                        PersistentNavBarNavigator.pushNewScreen(context, screen:
-                            BlocProvider(
-                            create: (context) => AdvisorfilterCubit(),
-                            child: advisors_page()));
-                      },
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    buildListTile(
-                      AppStrings.advices.tr(),
-                      Icons.question_answer,
-                          () {
-                        PersistentNavBarNavigator.pushNewScreen(context, screen: (meetings_page()));
-
-                      },
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    buildListTile(
-                      AppStrings.events.tr(),
-                      Icons.event,
-                          () {
-                        PersistentNavBarNavigator.pushNewScreen(context, screen: (
-                            BlocProvider(
-                            create: (context) => FilterCubit(),
-                            child:events_page())
-                        ));
-                    },
-                  ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    buildListTile(
-                      "فعالياتي",
-                      Icons.event_available,
-                          () {
-                        PersistentNavBarNavigator.pushNewScreen(context, screen: (const myevents2_page()));
-
-                      },
-                    ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  buildListTile(
-                    AppStrings.Logout.tr(),
-                    Icons.logout,
-                        ()  async {
-                          await AppPreferences().logout();
-                          Navigator.of(context, rootNavigator: true)
-                              .pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (BuildContext context) {
-                                return login_page();
-                              },
-                            ),
-                                (_) => false,
-                          );
-                        },
-                  ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      child: SafeArea(
+    return  animated_drawer(
+      SafeArea(
         child: Scaffold(
           appBar: AppBar(title :Text(AppStrings.task.tr()),
           centerTitle: true,
@@ -233,11 +101,11 @@ class _home_pageState extends State<home_page> {
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text("${exams[index].count} سؤال" ,style: TextStyle(
-                                      fontSize: 15.sp
+                                      fontSize: 15.sp,
                                   )),
                                   SizedBox(width: 80.w,),
                                   Hero(
-                                    tag: "Hero$index",
+                                    tag: "exam$index",
                                       child: Lottie.asset(exams[index].image,width: 120.sp,height: 120.sp)
                                   )
                                 ],
@@ -246,8 +114,9 @@ class _home_pageState extends State<home_page> {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(exams[index].description,style: TextStyle(
-                                  color: Colors.black45,
-                                    fontSize: 12.sp
+                                  color: Color(0xff5F6980),
+                                    fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400
                                 ),),
                               )
                             ],
@@ -268,6 +137,8 @@ class _home_pageState extends State<home_page> {
                               borderRadius: BorderRadius.circular(8)),
                           child: Center(child: Text(exams[index].title,style: TextStyle(
                             fontSize: 15.sp,
+                            color: ColorManager.primatylight2,
+                            fontWeight: FontWeight.w700
                           ),
                               textAlign: TextAlign.center),),
                         ),
@@ -283,7 +154,7 @@ class _home_pageState extends State<home_page> {
               },),
           ) ,
         ),
-      ),
+      ),_advancedDrawerController
     );
   }
 }

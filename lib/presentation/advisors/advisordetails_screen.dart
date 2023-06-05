@@ -37,7 +37,7 @@ class _advisordetails_pageState extends State<advisordetails_page> {
           SizedBox(height: 10,),
               Center(
                 child: Hero(
-                    tag: "Hero2"+widget.index.toString(),
+                    tag: "advisor"+widget.index.toString(),
                     child: Container(
                       height: 115.sp,
                       width: 115.sp,

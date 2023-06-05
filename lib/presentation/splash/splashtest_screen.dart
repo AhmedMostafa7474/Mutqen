@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/presentation/login/login_screen.dart';
 import 'package:mutqen/presentation/navbar/navbar_screen.dart';
 import 'package:mutqen/resources/color_manager.dart';
@@ -123,7 +124,8 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
                 ),
-                 child: Image.asset(ImageAssets.smallLogo)
+                 child: Image.asset(ImageAssets.smallLogo,color: ColorManager.primary,
+                   fit: BoxFit.cover,height:145.sp ,width:145.sp ,)
                 ,
               ),
             ),
