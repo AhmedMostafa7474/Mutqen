@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/data/repo/login_repo.dart';
 import 'package:mutqen/data/webservice/login_services.dart';
 import 'package:mutqen/presentation/home/home_screen.dart';
+import 'package:mutqen/presentation/routing/routing_screen.dart';
 import 'package:mutqen/resources/common_widgets/alert_messages.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
 
@@ -42,7 +43,7 @@ class LoginButton extends StatelessWidget {
           await AppPreferences().setUserLoggedIn();
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (context) =>
-              nav_screen()), (Route<dynamic> route) => false);
+              const routing_screen()), (Route<dynamic> route) => false);
         }
       }
     }, text: AppStrings.login.tr(), txtColor: Colors.white, height: 50.h, fontSize: 18.sp);
