@@ -21,6 +21,8 @@ class ImageAssets {
   static  String About = "$IMAGE_PATH/Picture11.png";
   static  String realimage = "$IMAGE_PATH/realimage.jpg";
   static  String placeholder = "$IMAGE_PATH/placeholder.jpg";
+  static  String shaghafLogo = "$IMAGE_PATH/shaghaf_logo.png";
+
 
 
 }

@@ -1,12 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/resources/color_manager.dart';
-import 'package:url_launcher/url_launcher.dart';
-import '../../resources/assets_manager.dart';
 import '../../resources/common_widgets/app_bar.dart';
 import '../../resources/common_widgets/contactUs.dart';
 import '../../resources/common_widgets/rate_app_button.dart';
+import 'package:http/http.dart' as http;
 
 class contact_page extends StatelessWidget {
   const contact_page({Key? key}) : super(key: key);
@@ -123,12 +124,52 @@ class contact_page extends StatelessWidget {
                     RateButton(),
 
 
-
                   ],
                 ),
+
               )),
         ),
       ),
     );
   }
 }
+
+
+
+
+// Future<String> sendMessageToChatGPT(String message) async {
+//   final response = await http.post(
+//     Uri.parse('https://api.openai.com/v1/engines/text-davinci-003/completions'),
+//     headers: {
+//       'Authorization': 'Bearer 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',
+//       'Content-Type': 'application/json',
+//     },
+//     body: jsonEncode({
+//       'prompt': message,
+//       'max_tokens': 50,
+//       'temperature': 0.7,
+//       'top_p': 1.0,
+//       'n': 1,
+//       'stop': ['\n'],
+//     }),
+//   );
+//
+//   if (response.statusCode == 200) {
+//     final responseBody = json.decode(response.body);
+//     final generatedText = responseBody['choices'][0]['text'];
+//     return generatedText;
+//   } else {
+//     print(response.body);
+//     throw Exception('Failed to send message to ChatGPT: ${response.statusCode}');
+//   }
+// }
+//
+// void sendMessage(String message) async {
+//   try {
+//     final response = await sendMessageToChatGPT(message);
+//     print("-------------------");
+//     print(response.toString());
+//   } catch (e) {
+//     print('Error: $e');
+//   }
+// }

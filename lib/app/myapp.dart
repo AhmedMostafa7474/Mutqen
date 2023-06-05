@@ -63,7 +63,7 @@ class _MyAppState extends State<MyAppp> {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             fontFamily: 'DIN',
-            appBarTheme: AppBarTheme(
+            appBarTheme: const AppBarTheme(
               backgroundColor: ColorManager.primary,
             )
           ),

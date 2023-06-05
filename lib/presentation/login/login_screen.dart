@@ -27,13 +27,13 @@ class login_page extends StatefulWidget {
 
 class _login_pageState extends State<login_page> {
   final formKey = GlobalKey<FormState>();
-
   var usernamecontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+      Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -43,9 +43,9 @@ class _login_pageState extends State<login_page> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(ImageAssets.smallLogo,height: 150.h, width: 200.w),
-                Text("أهلاً بك فى متقن",style: TextStyle(fontSize: 30,
+                const Text("أهلاً بك فى متقن",style: TextStyle(fontSize: 30,
                     color: ColorManager.primary,
-                    fontWeight: FontWeight.w700
+                    fontWeight: FontWeight.w700,
                 )),
                 Text_Field_Widget(usernamecontroller,AppStrings.email.tr(),Icons.email,AppStrings.pleaseEnterYourUserName.tr(),
                     false),

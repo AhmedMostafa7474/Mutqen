@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../presentation/contactUs/contact_screen.dart';
 import 'button_widget.dart';
 
 class RateButton extends StatelessWidget {
@@ -23,6 +24,7 @@ class RateButton extends StatelessWidget {
     } else {
       throw 'Could not launch $url';
     }
+
   }
 
 
