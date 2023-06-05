@@ -4,13 +4,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mutqen/data/model/user.dart';
-import 'package:mutqen/presentation/home/home_screen.dart';
-import 'package:mutqen/presentation/navbar/navbar_screen.dart';
-import 'package:mutqen/presentation/register/register_screen.dart';
-
-import '../presentation/login/login_screen.dart';
-import '../presentation/splash/splash_screen.dart';
 import '../presentation/splash/splashtest_screen.dart';
 import '../resources/color_manager.dart';
 import 'app_pref.dart';

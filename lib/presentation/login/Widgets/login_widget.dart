@@ -5,7 +5,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutqen/data/repo/login_repo.dart';
 import 'package:mutqen/data/webservice/login_services.dart';
-import 'package:mutqen/presentation/home/home_screen.dart';
 import 'package:mutqen/presentation/routing/routing_screen.dart';
 import 'package:mutqen/resources/common_widgets/alert_messages.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';

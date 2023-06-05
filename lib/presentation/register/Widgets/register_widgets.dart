@@ -11,7 +11,6 @@ import '../../../app/app_pref.dart';
 import '../../../data/repo/login_repo.dart';
 import '../../../data/webservice/login_services.dart';
 import '../../../resources/strings_manager.dart';
-import '../../home/home_screen.dart';
 
 class RegisterButton extends StatelessWidget {
   var formKey = GlobalKey<FormState>();

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:mutqen/data/model/product.dart';
+import 'package:mutqen/presentation/products/product_details.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class product_card extends StatelessWidget {
 
@@ -13,7 +15,9 @@ class product_card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-              onTap: () {},
+              onTap: () {
+                PersistentNavBarNavigator.pushNewScreen(context, screen: product_details(productt, index));
+              },
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -32,7 +36,7 @@ class product_card extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Hero(
-                            tag: "Heroop" + index.toString(),
+                            tag: "product" + index.toString(),
                             child: Image.asset(productt.image,
                               height: 90.sp,width: 90.sp,)
                         ),
@@ -45,14 +49,16 @@ class product_card extends StatelessWidget {
                         height: 70,
                         width: 230,
                         padding: EdgeInsets.only(top: 6),
-                        decoration: BoxDecoration(
-                            gradient:LinearGradient(colors: [
-                              productt.color.withOpacity(0.7),
-                              productt.color.withOpacity(0.5),
-                              productt.color.withOpacity(0.1),
-                            ],begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter)
-                        ),
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: const Offset(0, 1), // changes position of shadow
+                          ),
+                        ],
+                            color: Colors.white70,
+                            borderRadius: BorderRadius.circular(15)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

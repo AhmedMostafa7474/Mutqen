@@ -42,8 +42,9 @@ class _login_pageState extends State<login_page> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(ImageAssets.smallLogo,height: 150.h, width: 200.w),
-                const Text("أهلاً بك فى متقن",style: TextStyle(fontSize: 30,
+                Image.asset(ImageAssets.smallLogo,height: 120.sp, width: 120.sp,color: ColorManager.primary,fit: BoxFit.cover,),
+                Text("أهلاً بك فى متقن",style: TextStyle(fontSize: 30,
+
                     color: ColorManager.primary,
                     fontWeight: FontWeight.w700,
                 )),

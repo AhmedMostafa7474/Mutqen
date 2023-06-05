@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ColorManager {
   static const Color primary = const Color(0xFF13675E);
   static const Color primatylight = const Color(0xFF4D887F);
+  static const Color primatylight2 = const Color(0xFF198297);
   static const Color buttoncolor = const Color(0xFF1A8398);
 
   static Color darkPrimary = const Color(0xff1B6685);
@@ -13,12 +14,15 @@ class ColorManager {
   static Color C = const Color(0xff64B6A8);
   static Color S = const Color(0xffCCA258);
   static Color greenlight = const Color(0xff74B621);
+  static Color greenlight2 = const Color(0xff4FB84A);
   static Color bluelight = const Color(0xff2298CB);
+  static Color bluelight2 = const Color(0xff0F4C75);
 
   static Color grey = const Color(0xff737477);
   static Color lightGrey = const Color(0xffF6F6F6);
 
   static Color yellow = const Color(0xfffdad10);
+  static Color yellow2 = const Color(0xffE89D3C);
 
   static Color black = Color.fromARGB(255, 0, 0, 0);
 
