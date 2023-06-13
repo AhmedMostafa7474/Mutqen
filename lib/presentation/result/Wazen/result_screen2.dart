@@ -22,8 +22,7 @@ class result_page2 extends StatefulWidget {
 class _result_page2State extends State<result_page2> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon("نتيجه وازن", context),
         body: Container(
           padding: const EdgeInsets.only(top: 20),
@@ -145,7 +144,6 @@ class _result_page2State extends State<result_page2> {
             },
           ),
         ),
-      ),
     );
   }
 }

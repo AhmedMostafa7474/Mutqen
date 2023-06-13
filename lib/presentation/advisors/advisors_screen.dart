@@ -121,7 +121,7 @@ class _advisors_pageState extends State<advisors_page> {
                 itemCount: shownlist.length,
                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                  crossAxisCount: 2,
-                 childAspectRatio: .66,
+                 childAspectRatio: .568.sp,
                  mainAxisSpacing: 10,
                  crossAxisSpacing: 5
                ),
@@ -156,7 +156,7 @@ class _advisors_pageState extends State<advisors_page> {
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          SizedBox(height: 80,),
+                                          SizedBox(height: 80.h,),
                                               isloading? Shimmer.fromColors(
                                                 highlightColor: Colors.grey[100]! ,
                                                 baseColor: Colors.grey[300]!,
@@ -208,7 +208,8 @@ class _advisors_pageState extends State<advisors_page> {
                                                    SizedBox(height: 11,),
                                                    Text("6",style: TextStyle(
                                                      fontWeight: FontWeight.w600,
-                                                     color: ColorManager.yellow
+                                                     color: ColorManager.yellow,
+                                                     fontSize: 14.sp
                                                    ),)
 
                                                  ],
@@ -230,6 +231,7 @@ class _advisors_pageState extends State<advisors_page> {
                                                    Text("0",style: TextStyle(
                                                        color: ColorManager.yellow,
                                                      fontWeight: FontWeight.w600,
+                                                       fontSize: 14.sp
 
                                                    ))
                                                  ],
@@ -284,8 +286,9 @@ class _advisors_pageState extends State<advisors_page> {
                                               Icon(
                                                 Icons.star,
                                                 color: Colors.amber,
+                                                size: 22.sp,
                                               ),
-                                              Text("4.5"),
+                                              Text("4.5",style: TextStyle(fontSize: 14.sp),),
                                             ],
                                           ),
                                     ),

@@ -50,14 +50,17 @@ class _routing_screenState extends State<routing_screen> {
                       },
                       front: Image.asset(
                         ImageAssets.smallLogo,
-                        width: 160.w,
-                        height: 120,
+                        width: 150,
+                        height: 150,
                         color: Colors.white,
+                        fit: BoxFit.cover,
                       ), back: Image.asset(
                       ImageAssets.smallLogo,
-                      width: 160.w,
-                      height: 120,
+                      width: 150,
+                      height: 150,
                       color: Colors.white,
+                      fit: BoxFit.cover,
+
                     ),
                     ),
                   ],

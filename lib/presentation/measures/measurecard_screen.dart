@@ -20,6 +20,8 @@ import '../exam/exam2_screen.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
 
+import 'Widgets/startdialog.dart';
+
 class homecard_page extends StatefulWidget {
   final String pdfUrl = '';
   int index;
@@ -84,11 +86,8 @@ class _homecard_pageState extends State<homecard_page> {
               ,
               const SizedBox(height: 25,)
               ,
-              defaultButton(width: 140.w, function: (){
-                if(widget.examm.title == exams[1].title || widget.examm.title == exams[2].title)
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page2(widget.examm));
-                else
-                    PersistentNavBarNavigator.pushNewScreen(context, screen: exam_page2(widget.examm));
+              defaultButton(width: 140.w, function: () async {
+                await showStartDialog(context,widget.examm);
 
               }, text: "اجراء المقياس", txtColor: Colors.white, height: 33.h, fontSize: 16.sp
                   ,background: ColorManager.yellow,borderColor: ColorManager.yellow),

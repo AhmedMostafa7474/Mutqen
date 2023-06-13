@@ -22,8 +22,7 @@ class disc_result_page extends StatefulWidget {
 class _disc_result_page extends State<disc_result_page> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return  Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon("نتيجه DISC", context),
         body: Container(
           padding: const EdgeInsets.only(top: 20),
@@ -32,7 +31,7 @@ class _disc_result_page extends State<disc_result_page> {
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, // Number of columns in the grid
-                childAspectRatio: 0.63, // Ratio of child item's height to width
+                childAspectRatio: 0.66, // Ratio of child item's height to width
               ),
               padding: EdgeInsets.only(bottom: 20.h),
               itemCount: 4,
@@ -111,9 +110,6 @@ class _disc_result_page extends State<disc_result_page> {
              ),
           ),
         ) ,
-      ),
     );
   }
 }
-
-

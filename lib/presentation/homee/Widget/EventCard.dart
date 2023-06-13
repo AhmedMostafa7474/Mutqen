@@ -70,23 +70,20 @@ class eventcard extends StatelessWidget {
                   ),
                 ),
                 Align(
+                  alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 9.0,right: 6.0),
+                    padding: const EdgeInsets.all(12.0),
                     child:
                     Row(
                       children: [
-                        Expanded(
-                            flex: 1,
-                            child: Container(child: Icon(Icons.location_on,color: ColorManager.primatylight,size: 21.sp,))),
-                        Expanded(
-                          flex: 3,
-                          child: Text("برنامج "+ showenevent.title +" - ",style: TextStyle(
+                         Container(child:
+                            Icon(Icons.location_on,color: ColorManager.primatylight,size: 21.sp,)),
+                         Text("برنامج "+ showenevent.title +" - ",style: TextStyle(
                               color: ColorManager.primatylight,
                               fontSize: 16.sp
-                          ),),
+                          ),
                         ),
                         Expanded(
-                          flex: 6,
                           child: Text(showenevent.place,style: TextStyle(
                               color: ColorManager.yellow,
                               fontSize: 16.sp

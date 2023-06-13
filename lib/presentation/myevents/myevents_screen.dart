@@ -38,20 +38,20 @@ class _myevents_pageState extends State<myevents_page> {
               ),
             ], color: Colors.white70, borderRadius: BorderRadius.circular(15)),
             dividerThickness: 3,
-            dataRowHeight: 90,
-            columnSpacing: 30,
+            dataRowHeight: 80.h,
+            columnSpacing: 20.w,
             sortColumnIndex: index,
             sortAscending: ascendingg,
             columns: [
               DataColumn(
                 label: Text("الفعالية",
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w700)),
+                        color: Colors.white, fontWeight: FontWeight.w700,fontSize: 14.sp)),
               ),
               DataColumn(
                 label: Text("تاريخ الفعالية",
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w700)),
+                        color: Colors.white, fontWeight: FontWeight.w700,fontSize: 14.sp)),
                 onSort: (columnIndex, ascending) {
                   setState(() {
                     index = columnIndex;
@@ -71,15 +71,15 @@ class _myevents_pageState extends State<myevents_page> {
               DataColumn(
                 label: Text("إكتمال الدورة",
                     style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w700)),
+                        color: Colors.white, fontWeight: FontWeight.w700,fontSize: 14.sp)),
               )
             ],
             rows: myevents.map((item) {
               return DataRow(cells: [
                 DataCell(
                     Container(
-                    width: 100, child: Text(item.title))),
-                DataCell(Text(DateFormat('yyyy-MM-dd').format(item.dateTime))),
+                    width: 90.w, child: Text(item.title,style: TextStyle(fontSize: 14.sp),))),
+                DataCell(Text(DateFormat('yyyy-MM-dd').format(item.dateTime),style:  TextStyle(fontSize: 14.sp),)),
                 DataCell(
                     item.iscertified? defaultButton(
                     width: 115,

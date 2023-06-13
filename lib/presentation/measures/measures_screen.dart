@@ -27,6 +27,7 @@ import '../advisors/advisors_screen.dart';
 import '../events/events_screen.dart';
 import '../meetings/meetings_screen.dart';
 import '../myevents/myevents_screen.dart';
+import '../notifications/notifications_screen.dart';
 import '../products/products_screen.dart';
 import '../profile/profile_screen.dart';
 import 'Widgets/main_drawer.dart';
@@ -64,6 +65,18 @@ class _measures_pageState extends State<measures_page> {
                 },
               ),
             ),
+            actions: [
+              IconButton(
+                icon: const Icon(
+                  Icons.notifications_none,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  // do something
+                  PersistentNavBarNavigator.pushNewScreen(context, screen: notification_page());
+                },
+              )
+            ],
           ),
           body:
           Container(

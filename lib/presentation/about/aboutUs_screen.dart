@@ -11,8 +11,7 @@ class about_page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         appBar: getAppBarWidgetWithNotificationIcon("عن التطبيق", context),
         body: SafeArea(
@@ -48,7 +47,6 @@ class about_page extends StatelessWidget {
             ),
           )),
         ),
-      ),
     );
   }
 }
