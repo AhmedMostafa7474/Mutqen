@@ -7,18 +7,19 @@ class exam
   int count;
   String image;
   List<question> questions;
-  exam(this.title, this.description,this.count,this.questions,this.image);
+  String helpText;
+  exam(this.title, this.description,this.count,this.questions,this.image,this.helpText);
 }
 
 List<exam> exams = [
   exam("مقياس DISC", "المميزات والقدرات الشخصيه التي تحدد هويتك وشخصيتك الفريده", 44,
-  questions,ImageAssets.discexamimage),
+  questions,ImageAssets.discexamimage,"اختر العباره التي تعبر عنك علي مقياس 1 الي 5  (بحيث 1 اقل و5 اكتر)"),
   exam("مقياس وازن", "يساعدك علي التوازن في حياتك والتأكد من التجدد والتجسن المستمر", 100,
-     wazenquestions,ImageAssets.wazenexamimage),
+     wazenquestions,ImageAssets.wazenexamimage,"اختر المناسب من الخيارات التاليه ( دائما - احيانا - أبدا ) امام العبارات التاليه"),
   exam("مقياس فرق", "اكتشاف الميول التعليميه والمهنيه والخصائص الشخصيه", 42,
-     fare2questions,ImageAssets.fare2examimage),
+     fare2questions,ImageAssets.fare2examimage,"نرجو منك ان تختر ( نعم ) للعباره التي تمثلك و (لا) للعباره التي لا تمثلك "),
   exam("مقياس الذكاءات المتعدده", "اكتشاف الميول التعليميه والمهنيه والخصائص الشخصيه", 56,
-     questions,ImageAssets.brainexamimage),
+     questions,ImageAssets.brainexamimage,"اختر العباره التي تعبر عنك علي مقياس 1 الي 5  (بحيث 1 اقل و5 اكتر)"),
 ];
 List<answer> answers=[answer(title: "1"),answer(title: "2"),answer(title: "3"),answer(title: "4"),answer(title: "5")];
 List<answer> wazenanswers= [answer(title: "نعم"),answer(title: "احيانا"),answer(title: "ابدا")];

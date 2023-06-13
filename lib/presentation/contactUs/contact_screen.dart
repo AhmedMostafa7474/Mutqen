@@ -14,8 +14,7 @@ class contact_page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return  Scaffold(
         backgroundColor: Colors.white,
         appBar: getAppBarWidgetWithNotificationIcon("تواصل معنا", context),
         body: SafeArea(
@@ -129,7 +128,6 @@ class contact_page extends StatelessWidget {
 
               )),
         ),
-      ),
     );
   }
 }

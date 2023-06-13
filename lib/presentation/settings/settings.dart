@@ -32,6 +32,7 @@ import '../contactUs/contact_screen.dart';
 import '../events/events_screen.dart';
 import '../meetings/meetings_screen.dart';
 import '../myevents/myevents_screen.dart';
+import '../notifications/notifications_screen.dart';
 
 bool notifySwitch = false;
 
@@ -78,6 +79,18 @@ class _SettingViewState extends State<settingView> {
               },
             ),
           ),
+          actions: [
+            IconButton(
+              icon: const Icon(
+                Icons.notifications_none,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                // do something
+                PersistentNavBarNavigator.pushNewScreen(context, screen: notification_page());
+              },
+            )
+          ],
         ),
       body: Column(
         children: [
@@ -112,7 +125,7 @@ class _SettingViewState extends State<settingView> {
           ),
           SizedBox(height: 20,),
           Center(
-            child: defaultButton(width: 140,
+            child: defaultButton(width: 140.w,
                 function: (){
               PersistentNavBarNavigator.pushNewScreen(context, screen:   MultiBlocProvider(
                 providers: [
@@ -125,8 +138,8 @@ class _SettingViewState extends State<settingView> {
                 },
                 text: "تعديل الصفحه الشخصيه",
                 txtColor: Colors.white,
-                height: 40,
-                fontSize: 13,
+                height: 40.h,
+                fontSize: 13.sp,
                 background: ColorManager.primary
                 ,radius: 5
             ),
@@ -166,7 +179,7 @@ class _SettingViewState extends State<settingView> {
                               ),
                             itemms[index].title != "الاشعارات" ? Padding(
                               padding: const EdgeInsets.only(left: 12.0),
-                              child: Icon(Icons.arrow_forward_ios,size: 20,color: Colors.grey,),
+                              child: Icon(Icons.arrow_forward_ios,size: 18.sp,color: Colors.grey,),
                             ) : Container(
                               child: Switch(
                                 activeColor: ColorManager.green,

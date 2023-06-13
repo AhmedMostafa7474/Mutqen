@@ -69,7 +69,9 @@ class _notification_pageState extends State<notification_page> {
                                 flex: 1,
                                 child: Align(
                                     alignment: Alignment.centerLeft,
-                                    child: Text(notifications[index].time)))
+                                    child: Text(notifications[index].time,style: TextStyle(
+                                      fontSize: 14.sp
+                                    ),)))
                           ],
                         ) :Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,11 +95,13 @@ class _notification_pageState extends State<notification_page> {
                                     flex: 1,
                                     child: Align(
                                         alignment: Alignment.centerLeft,
-                                        child: Text(notifications[index].time)))
+                                        child: Text(notifications[index].time,style: TextStyle(
+                                            fontSize: 14.sp
+                                        ))))
                               ],
                             ),
                           Text(notifications[index].desc,style: TextStyle(
-                              color: ColorManager.bluelight2,fontWeight: FontWeight.w500
+                              color: ColorManager.bluelight2,fontWeight: FontWeight.w500,fontSize: 14.sp
                           )
                     ),
                             SizedBox(height: 8,)

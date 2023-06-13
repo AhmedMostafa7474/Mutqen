@@ -25,8 +25,7 @@ class _resultdetails_pageState extends State<resultdetails_page> {
   }
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon(widget.resultt.title, context),
         body: SingleChildScrollView(
           child: Column
@@ -111,7 +110,6 @@ class _resultdetails_pageState extends State<resultdetails_page> {
             ],
           ),
         )
-    )
     );
   }
 }

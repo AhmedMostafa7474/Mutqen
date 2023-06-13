@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,25 +6,19 @@ import 'package:mutqen/business/filterBloc/advisorfilter_cubit.dart';
 import 'package:mutqen/business/filterBloc/filter_cubit.dart';
 import 'package:mutqen/data/model/product.dart';
 import 'package:mutqen/presentation/homee/Widget/EventCard.dart';
-import 'package:mutqen/presentation/login/login_screen.dart';
-import 'package:mutqen/presentation/myevents/myevents_screen.dart';
-import 'package:mutqen/presentation/products/products_screen.dart';
 import 'package:mutqen/presentation/products/widget/product_card.dart';
 import 'package:mutqen/resources/common_widgets/animated_drawer.dart';
 import 'package:mutqen/resources/common_widgets/button_widget.dart';
-import 'package:mutqen/resources/strings_manager.dart';
 import 'package:mutqen/resources/style_manager.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import '../../app/app_pref.dart';
 import '../../data/model/event.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/color_manager.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:mutqen/presentation/advisors/advisors_screen.dart';
 import 'package:mutqen/presentation/events/events_screen.dart';
-import 'package:mutqen/presentation/meetings/meetings_screen.dart';
-import '../../resources/common_widgets/drawerwidget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import '../notifications/notifications_screen.dart';
 
 
 class homee_page extends StatefulWidget {
@@ -39,9 +32,9 @@ class _homee_pageState extends State<homee_page> {
 
   _homee_pageState();
   List<Widget> imgList = [
-    eventcard(220.h,300.w,events[0],0),
-    eventcard(220.h,300.w,events[1],1),
-    eventcard(220.h,300.w,events[2],2),
+    eventcard(245.h,300.w,events[0],0),
+    eventcard(245.h,300.w,events[1],1),
+    eventcard(245.h,300.w,events[2],2),
   ];
 
   List<Widget> productList = [
@@ -74,6 +67,18 @@ class _homee_pageState extends State<homee_page> {
               },
             ),
           ),
+          actions: [
+            IconButton(
+              icon: const Icon(
+                Icons.notifications_none,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                // do something
+                PersistentNavBarNavigator.pushNewScreen(context, screen: notification_page());
+              },
+            )
+          ],
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -97,9 +102,9 @@ class _homee_pageState extends State<homee_page> {
                 padding: const EdgeInsets.only(top: 10,bottom: 5),
                 child: CarouselSlider(
                   options: CarouselOptions(
-                    height: 250.h,
+                    height: 265.h,
                     aspectRatio: 0.6,
-                    enlargeFactor: 0.3,
+                    enlargeFactor: 0.2,
                     enlargeCenterPage: true,
                     enableInfiniteScroll: true,
                     initialPage: 1,
@@ -108,6 +113,7 @@ class _homee_pageState extends State<homee_page> {
                   items: imgList,
                 ),
               ),
+
               defaultButton(width: 160.w, function: (){
               //  PersistentNavBarNavigator.pushNewScreen(context, screen: products_page());
                 PersistentNavBarNavigator.pushNewScreen(context, screen: BlocProvider(
@@ -186,6 +192,7 @@ class _homee_pageState extends State<homee_page> {
     );
 
   }
+
   void _handleMenuButtonPressed() {
     // NOTICE: Manage Advanced Drawer state through the Controller.
     // _advancedDrawerController.value = AdvancedDrawerValue.visible();

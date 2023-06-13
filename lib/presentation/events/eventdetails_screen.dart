@@ -180,7 +180,7 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                   shrinkWrap: true,
                   itemCount: 6,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,
-                  childAspectRatio: 1.3,
+                  childAspectRatio: 1.3.sp,
                   crossAxisSpacing: 1),
                   itemBuilder: (BuildContext context, int index) {
                       return AnimationConfiguration.staggeredGrid(
@@ -202,10 +202,10 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Icon(eventdetailss[index].icon, color: Color(0xFF008199),),
+                                      Icon(eventdetailss[index].icon, color: Color(0xFF008199),size: 19.sp),
                                       Text(eventdetailss[index].title,style: TextStyle(
                                         color: Colors.black,
-                                        fontSize: 18,
+                                        fontSize: 17.sp,
                                         fontWeight: FontWeight.w700,
 
                                       ),),
@@ -215,7 +215,7 @@ class _eventdetails_pageState extends State<eventdetails_page> {
                                   SizedBox(height: 15,),
                                   Text(eventdetailss[index].desc,
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 15.sp,
                                     color: Color(0xFF3F3F46),
                                   ),
                                   textAlign: TextAlign.center,

@@ -46,7 +46,8 @@ class ProfileRepo {
       else if (response.statusCode == 400){
         try {
           messege = jsonresponse["old_password"];
-        }catch(e)
+        }
+        catch(e)
         {
           messege = jsonresponse["new_password2"];
         }

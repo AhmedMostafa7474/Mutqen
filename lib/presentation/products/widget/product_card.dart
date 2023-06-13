@@ -46,12 +46,12 @@ class product_card extends StatelessWidget {
                     Expanded(
                       flex: 1,
                       child: Container(
-                        height: 70,
+                        height: 60,
                         width: 230,
                         padding: EdgeInsets.only(top: 6),
                         decoration: BoxDecoration(boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
+                            color: Colors.grey.withOpacity(0.1),
                             spreadRadius: 5,
                             blurRadius: 7,
                             offset: const Offset(0, 1), // changes position of shadow

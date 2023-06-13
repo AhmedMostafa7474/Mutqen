@@ -106,7 +106,7 @@ class _events_pageState extends State<events_page> {
                           verticalOffset: 80.0,
                           child: FadeInAnimation(
                             child: UnconstrainedBox(
-                                child :  eventcard(220.h,300.w,showenevents[index],index),
+                                child :  eventcard(240.h,300.w,showenevents[index],index),
                             ),
                           ),
                         ),

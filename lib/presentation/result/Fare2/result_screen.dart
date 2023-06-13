@@ -24,8 +24,7 @@ class result_page extends StatefulWidget {
 class _result_pageState extends State<result_page> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return  Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon("نتيجه فرق", context),
         body: Container(
           padding: EdgeInsets.only(top: 20),
@@ -102,7 +101,6 @@ class _result_pageState extends State<result_page> {
             ),
           ),
         ) ,
-      ),
     );
   }
 }

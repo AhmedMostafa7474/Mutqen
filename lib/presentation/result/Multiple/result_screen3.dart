@@ -25,8 +25,7 @@ class result_page3 extends StatefulWidget {
 class _result_page3State extends State<result_page3> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         appBar: getAppBarWidgetWithNotificationIcon("نتيجه الذكاءات المتعدده", context),
         body: SingleChildScrollView(
           child: Column(
@@ -97,7 +96,6 @@ class _result_page3State extends State<result_page3> {
             ],
           ),
         ) ,
-      ),
     );
   }
 }
